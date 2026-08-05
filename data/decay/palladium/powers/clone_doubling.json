@@ -1,0 +1,28 @@
+{
+    "name": "Clone Doubling",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "skin_changing":{
+            "type": "palladium:skin_change",
+            "icon": "minecraft:player_head",
+            "title": "Duplication",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Changes skin to a player.",
+            "texture": "minecraft:textures/entity/zombie/drowned.png",
+            "model_type": "keep",
+            "priority": 50,
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        }
+
+    }
+}

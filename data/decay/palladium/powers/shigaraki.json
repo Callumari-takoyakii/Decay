@@ -1,8 +1,8 @@
 {
     "name": "Shigaraki",
     "persistent_data": true,
-    "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:apple",
+    "background": "minecraft:textures/block/bedrock.png",
+    "icon": "minecraft:wither_rose",
     "gui_display_type": "tree",
     "abilities": {
         "thousand_hand_break": {
@@ -25,7 +25,7 @@
             "smelt_blocks": false,
             "commands_on_block_hit": [
                 
-                "fill ~ ~ ~ ~ ~ ~ -1 replace air"
+                "summon tnt"
                 
             ],
             "commands_on_entity_hit": [
