@@ -1,0 +1,13 @@
+{
+    "schemaVersion": 1,
+    "authors": [
+        "Callumari-takoyakii"
+    ],
+    "environment": "*",
+    "id": "decay",
+    "version": "1.0.0",
+    "name": "Decay",
+    "description": "Adds Tomura Shigaraki's quirk from MHA's war arc to Minecraft via the Palladium mod.",
+    "icon": "logo.png",
+    "license": "All rights reserved"
+}

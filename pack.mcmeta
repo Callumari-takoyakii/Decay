@@ -1,0 +1,13 @@
+{
+    "pack": {
+        "id": "decay",
+        "pack_format": 15,
+        "description": "Adds Tomura Shigaraki's quirk from MHA's war arc to Minecraft via the Palladium mod.",
+        "version": "1.0.0"
+    },
+    "dependencies": {
+        "common": {},
+        "fabric": {},
+        "forge": {}
+    }
+}

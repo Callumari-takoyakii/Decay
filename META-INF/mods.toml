@@ -1,0 +1,21 @@
+modLoader="lowcodefml"
+showAsResourcePack = false
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="decay"
+version="1.0.0"
+logoFile = "logo.png"
+logoBlur = false
+displayName="Decay"
+description='''
+Adds Tomura Shigaraki's quirk from MHA's war arc to Minecraft via the Palladium mod.
+'''
+
+[[dependencies.decay]]
+modId = "palladium"
+mandatory = true
+versionRange = "[4.4.1,)"
+ordering = "NONE"
+side = "BOTH"
