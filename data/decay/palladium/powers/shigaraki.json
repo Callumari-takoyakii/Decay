@@ -15,7 +15,7 @@
             "list_index": 0,
             "gui_position": [0, 0],
             "description": "Morph your arm into a bloated mass of fingers to destroy your enemies.",
-            "energy_beam": "example:energy_beam",
+            "energy_beam": "palladium:energy_beam",
             "damage_type": "null",
             "damage": 15,
             "max_distance": 18,
@@ -24,20 +24,21 @@
             "cause_fire": false,
             "smelt_blocks": false,
             "commands_on_block_hit": [
-                "summon tnt"   
+                "summon tnt"
             ],
             "commands_on_entity_hit": [
-                "effect give @e[distance=..1] wither 10 2 true"
+                "summon tnt"
             ],
             "conditions": {
-                "enabling": [
-                                      {
-                                            "type": "palladium:action",
-                                            "cooldown": 30,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": true,
-                                            "allow_scrolling_when_crouching": true
-                                        }
+                "enabling": [ 
+                                    {
+                                        "type": "palladium:activation",
+                                        "cooldown": 30,
+                                        "ticks": 10,
+                                        "key_type": "key_bind",
+                                        "needs_empty_hand": false,
+                                        "allow_scrolling_when_crouching": true
+                                    }
                 ],
                 "unlocking": []
             }

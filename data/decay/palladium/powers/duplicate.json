@@ -23,6 +23,27 @@
                 "unlocking": []
             }
         },
+        "model_hiding": {
+            "type": "palladium:remove_body_part",
+            "icon": "minecraft:blaze_rod",
+            "title": "null",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "null",
+            "body_parts": [
+                "right_arm",
+                "left_arm",
+                "head"
+            ],
+            "affects_first_person": true,
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
         "render_layering": {
             "type": "palladium:render_layer",
             "icon": "minecraft:blue_dye",
