@@ -23,24 +23,6 @@
                 "unlocking": []
             }
         },
-        "skin_changing":{
-            "type": "palladium:skin_change",
-            "icon": "minecraft:player_head",
-            "title": "Duplication",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": -1,
-            "gui_position": "null",
-            "description": "Changes skin to Twice's outfit.",
-            "texture": "assets/decay/textures/double.png",
-            "model_type": "keep",
-            "priority": 50,
-            "conditions": {
-                "enabling": [],
-                "unlocking": []
-            }
-        },
         "render_layering": {
             "type": "palladium:render_layer",
             "icon": "minecraft:blue_dye",
