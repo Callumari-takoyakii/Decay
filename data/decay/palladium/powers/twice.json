@@ -30,23 +30,16 @@
                 "/tag @e[distance=..0.2] add target"
             ],
             "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                 {
-                                                    "type": "palladium:action",
-                                                    "cooldown": 10,
-                                                    "key_type": "right_click",
-                                                    "needs_empty_hand": true,
-                                                    "allow_scrolling_when_crouching": true
-                                                    
-                                                },
-                                                {
-                                                    "type": "palladium:crouching"
-                                                }
-                                            ]
-                                        }
+                "enabling": [ 
+                                    {
+                                        "type": "palladium:action",
+                                        "cooldown": 10,
+                                        "key_type": "right_click",
+                                        "needs_empty_hand": false,
+                                        "allow_scrolling_when_crouching": true
+                                    }
+                                        
+                           
                 ],
                 "unlocking": []
             }
@@ -74,13 +67,9 @@
                 "/team modify twice friendlyfire false"
             ],
             "conditions": {
-                "enabling": [
-                    {
-    "type": "palladium:interval",
-    "active_ticks": 20,
-    "disabled_ticks": 0
-}
-                ],
+                "enabling": [                 {
+                                    "type": "palladium:true"
+                                } ],
                 "unlocking": []
             }
         },

@@ -24,12 +24,10 @@
             "cause_fire": false,
             "smelt_blocks": false,
             "commands_on_block_hit": [
-                
-                "summon tnt"
-                
+                "summon tnt"   
             ],
             "commands_on_entity_hit": [
-                "effect give @e[distance=..0.2] wither 10 2 true"
+                "effect give @e[distance=..1] wither 10 2 true"
             ],
             "conditions": {
                 "enabling": [
