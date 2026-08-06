@@ -29,15 +29,16 @@
                 
             ],
             "commands_on_entity_hit": [
-                "effect give @s wither 10 2 true"
+                "effect give @e[distance=..0.2] wither 10 2 true"
             ],
             "conditions": {
                 "enabling": [
-                                        {
-                                            "type": "palladium:held",
-                                            "cooldown": 0,
+                                      {
+                                            "type": "palladium:action",
+                                            "cooldown": 30,
                                             "key_type": "key_bind",
-                                            "needs_empty_hand": true
+                                            "needs_empty_hand": true,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
                 "unlocking": []

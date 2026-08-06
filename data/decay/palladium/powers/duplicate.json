@@ -5,6 +5,24 @@
     "icon": "minecraft:wither_skeleton_skull",
     "gui_display_type": "tree",
     "abilities": {
+        "name_changing":{
+            "type": "palladium:name_change",
+            "icon": "minecraft:player_head",
+            "title": "Recreation",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Changes entity nametag to Twice.",
+            "name": {
+                "text": "Twice"
+            },
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
         "skin_changing":{
             "type": "palladium:skin_change",
             "icon": "minecraft:player_head",
@@ -14,7 +32,7 @@
             "hidden_in_bar": true,
             "list_index": -1,
             "gui_position": "null",
-            "description": "Changes skin to a player.",
+            "description": "Changes skin to Twice's outfit.",
             "texture": "minecraft:textures/entity/zombie/drowned.png",
             "model_type": "keep",
             "priority": 50,
