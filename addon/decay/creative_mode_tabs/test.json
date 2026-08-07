@@ -1,0 +1,9 @@
+{
+    "icon": "minecraft:trident",
+    "title": "Final War",
+    "items": [
+        "minecraft:cactus",
+        "minecraft:bread",
+        "minecraft:stick"
+    ]
+}
