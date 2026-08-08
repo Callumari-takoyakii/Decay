@@ -1,0 +1,11 @@
+{
+    "map_color": "minecraft:none",
+    "sound_type": "minecraft:slime_block",
+    "destroy_time": 0.0,
+    "explosion_resistance": 0.0,
+    "render_type": "translucent",
+    "no_occlusion": true,
+    "requires_correct_tool_for_drops": false,
+    "register_item": true,
+    "creative_mode_tab": "decay:decay"
+}

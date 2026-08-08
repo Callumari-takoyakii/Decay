@@ -2,7 +2,7 @@
     "name": "Shigaraki",
     "persistent_data": true,
     "background": "minecraft:textures/block/bedrock.png",
-    "icon": "minecraft:wither_rose",
+    "icon": "decay:textures/icons/gui/powers/decay.png",
     "gui_display_type": "tree",
     "abilities": {
         "thousand_hand_break": {

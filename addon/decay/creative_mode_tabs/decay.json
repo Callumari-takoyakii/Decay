@@ -1,5 +1,5 @@
 {
-    "icon": "minecraft:trident",
+    "icon": "decay:textures/icons/gui/powers/decay.png",
     "title": "Final War",
     "items": [
         "minecraft:cactus",

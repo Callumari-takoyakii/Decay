@@ -2,7 +2,7 @@
     "name": "Twice",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/cloning.png",
     "gui_display_type": "tree",
     "abilities": {
         "aggression": {
