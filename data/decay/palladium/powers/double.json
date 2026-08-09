@@ -1,0 +1,46 @@
+{
+    "name": "Double",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/cloning.png",
+    "gui_display_type": "tree",
+    "abilities": {
+        "creation_wheel": {
+            "type": "palladium:ability_wheel",
+            "icon": "decay:textures/icons/gui/powers/cloning.png",
+            "title": "Double Selection",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Select a mob to create using mud.",
+            "abilities": [
+                "example_ability"
+            ],
+            "texture": "null",
+            "disable_mouse_scrolling": false,
+            "disable_center_icon": false,
+            "hide_locked": false,
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "double_creator": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/cloning.png",
+            "title": "Double Creator",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Creates a copy of the mob selected with Double Selector.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        }
+    }
+}
