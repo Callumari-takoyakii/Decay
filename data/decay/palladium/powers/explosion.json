@@ -20,24 +20,43 @@
                 "unlocking": []
             }
         },
-        "rising_particles":{
-            "type": "palladium:particles",
+        "ap_shot": {
+            "type": "palladium:energy_beam",
             "icon": "minecraft:blaze_rod",
-            "title": "title",
+            "title": "AP Shot: Cluster",
             "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
+            "hidden": false,
+            "hidden_in_bar": false,
             "list_index": -1,
             "gui_position": "null",
-            "description": "desc",
-            "emitter": "decay:emitter",
-            "particle_type": "decay:cluster_set1",
-            "options": "value",
+            "description": "Fire compressed nitroglycerin sweat that sparkles on impact.",
+            "energy_beam": "decay:ap_shot",
+            "damage_type": "null",
+            "damage": 8,
+            "max_distance": 18,
+            "speed": 0,
+            "set_on_fire_seconds": 4,
+            "cause_fire": true,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/summon tnt"
+            ],
+            "commands_on_entity_hit": [],
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                    {
+                        "type": "palladium:activation",
+                        "cooldown": 20,
+                        "ticks": 10,
+                        "key_type": "key_bind",
+                        "needs_empty_hand": false,
+                        "allow_scrolling_when_crouching": true
+                    }
+                ],
                 "unlocking": []
             }
         }
+        }
 
-    }
+    
 }
