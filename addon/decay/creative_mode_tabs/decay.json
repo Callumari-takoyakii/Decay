@@ -4,6 +4,7 @@
     "items": [
         "minecraft:cactus",
         "minecraft:bread",
-        "minecraft:stick"
+        "minecraft:stick",
+        "decay:aam_chestplate"
     ]
 }

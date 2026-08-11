@@ -1,0 +1,13 @@
+{
+    "durability_multiplier": 16,
+    "slot_protections": {
+        "chestplate": 8
+    },
+    "enchantment_value": 12,
+    "equip_sound": "minecraft:item.armor.equip_iron",
+    "toughness": 2.0,
+    "knockback_resistance": 0.1,
+    "repair_ingredient": {
+        "tag": "minecraft:dirt"
+    }
+}
