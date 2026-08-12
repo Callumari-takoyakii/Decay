@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "leggings",
+    "armor_material": "decay:eight_alloy",
+    "armor_renderer": "decay:aam_leggings_golden",
+    "openable": false
+}

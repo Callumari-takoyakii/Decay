@@ -5,6 +5,73 @@
     "icon": "minecraft:wither_skeleton_skull",
     "gui_display_type": "tree",
     "abilities": {
+        "thrusters_enable": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Thrusters: Ingenium and Uravity",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Allows you to hover and fly.",
+            "attribute": "palladium:flight_speed",
+            "amount": 10,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "thrusters_flexibility": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Thrusters",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:flight_flexibility",
+            "amount": 5,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "thrusters_fall_resistance": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Thrusters",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:fall_resistance",
+            "amount": 100,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "red_riot_blocking": {
+        "type": "pantheonsent:moon_knight_blocking",
+        "icon": "decay:aam_chestplate",
+        "hidden": false,
+        "hidden_in_bar": false,
+        "conditions":{
+          "enabling":[],
+          "unlocking": []
+        }
+        }
 
     }
 }

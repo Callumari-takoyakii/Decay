@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "chest",
+    "armor_material": "decay:eight_alloy",
+    "armor_renderer": "decay:aam_chestplate_golden",
+    "openable": false
+}
