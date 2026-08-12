@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "helmet",
+    "armor_material": "decay:eight_alloy",
+    "armor_renderer": "decay:aam_helmet",
+    "openable": false
+}

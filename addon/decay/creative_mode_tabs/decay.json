@@ -5,6 +5,7 @@
         "minecraft:cactus",
         "minecraft:bread",
         "minecraft:stick",
-        "decay:aam_chestplate"
+        "decay:aam_chestplate",
+        "decay:aam_helmet"
     ]
 }
