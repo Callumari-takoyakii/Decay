@@ -9,6 +9,8 @@
         "decay:aam_helmet_golden",
         "decay:aam_chestplate_golden",
         "decay:aam_leggings_golden",
-        "decay:aam_boots_golden"
+        "decay:aam_boots_golden",
+        "decay:aam_fireball",
+        "decay:aam_frostball"
     ]
 }

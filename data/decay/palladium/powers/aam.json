@@ -2,12 +2,12 @@
     "name": "Armoured All Might",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:aam_chestplate",
     "gui_display_type": "tree",
     "abilities": {
         "thrusters_enable": {
             "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
+            "icon": "decay:aam_boots",
             "title": "Thrusters: Ingenium and Uravity",
             "bar_color": "light_gray",
             "hidden": false,
@@ -16,7 +16,7 @@
             "gui_position": "null",
             "description": "Allows you to hover and fly.",
             "attribute": "palladium:flight_speed",
-            "amount": 10,
+            "amount": 2,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
             "conditions": {
@@ -35,7 +35,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "palladium:flight_flexibility",
-            "amount": 5,
+            "amount": 0.5,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
             "conditions": {
@@ -46,19 +46,45 @@
         "thrusters_fall_resistance": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "Thrusters",
+            "title": "Install elastic soles",
             "bar_color": "light_gray",
-            "hidden": true,
+            "hidden": false,
             "hidden_in_bar": true,
             "list_index": -1,
             "gui_position": "null",
-            "description": "desc",
+            "description": "Tweak your armour, removing damage from falls.",
             "attribute": "palladium:fall_resistance",
             "amount": 100,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
             "conditions": {
                 "enabling": [],
+                "unlocking": [                {
+                                    "type": "palladium:item_buyable",
+                                    "ingredient": {
+                                        "item": "minecraft:iron_ingot"
+                                    },
+                                    "amount": 64
+                                }]
+            }
+        },
+        "thrusters_render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "thruster",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "render_layer": "decay:aam_thrusters",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:is_hovering_or_flying"
+                                        }
+                ],
                 "unlocking": []
             }
         },
@@ -68,10 +94,203 @@
         "hidden": false,
         "hidden_in_bar": false,
         "conditions":{
-          "enabling":[],
+          "enabling":[
+                                                {
+                                                    "type": "palladium:activation",
+                                                    "cooldown": 1200,
+                                                    "ticks": 200,
+                                                    "key_type": "key_bind",
+                                                    "needs_empty_hand": false,
+                                                    "allow_scrolling_when_crouching": true
+                                                }
+          ],
           "unlocking": []
         }
+        },
+        "blackwhip_chargebolt": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Blackwhip: Chargebolt",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Electrocute enemies caught by Blackwhip.",
+            "energy_beam": "decay:blackwhip_chargebolt",
+            "damage_type": "lightningBolt",
+            "damage": 6,
+            "max_distance": 14,
+            "speed": 0.5,
+            "set_on_fire_seconds": 2,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 600,
+                                            "ticks": 80,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [                {
+                                    "type": "palladium:item_buyable",
+                                    "ingredient": {
+                                        "item": "minecraft:iron_ingot"
+                                    },
+                                    "amount": 3
+                                }]
+            }
+        }, 
+        "blackwhip_dummy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Blackwhip",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Extend cables from your armour. When on the ground, it binds enemies while using mid-air allows you to grapple forward.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "blackwhip_grapple": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Blackwhip Grapple",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Grapple toward anything you see.",
+            "energy_beam": "decay:aam_blackwhip",
+            "damage_type": "cramming",
+            "damage": 1,
+            "max_distance": 22,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                  {
+                                    "type": "palladium:and",
+                                    "conditions": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 600,
+                                            "ticks": 80,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }, 
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                "type": "palladium:on_ground"
+                                            }
+                                        ]
+                                     }
+                                 ]
+                             }
+                ],
+                "unlocking": []
+            }
+        },
+        "blackwhip_bind": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Blackwhip Bind",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Bind opponents",
+            "energy_beam": "decay:aam_blackwhip",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 12,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                "type": "palladium:activation",
+                                                "cooldown": 600,
+                                                "ticks": 80,
+                                                "key_type": "key_bind",
+                                                "needs_empty_hand": false,
+                                                "allow_scrolling_when_crouching": true
+                                            }, 
+                                            {
+                                                "type": "palladium:on_ground"
+                                            }
+                                        ]
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "strength_inc_1":{
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Reinforce Armour",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Reinforce the alloy of your armour, increasing knockback resistance.",
+            "attribute": "minecraft:generic.knockback_resistance",
+            "amount": 0.4,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [                {
+                                    "type": "palladium:item_buyable",
+                                    "ingredient": {
+                                        "item": "minecraft:iron_ingot"
+                                    },
+                                    "amount": 10
+                                }
+                            ]
+            }
+        },
+        "shoto": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:fire_charge",
+            "title": "Shoto",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Shoot a ball of fire or ice at enemies.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
         }
-
     }
 }
