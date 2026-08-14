@@ -1,0 +1,375 @@
+{
+    "name": "Armoured All Might",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "energy_bars": {
+    "energy_bar_name": {
+       "max": 500,
+       "auto_increase_per_tick": 1,
+       "auto_increase_interval": 20,
+       "color": "#0388FC"
+   }
+},
+    "abilities": {
+        "shoto_selection": {
+            "type": "palladium:ability_wheel",
+            "icon": "minecraft:blaze_rod",
+            "title": "Shoto",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Swap between ice and fire by crouching.",
+            "abilities": [
+                "shoto_flame",
+                "shoto_frost"
+            ],
+            "texture": "null",
+            "disable_mouse_scrolling": false,
+            "disable_center_icon": false,
+            "hide_locked": false,
+            "conditions": {
+                "enabling": [                
+                    {
+                                    "type": "palladium:held",
+                                    "cooldown": 0,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "shoto_flame": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:fire_charge",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:on_fire",
+                "SetEntityOnFireSeconds": 6,
+                "Gravity": 0.02,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/particle decay:aam_flame",
+                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:aam_fireball"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.6,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "shoto_frost": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.02,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/particle decay:aam_frost",
+                "CommandOnEntityHit": "/particle decay:aam_frost",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:aam_frostball"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.6,
+            "swinging_arm": "off_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "blackwhip_aim_arms": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Blackwhip: Aim",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Aim the player's arms to make blackwhip look more natural.",
+            "time": 10,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_bind"
+                                                }, 
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_grapple"
+                                                }, 
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_chargebolt"
+                                                }
+                                            ]
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "blackwhip_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:apple",
+            "title": "Blackwhip: Arms",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Renders both arms when blackwhip abilities are active.",
+            "conditions": {
+                "enabling": [
+                    {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_bind"
+                                                }, 
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_grapple"
+                                                }, 
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "blackwhip_chargebolt"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:armoured",
+                                                    "ability": "red_riot"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                "unlocking": []
+            }
+        },
+        "blackwhip_bind": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:wooden_sword",
+            "title": "Blackwhip",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Description",
+            "energy_beam": "decay:aam_blackwhip",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 30,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                           "type": "palladium:held",
+                                           "cooldown": 0,
+                                           "key_type": "key_bind",
+                                           "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [                {
+                                   "type": "palladium:and",
+                                   "conditions": [
+                                    {
+                                       "type": "palladium:on_ground"
+                                   }, 
+                                   {
+                                       "type": "palladium:not",
+                                       "conditions": [
+                                        {
+                                           "type": "palladium:crouching"
+                                       }
+                                    ]
+                                   }
+                                ]
+                                }
+                            ]
+            }
+        },
+        "blackwhip_grapple": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:stone_sword",
+            "title": "Blackwhip: Grapple",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Description",
+            "energy_beam": "decay:aam_blackwhip",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 14,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [                {
+                                   "type": "palladium:held",
+                                   "cooldown": 0,
+                                   "key_type": "key_bind",
+                                   "needs_empty_hand": false
+                                }
+                            ],
+                "unlocking": [                {
+                                   "type": "palladium:and",
+                                   "conditions": [
+                                    {
+                                       "type": "palladium:not",
+                                       "conditions": [
+                                        {
+                                           "type": "palladium:on_ground"
+                                       }
+                                    ]
+                                   },
+                                   {
+                                       "type": "palladium:not",
+                                       "conditions": [
+                                        {
+                                           "type": "palladium:crouching"
+                                       }
+                                    ]
+                                   }
+                                ]
+                                }
+                            ]
+            }
+        },
+        "blackwhip_chargebolt": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:iron_sword",
+            "title": "Blackwhip: Chargebolt",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Description",
+            "energy_beam": "decay:blackwhip_chargebolt",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 30,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                           "type": "palladium:held",
+                                           "cooldown": 0,
+                                           "key_type": "key_bind",
+                                           "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [                {
+                                   "type": "palladium:and",
+                                   "conditions": [
+                                    {
+                                       "type": "palladium:on_ground"
+                                   }, 
+                                   {
+                                       "type": "palladium:crouching"
+                                   }
+                                ]
+                                }
+                            ]
+            }
+        },
+        "red_riot": {
+        "type": "pantheonsent:moon_knight_blocking",
+        "icon": "decay:aam_chestplate",
+        "hidden": false,
+        "hidden_in_bar": false,
+        "list_index": 2,
+        "gui_position": "null",
+        "conditions":{
+          "enabling":[
+                        {
+                           "type": "palladium:held",
+                           "cooldown": 0,
+                           "key_type": "key_bind",
+                           "needs_empty_hand": false
+                        }
+          ],
+          "unlocking": []
+
+
+
+}
+}
+}
+}

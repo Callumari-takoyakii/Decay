@@ -35,7 +35,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "palladium:flight_flexibility",
-            "amount": 0.5,
+            "amount": 2,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
             "conditions": {
@@ -97,8 +97,8 @@
           "enabling":[
                                                 {
                                                     "type": "palladium:activation",
-                                                    "cooldown": 1200,
-                                                    "ticks": 200,
+                                                    "cooldown": 1600,
+                                                    "ticks": 120,
                                                     "key_type": "key_bind",
                                                     "needs_empty_hand": false,
                                                     "allow_scrolling_when_crouching": true
@@ -106,46 +106,6 @@
           ],
           "unlocking": []
         }
-        },
-        "blackwhip_chargebolt": {
-            "type": "palladium:energy_beam",
-            "icon": "minecraft:blaze_rod",
-            "title": "Blackwhip: Chargebolt",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": -1,
-            "gui_position": "null",
-            "description": "Electrocute enemies caught by Blackwhip.",
-            "energy_beam": "decay:blackwhip_chargebolt",
-            "damage_type": "lightningBolt",
-            "damage": 6,
-            "max_distance": 14,
-            "speed": 0.5,
-            "set_on_fire_seconds": 2,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [],
-            "commands_on_entity_hit": [],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 600,
-                                            "ticks": 80,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": [                {
-                                    "type": "palladium:item_buyable",
-                                    "ingredient": {
-                                        "item": "minecraft:iron_ingot"
-                                    },
-                                    "amount": 3
-                                }]
-            }
         }, 
         "blackwhip_dummy": {
             "type": "palladium:dummy",
@@ -173,7 +133,7 @@
             "gui_position": "null",
             "description": "Grapple toward anything you see.",
             "energy_beam": "decay:aam_blackwhip",
-            "damage_type": "cramming",
+            "damage_type": "null",
             "damage": 1,
             "max_distance": 22,
             "speed": 0.5,
@@ -221,7 +181,7 @@
             "description": "Bind opponents",
             "energy_beam": "decay:aam_blackwhip",
             "damage_type": "null",
-            "damage": 0,
+            "damage": 1,
             "max_distance": 12,
             "speed": 0.5,
             "set_on_fire_seconds": 0,
@@ -236,8 +196,8 @@
                                             "conditions": [
                                                 {
                                                 "type": "palladium:activation",
-                                                "cooldown": 600,
-                                                "ticks": 80,
+                                                "cooldown": 800,
+                                                "ticks": 200,
                                                 "key_type": "key_bind",
                                                 "needs_empty_hand": false,
                                                 "allow_scrolling_when_crouching": true
@@ -277,20 +237,51 @@
                             ]
             }
         },
-        "shoto": {
-            "type": "palladium:dummy",
-            "icon": "minecraft:fire_charge",
-            "title": "Shoto",
-            "bar_color": "light_gray",
+        "shoto_heat": {
+            "type": "palladium:projectile",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": -1,
-            "gui_position": "null",
-            "description": "Shoot a ball of fire or ice at enemies.",
+            "list_index": 2,
+            "entity_type": "palladium:custom_projectile",
+            "swinging_arm": "main_arm",
+            "velocity": 3,
+            "inaccuracy": 0,
+            "damage_from_player": false,
+            "entity_data": {
+                "Damage": 30,
+                "DamageType": "minecraft:inFire",
+                "Size": 1.5,
+                "SetEntityOnFireSeconds": 2,
+                "Gravity": 0,
+                "Lifetime": 70,
+                "CommandOnBlockHit": "particle dust 1 0 0 1 ~ ~ ~ 2 2 2 0 100 force",
+                "CommandOnEntityHit": "particle dust 1 0 0 1 ~ ~ ~ 2 2 2 0 100 force",
+                "ExplosionRadius": 1,
+                "ExplosionCausesFire": true,
+                "ExplosionBlockInteraction": "DESTROY",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:aam_fireball"
+                    }
+                ]
+            },
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 1200,
+                                            "ticks": 20,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
                 "unlocking": []
             }
         }
+        
     }
 }
