@@ -2,10 +2,10 @@
     "name": "Armoured All Might",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/aamplusultra.png",
     "gui_display_type": "tree",
     "energy_bars": {
-    "energy_bar_name": {
+    "power": {
        "max": 500,
        "auto_increase_per_tick": 1,
        "auto_increase_interval": 20,
@@ -13,9 +13,29 @@
    }
 },
     "abilities": {
+        "thrusters": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:stick",
+            "title": "Thruster Render",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Description",
+            "render_layer": "decay:aam_thrusters",
+            "conditions": {
+                "enabling": [
+                                        {
+                                           "type": "palladium:is_hovering_or_flying"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "shoto_selection": {
             "type": "palladium:ability_wheel",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/aamshoto.png",
             "title": "Shoto",
             "bar_color": "light_gray",
             "hidden": false,
@@ -45,7 +65,7 @@
         },
         "shoto_flame": {
             "type": "palladium:projectile",
-            "icon": "minecraft:fire_charge",
+            "icon": "decay:textures/icons/gui/powers/aamflame.png",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
@@ -87,7 +107,7 @@
         },
         "shoto_frost": {
             "type": "palladium:projectile",
-            "icon": "minecraft:snowball",
+            "icon": "decay:textures/icons/gui/powers/frost.png",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
@@ -208,7 +228,7 @@
         },
         "blackwhip_bind": {
             "type": "palladium:energy_beam",
-            "icon": "minecraft:wooden_sword",
+            "icon": "decay:textures/icons/gui/powers/aamblackwhip.png",
             "title": "Blackwhip",
             "bar_color": "light_gray",
             "hidden": false,
@@ -256,7 +276,7 @@
         },
         "blackwhip_grapple": {
             "type": "palladium:energy_beam",
-            "icon": "minecraft:stone_sword",
+            "icon": "decay:textures/icons/gui/powers/aamblackwhipair.png",
             "title": "Blackwhip: Grapple",
             "bar_color": "light_gray",
             "hidden": false,
@@ -308,7 +328,7 @@
         },
         "blackwhip_chargebolt": {
             "type": "palladium:energy_beam",
-            "icon": "minecraft:iron_sword",
+            "icon": "decay:textures/icons/gui/powers/chargebolt.png",
             "title": "Blackwhip: Chargebolt",
             "bar_color": "light_gray",
             "hidden": false,
@@ -351,7 +371,7 @@
         },
         "red_riot": {
         "type": "pantheonsent:moon_knight_blocking",
-        "icon": "decay:aam_chestplate",
+        "icon": "decay:textures/icons/gui/powers/redriotblock.png",
         "hidden": false,
         "hidden_in_bar": false,
         "list_index": 2,
