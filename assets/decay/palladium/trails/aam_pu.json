@@ -1,0 +1,9 @@
+{
+    "type": "palladium:gradient",
+    "color": "#8EECFF",
+    "spacing": 1,
+    "lifetime": 20,
+    "requires_movement": true,
+    "opacity": 0.5,
+    "normal_transparency": false
+}

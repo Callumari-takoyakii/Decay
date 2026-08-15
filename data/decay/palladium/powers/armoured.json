@@ -13,7 +13,144 @@
    }
 },
     "abilities": {
-        "thrusters": {
+        "no_armour": {
+            "type": "palladium:lock_armor",
+            "icon": "minecraft:blaze_rod",
+            "title": "no removing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                           "type": "palladium:or",
+                                           "conditions": [
+                                            {
+                                                "type": "palladium:and",
+                                                "conditions": [
+                                                    {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_helmet"
+                                                        },
+                                                        "slot": "head"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_chestplate"
+                                                        },
+                                                        "slot": "chest"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_leggings"
+                                                        },
+                                                        "slot": "legs"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_boots"
+                                                        },
+                                                        "slot": "feet"
+                                                    }
+                                                ]
+                                            }, {
+                                                "type": "palladium:and",
+                                                "conditions": [
+                                                    {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_helmet_golden"
+                                                        },
+                                                        "slot": "head"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_chestplate_golden"
+                                                        },
+                                                        "slot": "chest"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_leggings_golden"
+                                                        },
+                                                        "slot": "legs"
+                                                    }, {
+                                                        "type": "palladium:item_in_slot",
+                                                        "item": {
+                                                            "item": "decay:aam_boots_golden"
+                                                        },
+                                                        "slot": "feet"
+                                                    }
+                                                ]
+                                            }
+                                           ]
+                                        }
+                ]
+            }
+        },
+        "thrusters_enable": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Thrusters: Ingenium and Uravity",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "Allows you to hover and fly at the cost of your power.",
+            "attribute": "palladium:flight_speed",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be7fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "thrusters_flexbility": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "flexbility",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:flight_flexibility",
+            "amount": 2,
+            "operation": 0,
+            "uuid": "418be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "thrusters_animation": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "heroic flight",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:heroic_flight_type",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f6-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "thrusters_render": {
             "type": "palladium:render_layer",
             "icon": "minecraft:stick",
             "title": "Thruster Render",
@@ -422,6 +559,126 @@
                            "allow_scrolling_when_crouching": true
                         }
                     ],
+            "unlocking": []
+        }
+    },
+    "aam_plus_ultra": {
+        "type": "palladium:trail",
+        "icon": "decay:textures/icons/gui/powers/aamplusultra.png",
+        "title": "Go Beyond...",
+        "bar_color": "light_gray",
+        "hidden": false,
+        "hidden_in_bar": false,
+        "list_index": 4,
+        "gui_position": "null",
+        "description": "Plus Ultra!",
+        "trail": "decay:aam_pu",
+        "conditions": {
+            "enabling": [
+                                {
+                                   "type": "palladium:activation",
+                                   "cooldown": 3600,
+                                   "ticks": 1200,
+                                   "key_type": "key_bind",
+                                   "needs_empty_hand": false,
+                                   "allow_scrolling_when_crouching": true
+                                }
+            ],
+            "unlocking": []
+        }
+    },
+    "pu_strength": {
+        "type": "palladium:attribute_modifier",
+        "icon": "minecraft:iron_chestplate",
+        "title": "strength",
+        "bar_color": "light_gray",
+        "hidden": true,
+        "hidden_in_bar": true,
+        "list_index": -1,
+        "gui_position": "null",
+        "description": "desc",
+        "attribute": "minecraft:generic.attack_damage",
+        "amount": 0.5,
+        "operation": 0,
+        "uuid": "498be4fb-af06-42f2-8948-e6ccdc0d99e1",
+        "conditions": {
+            "enabling": [],
+            "unlocking": []
+        }
+    },
+    "pu_speed": {
+        "type": "palladium:attribute_modifier",
+        "icon": "minecraft:iron_chestplate",
+        "title": "speed",
+        "bar_color": "light_gray",
+        "hidden": true,
+        "hidden_in_bar": true,
+        "list_index": -1,
+        "gui_position": "null",
+        "description": "desc",
+        "attribute": "minecraft:generic.movement_speed",
+        "amount": 0.3,
+        "operation": 0,
+        "uuid": "498be4fb-af09-42f2-8948-e6ccdc0d99e1",
+        "conditions": {
+            "enabling": [],
+            "unlocking": []
+        }
+    },
+    "pu_attack_speed": {
+        "type": "palladium:attribute_modifier",
+        "icon": "minecraft:iron_chestplate",
+        "title": "attackspeed",
+        "bar_color": "light_gray",
+        "hidden": true,
+        "hidden_in_bar": true,
+        "list_index": -1,
+        "gui_position": "null",
+        "description": "desc",
+        "attribute": "minecraft:generic.attack_speed",
+        "amount": 0.2,
+        "operation": 0,
+        "uuid": "498be4fb-af01-42f2-8948-e6ccdc0d99e1",
+        "conditions": {
+            "enabling": [],
+            "unlocking": []
+        }
+    },
+    "pu_defense":{
+        "type": "palladium:attribute_modifier",
+        "icon": "minecraft:iron_chestplate",
+        "title": "armour",
+        "bar_color": "light_gray",
+        "hidden": true,
+        "hidden_in_bar": true,
+        "list_index": -1,
+        "gui_position": "null",
+        "description": "desc",
+        "attribute": "minecraft:generic.armor",
+        "amount": 0.4,
+        "operation": 0,
+        "uuid": "498be4fb-af08-42f2-8948-e6ccdc0d99e1",
+        "conditions": {
+            "enabling": [],
+            "unlocking": []
+        }
+    },
+    "pu_knockback_resistance": {
+        "type": "palladium:attribute_modifier",
+        "icon": "minecraft:iron_chestplate",
+        "title": "resistance",
+        "bar_color": "light_gray",
+        "hidden": true,
+        "hidden_in_bar": true,
+        "list_index": -1,
+        "gui_position": "null",
+        "description": "desc",
+        "attribute": "minecraft:generic.knockback_resistance",
+        "amount": 1,
+        "operation": 0,
+        "uuid": "498be4fb-af02-42f2-8948-e6ccdc0d99e1",
+        "conditions": {
+            "enabling": [],
             "unlocking": []
         }
     }
