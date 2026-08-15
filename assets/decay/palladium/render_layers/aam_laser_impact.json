@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:aam_laser_impact",
+            "texture": "decay:textures/models/aam_laser_impact.png",
+			"render_type": "glow"
+        }
+    ]
+}
