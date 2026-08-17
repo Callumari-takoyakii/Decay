@@ -226,7 +226,7 @@
             },
             "inaccuracy": 0,
             "velocity": 0.6,
-            "swinging_arm": "main_arm",
+            "swinging_arm": "left_arm",
             "damage_from_player": false,
             "ignore_player_movement": false,
             "conditions": {
@@ -268,7 +268,7 @@
             },
             "inaccuracy": 0,
             "velocity": 0.6,
-            "swinging_arm": "off_arm",
+            "swinging_arm": "right_arm",
             "damage_from_player": false,
             "ignore_player_movement": false,
             "conditions": {
