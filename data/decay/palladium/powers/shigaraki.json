@@ -5,42 +5,200 @@
     "icon": "decay:textures/icons/gui/powers/decay.png",
     "gui_display_type": "tree",
     "abilities": {
-        "thousand_hand_break": {
-            "type": "palladium:energy_beam",
-            "icon": "minecraft:wooden_sword",
-            "title": "Thousand-hand Break",
-            "bar_color": "red",
+        "search": {
+            "type": "palladium:entity_glow",
+            "icon": "minecraft:glow_berries",
+            "title": "Search",
+            "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "gui_position": [0, 0],
-            "description": "Morph your arm into a bloated mass of fingers to destroy your enemies.",
-            "energy_beam": "palladium:energy_beam",
-            "damage_type": "null",
-            "damage": 15,
-            "max_distance": 18,
-            "speed": 0.5,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [
-                "summon tnt"
-            ],
-            "commands_on_entity_hit": [
-                "summon tnt"
-            ],
+            "gui_position": "null",
+            "description": "Allows you to see entities through walls.",
+            "mode": "others",
+            "color": "#ffffff",
+            "distance": 0,
+            "property_key": "null",
+            "property_value": "null",
             "conditions": {
-                "enabling": [ 
-                                    {
-                                        "type": "palladium:activation",
-                                        "cooldown": 30,
-                                        "ticks": 10,
-                                        "key_type": "key_bind",
-                                        "needs_empty_hand": false,
-                                        "allow_scrolling_when_crouching": true
-                                    }
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
                 ],
                 "unlocking": []
+            }
+        },
+        "thousand_hand_break": {
+            "type": "palladium:aim",
+            "icon": "minecraft:stick",
+            "title": "Thousand-Hand Break",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Inflate your arm into a bloated mass of fingers, allowing decay to spread to new areas.",
+            "time": 10,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "decay": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Decay",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:shigaraki",
+                                                            "ability": "thousand_hand_break"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "thousand_hand_decay": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Decay of a Thousand Hands",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:shigaraki",
+                                                    "ability": "thousand_hand_break"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "impure_beam": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:glowstone_dust",
+            "title": "Impure Beam",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "hand_armour": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Hand Armour",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Morph your body into a form more suitable for extended fights.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 60,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                        "type": "palladium:ability_enabled",
+                                                        "power": "decay:shigaraki",
+                                                        "ability": "hand_armour"
+                                                    }
+                                                ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "hand_shedding": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Shedding",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Shed yourself of excess mass, enhancing speed and agility.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:shigaraki",
+                                                    "ability": "hand_armour"
+                                                }
+                                            ]
+                                        }
+                ]
             }
         }
 

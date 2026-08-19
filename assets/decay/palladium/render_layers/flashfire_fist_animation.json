@@ -1,0 +1,12 @@
+{
+  "type": "geckolib:default",
+  "model_type": "minecraft:humanoid",
+  "animation_file": "decay:animations/flashfire_fist.animation.json",
+  "animation_controller": [
+    {
+      "name": "looping",
+      "transition_tick_time": 10,
+      "animation": "shoot_flamefist"
+    }
+  ]
+}
