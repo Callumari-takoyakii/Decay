@@ -2,6 +2,8 @@
     "pack.decay.name": "Decay",
     "death.attack.chargebolt": "%1$s was fried.",
     "death.attack.chargebolt.player": "%1$s was bound and fried while fighting %2$s.",
+    "death.attack.doubleimpact": "%1$s was hit by a flying duplicate.",
+    "death.attack.doubleimpact.player": "%1$s was impacted by a flying duplicate while fighting %2$s.",
     "item.decay.aam_helmet": "AAM Helmet",
     "item.decay.aam_chestplate": "AAM Chestplate",
     "item.decay.aam_leggings": "AAM Leggings",

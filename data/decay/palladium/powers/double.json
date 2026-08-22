@@ -42,7 +42,7 @@
             "entity_type": "palladium:custom_projectile",
             "entity_data": {
                 "Damage": 8,
-                "DamageType": "minecraft:on_fire",
+                "DamageType": "decay:doubleimpact",
                 "SetEntityOnFireSeconds": 0,
                 "Gravity": 0.04,
                 "Lifetime": 80,
@@ -101,22 +101,99 @@
                 "unlocking": []
             }
         },
-        "arms": {
-            "type": "palladium:show_both_arms",
-            "icon": "minecraft:blaze_rod",
-            "title": "arm render",
+        "fling_attack_double": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
+            "title": "Mud Imitation",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "description": "Fling a double wherever you're looking. The double is aggresive and will attack enemies.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.04,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
+                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "imitation_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "first tick",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": 0,
+            "list_index": 1,
             "gui_position": "null",
-            "description": "when using double fling",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add imitationsummoner"
+            ],
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_first_tick",
                                             "power": "decay:double",
-                                            "ability": "fling_double"
+                                            "ability": "fling_attack_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "noise_maker": {
+            "type": "palladium:command",
+            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
+            "title": "Noise Maker",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Produce a duplicate from mud that flees every other entity while making audio distractions.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/summon fox ^ ^ ^1 {Palladium:{Properties:{superpowers:[\"decay:double_dummy\"]}},Silent:1b,CustomNameVisible:0b,CanPickUpLoot:1b,Tags:[\"noisemaker\"],ActiveEffects:[{Id:14,Amplifier:5b,Duration:199999980,ShowParticles:0b}],Attributes:[{Name:generic.movement_speed,Base:1}]}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
                 "unlocking": []

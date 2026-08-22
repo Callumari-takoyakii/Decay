@@ -1,0 +1,39 @@
+{
+    "name": "mudimitation",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "command_clones": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "title",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/kill @s",
+                "/tag @e remove imitationsummoner"
+            ],
+            "commands": [
+                "/execute as @e[tag=imitationsummoner] at @e[tag=summonimitation] run function decay:spawn_tamed_wolf"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 0
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}
