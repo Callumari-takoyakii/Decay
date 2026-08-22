@@ -1,0 +1,13 @@
+{
+    "durability_multiplier": 16,
+    "slot_protections": {
+        "helmet": 2
+    },
+    "enchantment_value": 12,
+    "equip_sound": "minecraft:item.armor.equip_leather",
+    "toughness": 1.5,
+    "knockback_resistance": 0.1,
+    "repair_ingredient": {
+        "tag": "minecraft:dirt"
+    }
+}

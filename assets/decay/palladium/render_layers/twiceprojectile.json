@@ -1,0 +1,10 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:twice",
+            "texture": "decay:textures/models/twiceprojectile.png"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "chest",
+    "armor_material": "decay:twice_fabric",
+    "armor_renderer": "decay:twice_chestplate",
+    "openable": false
+}

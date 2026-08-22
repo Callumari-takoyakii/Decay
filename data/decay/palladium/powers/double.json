@@ -2,45 +2,126 @@
     "name": "Double",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/cloning.png",
+    "icon": "decay:textures/icons/gui/powers/mudimitation.png",
     "gui_display_type": "tree",
     "abilities": {
-        "creation_wheel": {
-            "type": "palladium:ability_wheel",
-            "icon": "decay:textures/icons/gui/powers/cloning.png",
-            "title": "Double Selection",
+        "tag_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "helpdupe tag",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": -1,
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
             "gui_position": "null",
-            "description": "Select a mob to create using mud.",
-            "abilities": [
-                "example_ability"
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add doubler"
             ],
-            "texture": "null",
-            "disable_mouse_scrolling": false,
-            "disable_center_icon": false,
-            "hide_locked": false,
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
                 "unlocking": []
             }
         },
-        "double_creator": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/cloning.png",
-            "title": "Double Creator",
-            "bar_color": "light_gray",
+        "fling_double": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/helpdupe.png",
+            "title": "Help Duplicate",
             "hidden": false,
             "hidden_in_bar": false,
+            "list_index": 0,
+            "description": "Fling a double wherever you're looking. The double is passive and heals you over time.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:on_fire",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.04,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
+                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.8,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "helpdupe_fling_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "first tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": -1,
             "gui_position": "null",
-            "description": "Creates a copy of the mob selected with Double Selector.",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add helpsummoner"
+            ],
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "arm render",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "when using double fling",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
                 "unlocking": []
             }
         }
+
     }
 }

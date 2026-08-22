@@ -9,5 +9,17 @@
     "item.decay.aam_helmet_golden": "Golden Age Helmet",
     "item.decay.aam_chestplate_golden": "Golden Age Chestplate",
     "item.decay.aam_leggings_golden": "Golden Age Leggings",
-    "item.decay.aam_boots_golden": "Golden Age Boots"
+    "item.decay.aam_boots_golden": "Golden Age Boots",
+    "item.decay.twice_mask": "Sad Man's Mask",
+    "item.decay.twice_chestplate": "Sad Man's Chestplate",
+    "item.decay.twice_leggings": "Sad Man's Leggings",
+    "item.decay.twice_boots": "Sad Man's Boots",
+    "item.decay.homunculi_beaker": "Homunculi Beaker",
+    "decay.line1.homunculi_beaker_desc": "Used as a base in scientific experiments.",
+    "item.decay.nomu_beaker": "Nomu Beaker",
+    "decay.line1.nomu_beaker_desc": "Used to prepare a subject for multiple quirks by largely reducing cognitive load.",
+    "item.decay.johnny_beaker": "Warping Nomu Beaker",
+    "decay.line1.johnny_beaker_desc": "The liquid seems to be behaving erratically.",
+    "item.decay.mocha_beaker": "Muddy Nomu Beaker",
+    "decay.line1.mocha_beaker_desc": "The liquid seems to have a thick, muddy viscosity."
 }

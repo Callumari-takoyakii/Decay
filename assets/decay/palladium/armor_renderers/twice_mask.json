@@ -1,0 +1,11 @@
+{
+"textures": {
+  "normal": "decay:textures/models/armor/twice_mask.png",
+    "slim": "decay:textures/models/armor/twice_mask.png"
+},
+"hide_second_layer": true,
+"model_layers": {
+  "normal": "palladium:humanoid#suit",
+  "slim": "palladium:humanoid#suit_slim"
+}
+}

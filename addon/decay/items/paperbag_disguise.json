@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "helmet",
+    "armor_material": "decay:paperbag",
+    "armor_renderer": "decay:paperbag_disguise",
+    "openable": false
+}

@@ -1,0 +1,10 @@
+{
+    "type": "palladium:default",
+    "tooltip": [
+        {
+            "translate": "decay.line1.nomu_beaker_desc",
+            "color": "#921A1A",
+            "underlined": false
+        }
+    ]
+}

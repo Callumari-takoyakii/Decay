@@ -1,0 +1,10 @@
+{
+    "type": "palladium:default",
+    "tooltip": [
+        {
+            "translate": "decay.line1.mocha_beaker_desc",
+            "color": "#B2E473",
+            "underlined": false
+        }
+    ]
+}

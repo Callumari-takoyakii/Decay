@@ -1,0 +1,17 @@
+{
+"textures": {
+  "normal": "decay:textures/models/armor/paperbag_disguise.png",
+    "slim": "decay:textures/models/armor/paperbag_disguise.png"
+},
+"hide_second_layer": true,
+"model_layers": {
+  "normal": "palladium:humanoid#suit",
+  "slim": "palladium:humanoid#suit_slim"
+},
+"render_layers": [
+    {
+      "model_layer": "decay:paperbag_disguise",
+      "texture": "decay:textures/models/armor/paperbag_disguise.png"
+    }
+  ]
+}

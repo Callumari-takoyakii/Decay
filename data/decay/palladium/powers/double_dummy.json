@@ -1,0 +1,111 @@
+{
+    "name": "double_dummy",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "render",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "changes",
+            "render_layer": "decay:twice",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "helpdupe_name": {
+            "type": "palladium:name_change",
+            "icon": "minecraft:blaze_rod",
+            "title": "name",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "name",
+            "name": {
+                "text": "Help Duplicate"
+            },
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:cat"
+                                        }
+                ]
+            }
+        },
+        "heal_doubler": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "heal doubler",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "heal when close",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "effect give @e[tag=doubler,distance=..6] minecraft:regeneration 10 0 true"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 20,
+                                            "disabled_ticks": 0
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:cat"
+                                        }
+                ]
+            }
+        },
+        "helpdupe_kill_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "killself",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "command",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 1200
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:cat"
+                                        }
+                ]
+            }
+        }
+
+    }
+}
