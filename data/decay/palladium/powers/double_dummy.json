@@ -15,9 +15,14 @@
             "list_index": -1,
             "gui_position": "null",
             "description": "changes",
-            "render_layer": "decay:twice",
+            "render_layer": "decay:cat_double",
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:cat"
+                                        }
+                ],
                 "unlocking": []
             }
         },
@@ -35,13 +40,13 @@
                 "text": "Help Duplicate"
             },
             "conditions": {
-                "enabling": [],
-                "unlocking": [
+                "enabling": [
                                         {
                                             "type": "palladium:entity_type",
                                             "entity_type": "minecraft:cat"
                                         }
-                ]
+                ],
+                "unlocking": []
             }
         },
         "heal_doubler": {
