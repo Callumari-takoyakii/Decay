@@ -1,0 +1,54 @@
+{
+    "name": "sadmansparade_dummy",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "null",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "null",
+            "render_layer": "decay:cat_double",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "kill_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "kill_self",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/scoreboard players remove @e[tag=doubler] sadmansparade 1"
+            ],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 1000
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}
