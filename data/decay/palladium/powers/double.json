@@ -282,7 +282,7 @@
             "last_tick_commands": [],
             "commands": [
                 "/scoreboard players remove @e[tag=doubler] sadmansparade 1",
-                "/say worked"
+                "/title @s actionbar {\"text\":\"Regained 1 parade member.\",\"color\":\"blue\"}"
             ],
             "conditions": {
                 "enabling": [
@@ -310,7 +310,7 @@
             "hidden_in_bar": false,
             "list_index": 4,
             "gui_position": "null",
-            "description": "\"Man, I'm terrified. Nothing to worry about!\"",
+            "description": "Man, I'm terrified. Nothing to worry about!",
             "conditions": {
                 "enabling": [],
                 "unlocking": []

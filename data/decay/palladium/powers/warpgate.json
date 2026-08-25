@@ -1,0 +1,117 @@
+{
+    "name": "warpgate",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:stick",
+    "gui_display_type": "tree",
+    "abilities": {
+        "portal1": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Warp Gate",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Create a gate where you look when aimming at a block. Deals damage to entities when hit instead of making a gate.",
+            "energy_beam": "decay:blank",
+            "damage_type": "minecraft:on_fire",
+            "damage": 4,
+            "max_distance": 56,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal2\"]}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal2\"]}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 2,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:crouching"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "portal_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "create portal at self",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/summon armor_stand ^ ^0.5 ^2 {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal1\"]}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:warpgate",
+                                            "ability": "portal1"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "kill_portal": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "title",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @e[tag=portal1]",
+                "/kill @e[tag=portal2]"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 5,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:crouching"
+                                        }
+                ]
+            }
+        }
+
+    }
+}

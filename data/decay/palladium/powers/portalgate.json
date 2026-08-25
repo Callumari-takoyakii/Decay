@@ -1,0 +1,98 @@
+{
+    "name": "portalgate",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "tp_1": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "1",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/execute at @e[tag=portal1] as @e[type=!armor_stand,distance=..1.5,limit=2,sort=nearest] at @s run tp @s @e[tag=portal2,limit=1,sort=nearest]"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 50
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "portal1"
+                                        }
+                ]
+            }
+        },
+        "tp_2": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "2",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/execute at @e[tag=portal2] as @e[type=!armor_stand,distance=..1.5,limit=2,sort=nearest] at @s run tp @s @e[tag=portal1,limit=1,sort=nearest]"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 35
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "portal2"
+                                        }
+                ]
+            }
+        },
+        "kill_portals": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "title",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 600
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}
