@@ -1,0 +1,61 @@
+{
+    "name": "Erasure",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/bedrock.png",
+    "icon": "decay:textures/icons/gui/powers/erasure.png",
+    "gui_display_type": "tree",
+    "abilities": {
+        "erasure": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/erasure.png",
+            "title": "Erasure",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Erase the Quirk of anyone you stare at. Refresh your eyes with eye drops if you strain your eyes.",
+            "energy_beam": "decay:erasure",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 26,
+            "speed": 0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/effect give @e[distance=..2] kubejs:erasure 15 0 true"
+            ],
+            "commands_on_entity_hit": [
+                "/effect give @s kubejs:erasure 15 0 true"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "information": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/erasure.png",
+            "title": "Information",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Activating your Quirk while looking near your location may erase your Quirk for a short time.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        }
+
+    }
+}

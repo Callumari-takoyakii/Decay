@@ -1,245 +1,1175 @@
 {
-    "name": "OFA",
+    "name": "One For All",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/risingupdate.png",
     "gui_display_type": "tree",
     "energy_bars": {
-    "energy_bar_name": {
-       "max": 1000,
-       "auto_increase_per_tick": 0,
-       "auto_increase_interval": 0,
-       "color": "#9C2222"
-   }
-},
+    "fajin": {
+       "max": 500,
+       "color": "#fc8803"
+      }
+    },
     "abilities": {
-        "smash_wheel": {
-            "type": "palladium:ability_wheel",
-            "icon": "minecraft:wooden_sword",
-            "title": "Smash",
-            "bar_color": "green",
+        "transmission_scoreboard": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "null",
+            "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": 1,
+            "list_index": -1,
             "gui_position": "null",
-            "description": "Allows you to swap between Smash styles.",
-            "abilities": [
-                "example_ability"
+            "description": "null",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/scoreboard players add @a transmission 0"
             ],
-            "texture": "null",
-            "disable_mouse_scrolling": false,
-            "disable_center_icon": false,
-            "hide_locked": false,
+            "commands": [
+                "/scoreboard objectives add transmission dummy \"Transmission\""
+            ],
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
+                                        }
+                ]
+            }
+        },
+        "full_cowl": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/fajin.png",
+            "title": "Full Cowl",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "null",
             "conditions": {
                 "enabling": [
                                         {
-                                           "type": "palladium:held",
-                                           "cooldown": 0,
-                                           "key_type": "key_bind",
-                                           "needs_empty_hand": false
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 60,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:ofa",
+                                                            "ability": "gearshift"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "cowl_strength": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "strength",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "detroit_smash": {
-            "type": "palladium:projectile",
-            "icon": "minecraft:leather_boots",
-            "hidden": false,
+        "cowl_speed": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "speed",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 6,
-                "DamageType": "null",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.02,
-                "Lifetime": 80,
-                "CommandOnBlockHit": "/particle decay:aam_flame",
-                "CommandOnEntityHit": "/particle decay:aam_flame",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:aam_fireball"
-                    }
-                ]
-            },
-            "inaccuracy": 0,
-            "velocity": 0.6,
-            "swinging_arm": "main_arm",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 0.3,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-8920-e6ccdc0d99e1",
             "conditions": {
                 "enabling": [
-                    {
-                                    "type": "palladium:action",
-                                    "cooldown": 10,
-                                    "key_type": "key_bind",
-                                    "needs_empty_hand": false,
-                                    "allow_scrolling_when_crouching": true
-                                }
-                            ],
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
+                                        }
+                ],
                 "unlocking": []
+            }
+        },
+        "cowl_attack_cooldown": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "cooldown free hand",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_speed",
+            "amount": 0.6,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-3148-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "cowl_strength_emptyhand": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "strength free hand",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 4,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-1448-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "cowl_knockback_emptyhand": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "knockback free hand",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_knockback",
+            "amount": 0.4,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-8926-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "full_cowl"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
             }
         },
         "gearshift": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/ofa_2nd.png",
             "title": "Second: Gearshift",
-            "bar_color": "green",
+            "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": 2,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "Alter the velocity of your body, making you faster. This also greately increases the damage of your fists.",
+            "description": "null",
             "conditions": {
-                "enabling": [                {
-                                   "type": "palladium:activation",
-                                   "cooldown": 2800,
-                                   "ticks": 1000,
-                                   "key_type": "key_bind",
-                                   "needs_empty_hand": false,
-                                   "allow_scrolling_when_crouching": true
-                                }
-                            ],
-                "unlocking": [                {
-                                   "type": "palladium:experience_level_buyable",
-                                   "xp_level": 8,
-                                   "flat_levels": true
-                                }
-                            ]
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1200,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "gearshift_water_walk": {
+            "type": "palladium:water_walk",
+            "icon": "minecraft:blaze_rod",
+            "title": "waterwalk",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "gearshift_trail": {
+            "type": "palladium:trail",
+            "icon": "minecraft:blaze_rod",
+            "title": "trail",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "gearshift",
+            "trail": "decay:gearshift",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
             }
         },
         "gearshift_speed": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "gearshift speed",
+            "title": "gear speed",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "description",
+            "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 2.5,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "amount": 0.8,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-8953-e6ccdc0d99e1",
             "conditions": {
                 "enabling": [
                                         {
-                                           "type": "palladium:ability_enabled",
-                                           "power": "null",
-                                           "ability": "gearshift"
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "gearshift_jump": {
+        "gearshift_attack": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "gearshift jump",
+            "title": "gear attack",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.3,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-8968-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "gearshift_knockback_resistance": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear knockback resistance",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.knockback_resistance",
+            "amount": 0.8,
+            "operation": 1,
+            "uuid": "498be4fb-af04-81f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "gearshift_leaping": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear leap",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:leaping",
+            "amount": 0.4,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-8918-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "gearshift_fall_resistance": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear falls",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:fall_resistance",
+            "amount": 0.6,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-8991-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "gearshift_attack_emptyhand": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear empty hand dmg",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.5,
+            "operation": 1,
+            "uuid": "428be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "gearshift_cooldown_emptyhand": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear empty hand speed",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_speed",
+            "amount": 0.8,
+            "operation": 1,
+            "uuid": "498be2fb-af04-42f2-8948-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "gearshift_knockback_emptyhand": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "gear empty hand knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_knockback",
+            "amount": 0.8,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-1448-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "gearshift_transmission": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/transmission.png",
+            "title": "Gearshift: Transmission",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "While Gearshift is active, you're able to punch enemies with left-click. Punching an enemy five ",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 4,
+                "DamageType": "decay:transmission",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.02,
+                "Lifetime": 10,
+                "CommandOnBlockHit": "",
+                "CommandOnEntityHit": "/function decay:transmission_punch",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:transmission"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 10,
+                                            "key_type": "left_click",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "gearshift"
+                                        }
+                ]
+            }
+        },
+        "fajin": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/ofa_3rd.png",
+            "title": "Third: Fa-Jin",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "fajin_stock": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Scroll to store energy",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value add @s decay:ofa fajin 20"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 4,
+                                            "ticks": 2,
+                                            "key_type": "scroll_either",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:ofa",
+                                                    "ability": "fajin"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:ofa",
+                                                    "ability": "fajin"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "fajin_drain": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "fajin drain",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "drain meter overtime",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:ofa fajin 4"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 100
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:ofa",
+                                                            "ability": "fajin"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:ofa",
+                                                            "ability": "fajin_stock"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "fajin_leap_low": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "fajin leap 1",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:leaping",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-52f2-8941-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 0,
+                                            "max": 199
+                                        }
+                ]
+            }
+        },
+        "fajin_leap_medium": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "fajin leap 2",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:leaping",
+            "amount": 0.4,
+            "operation": 1,
+            "uuid": "498be4fb-af04-52f2-1961-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 200,
+                                            "max": 399
+                                        }
+                ]
+            }
+        },
+        "fajin_leap_high": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "fajin leap 3",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:leaping",
+            "amount": 0.7,
+            "operation": 1,
+            "uuid": "498be4fb-af04-62f2-3411-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 400,
+                                            "max": 500
+                                        }
+                ]
+            }
+        },
+        "fajin_jump_low": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "fajin jump 1",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
             "gui_position": "null",
             "description": "desc",
             "attribute": "palladium:jump_power",
-            "amount": 1.3,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "418be4fb-af04-22f2-4341-e6ccdc0d99e1",
             "conditions": {
-                "enabling": [
+                "enabling": [],
+                "unlocking": [
                                         {
-                                           "type": "palladium:ability_enabled",
-                                           "power": "null",
-                                           "ability": "gearshift"
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 0,
+                                            "max": 199
                                         }
-                ],
-                "unlocking": []
+                ]
             }
         },
-        "gearshift_punch": {
+        "fajin_jump_medium": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "gearshift punch",
+            "title": "fajin jump 2",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 1,
             "gui_position": "null",
             "description": "desc",
-            "attribute": "palladium:punch_damage",
-            "amount": 6,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "attribute": "palladium:jump_power",
+            "amount": 0.4,
+            "operation": 1,
+            "uuid": "418be4fb-af04-22f2-4513-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 200,
+                                            "max": 399
+                                        }
+                ]
+            }
+        },
+        "fajin_jump_high": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "fajin jump 3",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:jump_power",
+            "amount": 0.6,
+            "operation": 1,
+            "uuid": "418be4fb-af04-55f2-5051-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 400,
+                                            "max": 500
+                                        }
+                ]
+            }
+        },
+        "smokescreen": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/ofa_6th.png",
+            "title": "Sixth: Smokescreen",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Produce a cloud of purple smoke, obscuring your or an ally's location.",
             "conditions": {
                 "enabling": [
                                         {
-                                           "type": "palladium:ability_enabled",
-                                           "power": "null",
-                                           "ability": "gearshift"
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:crouching"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "smokescreen_smash": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/ofa_6th.png",
+            "title": "Sixth: Smokescreen Smash",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Use while sneaking to punch forward, knocking back enemies and producing purple smoke ahead of you.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:crouching"
+                                                }
+                                            ]
+                                        }
+                ]
             }
         },
         "float": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/ofa_7th.png",
-            "title": "The Seventh: Float",
+            "title": "Seventh: Float",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 3,
             "gui_position": "null",
-            "description": "Allows you to swap between gravity states.",
+            "description": "Allows you to float into the air when held. Helpful when fighting enemies that damage the ground.",
             "conditions": {
                 "enabling": [
                                         {
-                                           "type": "palladium:toggle",
-                                           "cooldown": 0,
-                                           "key_type": "key_bind",
-                                           "needs_empty_hand": false,
-                                           "allow_scrolling_when_crouching": true
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
                                         }
                 ],
-                "unlocking": [
-                                        {
-                                           "type": "palladium:experience_level_buyable",
-                                           "xp_level": 12,
-                                           "flat_levels": true
-                                        }
-                ]
+                "unlocking": []
             }
         },
         "float_levitation": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "float",
+            "title": "float_levitation",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 3,
             "gui_position": "null",
-            "description": "float",
+            "description": "desc",
             "attribute": "palladium:levitation_speed",
-            "amount": 1.4,
+            "amount": 0.5,
             "operation": 0,
-            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d99e1",
+            "uuid": "498be4fb-af04-42f2-8948-e6ccdc0d42e1",
             "conditions": {
                 "enabling": [
                                         {
-                                           "type": "palladium:ability_enabled",
-                                           "power": "null",
-                                           "ability": "float"
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "float"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "float_fall_resistance": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "float fall safety",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:fall_resistance",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be4fb-af07-42f2-8945-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "float"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "blackwhip": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/ofa_5th.png",
+            "title": "Fifth: Blackwhip",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Shoot out a tendril of energy, allowing you to bind an enemy and bring them toward you. Works well with Float.",
+            "energy_beam": "decay:blackwhip",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 30,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:ofa",
+                                                    "energy_bar": "fajin",
+                                                    "min": 0,
+                                                    "max": 249
+                                                }, 
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:crouching"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "black_chain": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/blackchain.png",
+            "title": "Third and Fifth: Black-Chain",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Infuse Blackwhip with stored Fajin energy, allowing you to swing it at enemies.",
+            "energy_beam": "decay:blackwhip",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 30,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:ofa",
+                                                    "energy_bar": "fajin",
+                                                    "min": 250,
+                                                    "max": 500
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:crouching"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "carnage": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/carnage.png",
+            "title": "Carnage",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Reinforce your body with Blackwhip and Blackchain, vastly increasing your stats. Requires Gearshift, Blackchain, high Fajin and you to be crouching to use.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 60,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:ofa",
+                                                    "ability": "gearshift"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:ofa",
+                                                    "ability": "black_chain"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:ofa",
+                                                    "energy_bar": "fajin",
+                                                    "min": 485,
+                                                    "max": 500
+                                                },
+                                                {
+                                                    "type": "palladium:crouching"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "carnage_render": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "carnage overlay",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "energy_beam": "decay:carnage",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 4,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "carnage"
                                         }
                 ],
                 "unlocking": []
             }
         }
+
     }
 }
