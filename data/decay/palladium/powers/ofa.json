@@ -14,13 +14,13 @@
         "transmission_scoreboard": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "null",
+            "title": "make transmission scoreboard",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": -1,
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "null",
+            "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [
                 "/scoreboard players add @a transmission 0"

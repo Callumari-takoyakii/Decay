@@ -1,7 +1,7 @@
 {
     "name": "Erasure",
     "persistent_data": true,
-    "background": "minecraft:textures/block/bedrock.png",
+    "background": "minecraft:textures/block/blackstone_top.png",
     "icon": "decay:textures/icons/gui/powers/erasure.png",
     "gui_display_type": "tree",
     "abilities": {
@@ -24,10 +24,10 @@
             "cause_fire": false,
             "smelt_blocks": false,
             "commands_on_block_hit": [
-                "/effect give @e[distance=..2] kubejs:erasure 15 0 true"
+                "/effect give @e[distance=..2] takolib:erasure 15 0 true"
             ],
             "commands_on_entity_hit": [
-                "/effect give @s kubejs:erasure 15 0 true"
+                "/effect give @s takolib:erasure 15 0 true"
             ],
             "conditions": {
                 "enabling": [
