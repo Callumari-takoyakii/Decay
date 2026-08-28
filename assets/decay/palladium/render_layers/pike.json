@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:pike",
+            "texture": "decay:textures/models/projectiles/pike.png",
+			"render_type": "glow"
+        }
+    ]
+}

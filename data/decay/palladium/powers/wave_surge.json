@@ -96,7 +96,7 @@
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 20
+                                            "disabled_ticks": 10
                                         }
                 ],
                 "unlocking": [
@@ -117,7 +117,22 @@
             "gui_position": "null",
             "description": "Fire a blast of energy out of your hand.",
             "entity_type": "palladium:custom_projectile",
-            "entity_data": "null",
+            "entity_data": {
+			  "Damage": 5,
+			  "Gravity": 0.001,
+			  "Size": 0.75,
+			  "Lifetime": 55,
+			  "DieOnEntityHit": true,
+			  "DieOnBlockHit": true,
+			  "CommandOnEntityHit": "/particle decay:spiral",
+			  "CommandOnBlockHit": "/particle decay:spiral",
+			  "Appearances": [
+                {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:pike"
+                    }
+			]
+			},
             "inaccuracy": 0,
             "velocity": 1.5,
             "swinging_arm": "main_arm",

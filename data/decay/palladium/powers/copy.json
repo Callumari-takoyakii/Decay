@@ -1,0 +1,40 @@
+{
+    "name": "Copy",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "copy_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "Copy",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Copy the Quirk of another player by making contact with them. Reaches 4 blocks. Copied Quirks will disappear with the effect! Use it as a timer.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 0.4,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

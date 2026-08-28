@@ -1,0 +1,87 @@
+{
+    "name": "Bloodcurdle",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "curdle_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Bloodcurdle",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Freeze a nearby entity by ingesting their blood.",
+            "time": 16,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 20,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "curdle_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "show arms",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:bloodcurdle",
+                                            "ability": "curdle_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "curdle_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "projectile",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 0.5,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:bloodcurdle",
+                                            "ability": "curdle_aim",
+                                            "min": 19,
+                                            "max": 20
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

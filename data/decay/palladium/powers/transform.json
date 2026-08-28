@@ -1,0 +1,46 @@
+{
+    "name": "Transform",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "blood_transform": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Transform",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Drink another player's blood to copy their Quirk. Requires a blood vial for each respective Quirk. Lasts 10 minutes.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/function decay:toga"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "minecraft:leather_chestplate"
+                                            },
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        }
+
+    }
+}

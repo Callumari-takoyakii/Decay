@@ -19,15 +19,15 @@
             "damage_type": "null",
             "damage": 0,
             "max_distance": 26,
-            "speed": 0,
+            "speed": 0.5,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
             "smelt_blocks": false,
             "commands_on_block_hit": [
-                "/effect give @e[distance=..2] takolib:erasure 15 0 true"
+                "/effect give @e[distance=..2] takolib:erasure 15 0 false"
             ],
             "commands_on_entity_hit": [
-                "/effect give @s takolib:erasure 15 0 true"
+                "/effect give @e[distance=..0.5] takolib:erasure 15 0 false"
             ],
             "conditions": {
                 "enabling": [
@@ -48,7 +48,7 @@
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
-            "list_index": 1,
+            "list_index": 0,
             "gui_position": "null",
             "description": "Activating your Quirk while looking near your location may erase your Quirk for a short time.",
             "conditions": {

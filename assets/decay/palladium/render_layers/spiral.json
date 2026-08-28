@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:spiral",
+            "texture": "decay:textures/models/projectiles/spiral.png",
+			"render_type": "glow"
+        }
+    ]
+}
