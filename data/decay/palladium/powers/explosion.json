@@ -5,57 +5,169 @@
     "icon": "decay:textures/icons/gui/powers/cluster.png",
     "gui_display_type": "tree",
     "abilities": {
-        "rising": {
-            "type": "palladium:dummy",
+        "render_arms": {
+            "type": "palladium:show_both_arms",
             "icon": "minecraft:blaze_rod",
-            "title": "Cluster: Rising",
+            "title": "show arms",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": -1,
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
             "gui_position": "null",
             "description": "desc",
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:explosion",
+                                                    "ability": "ap_shot"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:explosion",
+                                                    "ability": "howitzer_impact"
+                                                }
+                                            ]
+                                        }
+                ],
                 "unlocking": []
             }
         },
         "ap_shot": {
-            "type": "palladium:energy_beam",
-            "icon": "minecraft:blaze_rod",
-            "title": "AP Shot: Cluster",
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/apshot.png",
+            "title": "AP Shot",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "Fire compressed nitroglycerin sweat that sparkles on impact.",
-            "energy_beam": "decay:ap_shot",
-            "damage_type": "null",
-            "damage": 8,
-            "max_distance": 18,
-            "speed": 0,
-            "set_on_fire_seconds": 4,
-            "cause_fire": true,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [
-                "/summon tnt"
-            ],
-            "commands_on_entity_hit": [],
+            "description": "Bring your hands together, firing a condensed burst of nitroglycerin that explodes into sparkles.",
+            "time": 10,
+            "arm": "both",
             "conditions": {
                 "enabling": [
-                    {
-                        "type": "palladium:activation",
-                        "cooldown": 20,
-                        "ticks": 10,
-                        "key_type": "key_bind",
-                        "needs_empty_hand": false,
-                        "allow_scrolling_when_crouching": true
-                    }
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 12,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "howitzer_impact": {
+            "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/howitzer.png",
+            "title": "Howitzer Impact",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "Dash forward, storing nitroglycerin in your entire body before releasing a huge explosion.",
+            "motion_scale": 1.5,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "howitzer_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "howitzer aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 6,
+            "damage": 12,
+            "fire_ticks": 15,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:explosion",
+                                            "ability": "howitzer_impact",
+                                            "min": 26,
+                                            "max": 26
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "howitzer_knockback": {
+            "type": "gravestone:knockback",
+            "icon": "minecraft:stick",
+            "title": "howitzer knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 8,
+            "knockback": 12,
+            "tag_ex": "exclusion_tag",
+            "invert": false,
+            "crush": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:explosion",
+                                            "ability": "howitzer_impact",
+                                            "min": 26,
+                                            "max": 26
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "rising": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Rising",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "\"Can I still catch up to you, Izuku?\"",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
                 ],
                 "unlocking": []
             }
         }
+
+
         }
 
     

@@ -1,0 +1,490 @@
+{
+    "name": "All For One",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "hardflame_fan": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Hardflame Fan",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Create an odd shield of flame to protect you from danger.",
+            "time": 5,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "hardflame_block": {
+            "type": "gravecore:forcefield",
+            "icon": "minecraft:iron_chestplate",
+            "title": "hardflame block",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "sound": "minecraft:item.shield.block",
+            "max_health": 500,
+            "scoreboard": "null",
+            "regen_rate": 10,
+            "damage_sources": [
+                "minecraft:is_lightning",
+                "minecraft:is_fall"
+            ],
+            "thorns": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "hardflame_fan",
+                                            "min": 5,
+                                            "max": 500
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "radio_combo_info": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Radio Waves: Conjuction",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Activate Radio Waves while using Hardflame Fan to produce a flaming projectile, cancelling the shield. Use in conjunction with Rivet Stab to damage an area.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "radio_waves": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Radio Waves",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Send out waves of your palms, deafening nearby enemies and jamming communication devices as well as knocking them back a little.",
+            "time": 25,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 25,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "radio_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "radio commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "radio_waves",
+                                            "min": 25,
+                                            "max": 25
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "radio_knockback": {
+            "type": "gravestone:knockback",
+            "icon": "minecraft:stick",
+            "title": "radio knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 18,
+            "knockback": 6,
+            "tag_ex": "exclusion_tag",
+            "invert": false,
+            "crush": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "radio_waves",
+                                            "min": 25,
+                                            "max": 25
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "rivet_combo_info": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Rivet Stab: Conjuction",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Use Rivet Stab in conjuction with Radio Waves to damage an area. Using it with Hardflame Fan will knockback and ignite enemies caught in its range.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "rivet_stab": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Rivet Stab",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "null",
+            "time": 8,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "rivet_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "rivet stab aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 6,
+            "damage": 2,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "rivet_stab",
+                                            "min": 8,
+                                            "max": 160
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "punch_combo_info": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Factor Fusion",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "Use \"I'll Punch You\" when using Hardflame Fan, Radio Waves or Rivet Stab to increase power. Hardflame Fan deals fire damage and sets nearby enemies alight, Radio Waves deafens and deals knockback and Rivet Stab embeds shrappnel within the target.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "ill_punch_you": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "\"I'll Punch You.\"",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "\"Huh! What's the matter, All Might? Where's that winning smile of yours?\"",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 120,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "punch_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "aim arm",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "time": 10,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "ill_punch_you",
+                                            "min": 80,
+                                            "max": 120
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "punch_dash": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "punch dash",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "motion_scale": 2.5,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "ill_punch_you",
+                                            "min": 85,
+                                            "max": 85
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "punch_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "punch projectile",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "ill_punch_you",
+                                            "min": 90,
+                                            "max": 90
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "steal_grab":  {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "All For One",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Grab an enemy, forcefully taking their Quirk for a period of time. Use Radio Waves to warp nearby Allies to your location. (Within 256 blocks)",
+            "first_tick_commands": [
+                "execute anchored eyes run function grave.core:pick_entity/start_ray"
+            ],
+            "last_tick_commands": [
+                "tag @s remove grave.pick.grabbing",
+				"tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked", 
+				"scoreboard players set @s grave.pick.timer 0"
+            ],
+            "commands": [
+                "execute anchored feet rotated ~ 0 if entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run tp @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] ^ ^0.4 ^1.2",
+				"execute if entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run tag @s add grave.pick.grabbing",
+				"execute unless entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run scoreboard players add @s grave.pick.timer 1"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:objective_score",
+                                            "objective": "grave.pick.timer",
+                                            "min_score": 1
+                                        }
+                ]
+            }
+        },
+        "steal_arms": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "stealing arms",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "time": 5,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:command_result",
+                                            "command": "execute if entity @s[tag=grave.pick.grabbing]",
+                                            "comparison": "==",
+                                            "compare_to": 1,
+                                            "log": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "steal_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "steal projectile",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+			  "Damage": 0,
+			  "Gravity": 0.015,
+			  "Size": 0.5,
+			  "Lifetime": 3000,
+			  "DieOnEntityHit": false,
+			  "DieOnBlockHit": true,
+			  "Appearances": []
+			},
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "steal_grab",
+                                            "min": 35,
+                                            "max": 35
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:afo",
+                                            "ability": "steal_grab"
+                                        }
+                ]
+            }
+        },
+        "steal_throw_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "steal throw commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "tag @e[type=palladium:custom_projectile,sort=nearest,limit=1] add grave.pick.throw",
+		  		"execute as @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] at @s run scoreboard players set @s grave.pick.throw 1",
+                "effect give @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] takolib:stolen 1800 0 false"
+            ],
+            "last_tick_commands": [
+                "tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked"
+            ],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:afo",
+                                            "ability": "steal_projectile"
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}
