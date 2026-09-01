@@ -1,0 +1,155 @@
+{
+    "name": "Permeation",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/permeation.png",
+    "gui_display_type": "tree",
+    "abilities": {
+        "permeation_toggle": {
+            "type": "palladium:intangibility",
+            "icon": "decay:textures/icons/gui/powers/permeation.png",
+            "title": "Permeation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Permeate your body, allowing you to sink through blocks. However, you are unable to breathe while this is active or interact with things.",
+            "vertical": true,
+            "whitelist": "null",
+            "blacklist": "palladium:prevents_intangibility",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 800,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "permeate_last_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "tp player to surface at end of ability",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "execute at @s run spreadplayers ~ ~ 0 1 false @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "immortal": {
+            "type": "palladium:immortality",
+            "icon": "minecraft:totem_of_undying",
+            "title": "permeate immortality",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "damage_output": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "dmg output when permeated",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "null",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": -500,
+            "operation": 0,
+            "uuid": "498be4fb-af04-76f5-2319-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "speed": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "speed boost",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 15,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-4216-e6ccdc0d19e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "suffocation": {
+            "type": "gravecore:air_supply",
+            "icon": "minecraft:heart_of_the_sea",
+            "title": "suffocation",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "decrease_amount": 1,
+            "sea_breath": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

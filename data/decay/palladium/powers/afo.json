@@ -2,12 +2,31 @@
     "name": "All For One",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/afo.png",
     "gui_display_type": "tree",
     "abilities": {
+        "air_Walk": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Air Walk",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "Move through the air via the use of a stolen Quirk.",
+            "attribute": "palladium:levitation_speed",
+            "amount": 0.6,
+            "operation": 0,
+            "uuid": "498be4fb-af01-42f2-7628-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
         "hardflame_fan": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/hardflame.png",
             "title": "Hardflame Fan",
             "bar_color": "light_gray",
             "hidden": false,
@@ -21,7 +40,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 1800,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
@@ -40,12 +59,11 @@
             "gui_position": "null",
             "description": "desc",
             "sound": "minecraft:item.shield.block",
-            "max_health": 500,
+            "max_health": 200,
             "scoreboard": "null",
-            "regen_rate": 10,
+            "regen_rate": 35,
             "damage_sources": [
-                "minecraft:is_lightning",
-                "minecraft:is_fall"
+                "decay:hardflame_fan"
             ],
             "thorns": false,
             "conditions": {
@@ -78,7 +96,7 @@
         },
         "radio_waves": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/radiowaves.png",
             "title": "Radio Waves",
             "bar_color": "light_gray",
             "hidden": false,
@@ -158,6 +176,34 @@
                 "unlocking": []
             }
         },
+        "radio_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "radio waves aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 18,
+            "damage": 3,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:afo",
+                                            "ability": "radio_waves",
+                                            "min": 25,
+                                            "max": 25
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "rivet_combo_info": {
             "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
@@ -175,7 +221,7 @@
         },
         "rivet_stab": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/rivetstab.png",
             "title": "Rivet Stab",
             "bar_color": "light_gray",
             "hidden": false,
@@ -242,7 +288,7 @@
         },
         "ill_punch_you": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/illpunchyou.png",
             "title": "\"I'll Punch You.\"",
             "bar_color": "light_gray",
             "hidden": false,
@@ -346,7 +392,7 @@
         },
         "steal_grab":  {
             "type": "palladium:command",
-            "icon": "minecraft:command_block",
+            "icon": "decay:textures/icons/gui/powers/quirksteal.png",
             "title": "All For One",
             "bar_color": "light_gray",
             "hidden": false,
@@ -375,15 +421,19 @@
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
-                                        }
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:not",
+                                                                                    "conditions": [
+                                                                                        {
+                                                                                            "type": "palladium:objective_score",
+                                                                                            "objective": "grave.pick.timer",
+                                                                                            "min_score": 1
+                                                                                        }
+                                                                                    ]
+                                                                                }
                 ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:objective_score",
-                                            "objective": "grave.pick.timer",
-                                            "min_score": 1
-                                        }
-                ]
+                "unlocking": []
             }
         },
         "steal_arms": {
