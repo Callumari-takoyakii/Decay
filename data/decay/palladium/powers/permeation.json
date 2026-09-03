@@ -113,7 +113,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 15,
+            "amount": 0.5,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-4216-e6ccdc0d19e1",
             "conditions": {
@@ -137,7 +137,7 @@
             "list_index": 0,
             "gui_position": "null",
             "description": "desc",
-            "decrease_amount": 1,
+            "decrease_amount": 2,
             "sea_breath": false,
             "conditions": {
                 "enabling": [

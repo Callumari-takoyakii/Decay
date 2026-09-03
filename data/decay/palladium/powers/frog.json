@@ -1,0 +1,183 @@
+{
+    "name": "Frog",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/frog/frog.png",
+    "gui_display_type": "tree",
+    "energy_bars": {
+    "bubbles": {
+        "max": 100,
+        "color": "#96DDFA"
+    }
+    },
+    "abilities": {
+        "frog": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/frog/frog.png",
+            "title": "Frog",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [0,0],
+            "description": "Gives you amphibian features, like a longer tongue and faster swim speed!",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "froggy_catch": {
+            "type": "gravestone:telekinesis",
+            "icon": "decay:textures/icons/gui/powers/frog/frog.png",
+            "title": "Froggy Catch",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": [0,1],
+            "description": "Extend your tongue, allowing you to wrap it around a target and carry them around.",
+            "allowed_blocks": "grave.ht:magnetic",
+            "banned_entities": "grave.ht:magnetic_entities",
+            "distance": 8,
+            "grip_score": "grave.biot.scroll",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "froggy_catch_tongue": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "froggy catch tongue",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "energy_beam": "decay:frog_tongue",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 8,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:frog",
+                                            "ability": "froggy_catch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "bubbles": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/frog/bubble.png",
+            "title": "Ribbit Bubbles",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [0,2],
+            "description": "Create bubbles that slow targets!",
+            "time": 10,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "bubbles_particle": {
+            "type": "palladium:particles",
+            "icon": "minecraft:blaze_rod",
+            "title": "show particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "emitter": ["decay:shootbubble"],
+            "particle_type": "decay:shootbubble",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:frog",
+                                            "ability": "bubbles",
+                                            "min": 8,
+                                            "max": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "bubbles_projectile": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/frog/bubble.png",
+            "title": "Ribbit Bubbles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "Create bubbles that slow targets!",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.02,
+                "Lifetime": 65,
+                "CommandOnBlockHit": "/function decay:frog_bubbles",
+                "CommandOnEntityHit": "/function decay:frog_bubbles",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:frog/bubble_projectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0.4,
+            "velocity": 0.7,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:frog",
+                                            "ability": "bubbles"
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+    }
+}

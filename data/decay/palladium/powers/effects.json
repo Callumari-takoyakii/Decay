@@ -1,0 +1,90 @@
+{
+    "name": "Effects",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "hidden": true,
+    "abilities": {
+        "bubbled_jump": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "bubbled jump",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "palladium:jump_power",
+            "amount": -0.04,
+            "operation": 0,
+            "uuid": "498be4fb-af04-15f6-1321-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "takolib:bubbled"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "bubbled_speed": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "bubbled speed",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": -0.03,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2006-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "takolib:bubbled"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "acid_damage": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "acid dmg",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/damage @s 1 minecraft:generic"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "takolib:acid"
+                                        }
+                ]
+            }
+        }
+
+    }
+}

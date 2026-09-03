@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:frog/bubble_projectile",
+            "texture": "decay:textures/models/projectiles/bubble_projectile.png",
+			"render_type": "glow"
+        }
+    ]
+}

@@ -2,7 +2,7 @@
     "name": "Erasure",
     "persistent_data": true,
     "background": "minecraft:textures/block/blackstone_top.png",
-    "icon": "decay:textures/icons/gui/powers/erasure.png",
+    "icon": "decay:textures/icons/gui/powers/erasure/erasure.png",
     "gui_display_type": "tree",
     "energy_bars": {
     "eyes": {
@@ -13,7 +13,7 @@
     "abilities": {
         "erasure_information": {
             "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/erasure.png",
+            "icon": "decay:textures/icons/gui/powers/erasure/knowledge1.png",
             "title": "Erasure Knowledge I",
             "bar_color": "light_gray",
             "hidden": false,
@@ -28,7 +28,7 @@
         },
         "erasure_information2": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/knowledge2.png",
             "title": "Erasure Knowledge II",
             "bar_color": "light_gray",
             "hidden": false,
@@ -43,7 +43,7 @@
         },
         "erasure_information3": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/knowledge3.png",
             "title": "Erasure Knowledge III",
             "bar_color": "light_gray",
             "hidden": false,
@@ -58,7 +58,7 @@
         },
         "erasure": {
             "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/erasure.png",
+            "icon": "decay:textures/icons/gui/powers/erasure/erasure.png",
             "title": "Erasure",
             "bar_color": "light_gray",
             "hidden": false,
@@ -87,7 +87,7 @@
         },
         "erasure_beam": {
             "type": "palladium:energy_beam",
-            "icon": "decay:textures/icons/gui/powers/erasure.png",
+            "icon": "decay:textures/icons/gui/powers/erasure/erasure.png",
             "title": "Erasure",
             "bar_color": "light_gray",
             "hidden": true,
@@ -95,7 +95,7 @@
             "list_index": 0,
             "gui_position": "null",
             "description": "Erase the Quirk of anyone you stare at.",
-            "energy_beam": "decay:erasure/erasure",
+            "energy_beam": "decay:erasure",
             "damage_type": "null",
             "damage": 0,
             "max_distance": 26,
@@ -283,15 +283,30 @@
                 "unlocking": []
             }
         },
-        "strain_dummy1": {
+        "strain_dummy": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
-            "title": "Enhance Vision",
+            "icon": "decay:textures/icons/gui/powers/erasure/traineye1.png",
+            "title": "Eye Strain",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [0,2],
+            "description": "You can use your Quirk for up to 15 seconds before straining your eyes. Train your eyes to use your Quirk to up to 60 seconds.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "strain_dummy1": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/erasure/traineye2.png",
+            "title": "Enhance Vision",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [0,3],
             "description": "Improve the time you can use your Quirk by 15 seconds.",
             "conditions": {
                 "enabling": [],
@@ -306,13 +321,13 @@
         },
         "strain_dummy2": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/traineye3.png",
             "title": "Enhance Vision",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
-            "gui_position": [0,3],
+            "gui_position": [0,4],
             "description": "Improve the time you can use your Quirk by 15 seconds.",
             "conditions": {
                 "enabling": [],
@@ -327,13 +342,13 @@
         },
         "strain_dummy3": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/erasure.png",
             "title": "Enhance Vision",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
-            "gui_position": [0,4],
+            "gui_position": [0,5],
             "description": "Improve the time you can use your Quirk by 15 seconds.",
             "conditions": {
                 "enabling": [],
@@ -540,7 +555,7 @@
             "gui_position": [1,0],
             "description": "Improve your speed through training.",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.05,
+            "amount": 0.01,
             "operation": 0,
             "uuid": "498be4fb-af04-15f7-1987-e6ccdc0d99e1",
             "conditions": {
@@ -565,7 +580,7 @@
             "gui_position": [2,0],
             "description": "Improve your speed through training.",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.05,
+            "amount": 0.01,
             "operation": 0,
             "uuid": "498be4fb-af04-47f1-1987-e6ccdc0d99e1",
             "conditions": {
@@ -590,7 +605,7 @@
             "gui_position": [3,0],
             "description": "Improve your speed through training.",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.05,
+            "amount": 0.02,
             "operation": 0,
             "uuid": "498be4fb-af04-15f7-2002-e6ccdc0d99e1",
             "conditions": {
@@ -605,20 +620,22 @@
             }
         },
         "binding_ensnare": {
-            "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/erasure/ensnare.png",
             "title": "Binding Cloth: Ensnare",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 1,
             "gui_position": [-2,1],
-            "description": "Ensnare an enemy in your Binding Cloth. Use left-click when an ensnared target is in range to kick them away.",
+            "description": "Ensnare an enemy in your Binding Cloth. Right-click when an ensnared target is in range to kick them away.",
+            "time": 10,
+            "arm": "main_arm",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 220,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
@@ -626,33 +643,10 @@
                 "unlocking": []
             }
         },
-        "ensnare_aim": {
-            "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
-            "title": "ensnare aim arm",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 1,
-            "gui_position": "null",
-            "description": "desc",
-            "time": 10,
-            "arm": "main_arm",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_first_tick",
-                                            "power": "decay:erasure",
-                                            "ability": "binding_ensnare"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "ensnare": {
+        "ensnare_telekinesis": {
             "type": "gravestone:telekinesis",
-            "icon": "minecraft:blaze_rod",
-            "title": "cloth ensnare",
+            "icon": "decay:textures/icons/gui/powers/erasure/ensnare.png",
+            "title": "Binding Cloth: Ensnare",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -661,18 +655,30 @@
             "description": "desc",
             "allowed_blocks": "grave.ht:magnetic",
             "banned_entities": "grave.ht:magnetic_entities",
-            "distance": 12,
+            "distance": 10,
             "grip_score": "grave.biot.scroll",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "ensnare_aim",
-                                            "min": 10
+                                            "ability": "binding_ensnare",
+                                            "min": 10,
+                                            "max": 220
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
+                                        }
+                ]
             }
         },
         "ensnare_beam": {
@@ -685,11 +691,11 @@
             "list_index": 1,
             "gui_position": "null",
             "description": "desc",
-            "energy_beam": "decay:erasure/ensnare",
+            "energy_beam": "decay:bindingcloth_right",
             "damage_type": "null",
             "damage": 0,
             "max_distance": 12,
-            "speed": 0.2,
+            "speed": 0.0,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
             "smelt_blocks": false,
@@ -702,11 +708,23 @@
                                         {
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "ensnare_aim",
-                                            "min": 10
+                                            "ability": "binding_ensnare",
+                                            "min": 10,
+                                            "max": 220
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
+                                        }
+                ]
             }
         },
         "ensnare_tag": {
@@ -729,12 +747,25 @@
             "conditions": {
                 "enabling": [
                                         {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare",
+                                            "min": 10,
+                                            "max": 220
+                                        },
+                                        {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:erasure",
-                                            "ability": "ensnare_aim"
+                                            "ability": "binding_ensnare"
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
+                                        }
+                ]
             }
         },
         "ensnare_kick": {
@@ -752,18 +783,29 @@
                                         {
                                             "type": "palladium:action",
                                             "cooldown": 0,
-                                            "key_type": "left_click",
+                                            "key_type": "right_click",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
                 "unlocking": [
                                         {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "ensnare_aim",
-                                            "min": 10
+                                            "ability": "binding_ensnare",
+                                            "min": 10,
+                                            "max": 220
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_ensnare"
                                         }
+                                    ]
+                                }
                 ]
             }
         },
@@ -778,7 +820,7 @@
             "gui_position": "null",
             "description": "desc",
             "radius": 2,
-            "knockback": 5,
+            "knockback": 12,
             "invert": false,
             "cone": true,
             "crush": true,
@@ -797,33 +839,20 @@
             }
         },
         "ensnare_kick_damage": {
-            "type": "palladium:projectile",
-            "icon": "minecraft:snowball",
-            "title": "ensnare kick damage",
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "ensnare kick dmg",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 1,
             "gui_position": "null",
             "description": "desc",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 6,
-                "DamageType": "minecraft:freeze",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.0,
-                "Lifetime": 10,
-                "CommandOnBlockHit": "/particle decay:aam_frost",
-                "CommandOnEntityHit": "/particle decay:aam_frost",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": []
-            },
-            "inaccuracy": 0,
-            "velocity": 1.0,
-            "swinging_arm": "none",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
+            "radius": 2,
+            "damage": 4,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
             "conditions": {
                 "enabling": [
                                         {
@@ -837,16 +866,16 @@
         },
         "binding_flowrunner": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/flowrunner_swing.png",
             "title": "Binding Cloth: Flow Runner",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 2,
             "gui_position": [-2,2],
-            "description": "Dash forward twice in succession. Use again in mid-air to drop down, nullifying 75% of fall damage and damaging nearby enemies.",
+            "description": "Swing forwards using your Binding Cloth.",
             "time": 14,
-            "arm": "both",
+            "arm": "main_arm",
             "conditions": {
                 "enabling": [
                                         {
@@ -871,7 +900,38 @@
                 ]
             }
         },
-        "flowrunner_dash1": {
+        "flowrunner_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "flowrunner beam",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "energy_beam": "decay:bindingcloth_right",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 8,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "binding_flowrunner"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "flowrunner_dash": {
             "type": "gravecore:movement",
             "icon": "minecraft:fire_charge",
             "title": "flowrunner dash",
@@ -882,7 +942,7 @@
             "gui_position": "null",
             "description": "desc",
             "motion_scale": 1.1,
-            "direction": "facing",
+            "direction": ["up,forward"],
             "conditions": {
                 "enabling": [
                                         {
@@ -896,29 +956,30 @@
                 "unlocking": []
             }
         },
-        "flowrunner_dash2": {
-            "type": "gravecore:movement",
-            "icon": "minecraft:fire_charge",
-            "title": "flowrunner second dash",
+        "flowrunner_swing_arms": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "swing arms when dashing",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
             "description": "desc",
-            "motion_scale": 1.1,
-            "direction": "facing",
+            "swinging_arm": "main_arm",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:erasure",
-                                            "ability": "binding_flowrunner",
-                                            "min": 22,
-                                            "max": 22
+                                            "type": "palladium:true"
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "flowrunner_dash"
+                                        }
+                ]
             }
         },
         "flowrunner_commands": {
@@ -949,14 +1010,14 @@
         },
         "flowrunner_slam_aim": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
-            "title": "flowrunner slam",
+            "icon": "decay:textures/icons/gui/powers/erasure/flowrunner_slam.png",
+            "title": "Binding Cloth: Flow Runner Slam",
             "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
+            "hidden": false,
+            "hidden_in_bar": false,
             "list_index": 2,
-            "gui_position": "null",
-            "description": "desc",
+            "gui_position": [-3,2],
+            "description": "Use after Binding Cloth: Flow Runner to slam onto the ground, damaging enemies and pulling them in toward you.",
             "time": 5,
             "arm": "both",
             "conditions": {
@@ -972,23 +1033,41 @@
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                        {
                                             "type": "palladium:has_tag",
                                             "tag": "flowrunner"
-                                        },
-                                        {
-                                            "type": "palladium:not",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:on_ground"
-                                                }
-                                            ]
                                         }
-                                    ]
-                                }
                 ]
+            }
+        },
+        "flowrunner_slam_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "slam beam",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "energy_beam": "decay:bindingcloth_both",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 8,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:erasure",
+                                            "ability": "flowrunner_slam_aim"
+                                        }
+                ],
+                "unlocking": []
             }
         },
         "flowrunner_slam_tagself": {
@@ -1028,7 +1107,7 @@
             "gui_position": "null",
             "description": "desc",
             "motion_scale": 1.1,
-            "direction": "down",
+            "direction": ["down"],
             "conditions": {
                 "enabling": [
                                         {
@@ -1040,46 +1119,6 @@
                                         }
                 ],
                 "unlocking": []
-            }
-        },
-        "flowrunner_slam": {
-            "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
-            "title": "flowrunner slam on ground",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 2,
-            "gui_position": "null",
-            "description": "desc",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:erasure",
-                                            "ability": "flowrunner_slam_aim",
-                                            "min": 5
-                                        },
-                                                                                {
-                                                                                    "type": "palladium:interval",
-                                                                                    "active_ticks": 0,
-                                                                                    "disabled_ticks": 0
-                                                                                }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                        {
-                                            "type": "palladium:on_ground"
-                                        },
-                                        {
-                                            "type": "palladium:has_tag",
-                                            "tag": "flowrunning"
-                                        }
-                                    ]
-                                }
-                ]
             }
         },
         "flowrunner_slam_commands": {
@@ -1101,11 +1140,9 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
+                                            "type": "palladium:ability_last_tick",
                                             "power": "decay:erasure",
-                                            "ability": "flowrunner_slam",
-                                            "min": 0,
-                                            "max": 0
+                                            "ability": "flowrunner_slam_aim"
                                         }
                 ],
                 "unlocking": []
@@ -1121,7 +1158,7 @@
             "list_index": 2,
             "gui_position": "null",
             "description": "desc",
-            "radius": 5,
+            "radius": 6,
             "damage": 8,
             "fire_ticks": 0,
             "damage_type": "null",
@@ -1129,9 +1166,11 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "flowrunner_slam"
+                                            "ability": "flowrunner_slam_aim",
+                                            "min": 15,
+                                            "max": 15
                                         }
                 ],
                 "unlocking": []
@@ -1147,8 +1186,8 @@
             "list_index": 2,
             "gui_position": "null",
             "description": "desc",
-            "radius": 5,
-            "knockback": 3,
+            "radius": 6,
+            "knockback": 4.5,
             "invert": false,
             "cone": false,
             "crush": false,
@@ -1158,9 +1197,11 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "flowrunner_slam"
+                                            "ability": "flowrunner_slam_aim",
+                                            "min": 15,
+                                            "max": 15
                                         }
                 ],
                 "unlocking": []
@@ -1168,7 +1209,7 @@
         },
         "binding_serpent": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/serpent.png",
             "title": "Binding Cloth: Serpent",
             "bar_color": "light_gray",
             "hidden": false,
@@ -1182,7 +1223,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 140,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
@@ -1210,10 +1251,9 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
+                                            "type": "palladium:ability_enabled",
                                             "power": "decay:erasure",
-                                            "ability": "binding_serpent",
-                                            "min": 11
+                                            "ability": "binding_serpent"
                                         }
                 ],
                 "unlocking": []
@@ -1240,8 +1280,14 @@
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
                                             "ability": "binding_serpent",
-                                            "min": 12
-                                        }
+                                            "min": 12,
+                                            "max": 140
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_serpent"
+                                                                                }
                 ],
                 "unlocking": []
             }
@@ -1270,8 +1316,14 @@
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
                                             "ability": "binding_serpent",
-                                            "min": 12
-                                        }
+                                            "min": 12,
+                                            "max": 140
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_serpent"
+                                                                                }
                 ],
                 "unlocking": []
             }
@@ -1289,7 +1341,7 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "execute as @a at @s anchored eyes as @e[distance=0.1..6,tag=!clothserpent] at @s facing entity @p eyes anchored feet positioned ^ ^ ^1 rotated as @p positioned ^ ^ ^-1 if entity @p[distance=..0.5] run effect give @s minecraft:glowing 1 0 true"
+                "execute as @a at @s anchored eyes as @e[distance=0.1..6,tag=!clothserpent] at @s facing entity @p eyes anchored feet positioned ^ ^ ^1 rotated as @p positioned ^ ^ ^-1 if entity @p[distance=..0.5] run effect give @s minecraft:glowing 15 0 false"
             ],
             "conditions": {
                 "enabling": [
@@ -1297,8 +1349,14 @@
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
                                             "ability": "binding_serpent",
-                                            "min": 12
-                                        }
+                                            "min": 12,
+                                            "max": 140
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_serpent"
+                                                                                }
                 ],
                 "unlocking": []
             }
@@ -1320,10 +1378,9 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
+                                            "type": "palladium:ability_enabled",
                                             "power": "decay:erasure",
-                                            "ability": "binding_ensnare",
-                                            "min": 10
+                                            "ability": "binding_serpent"
                                         }
                 ],
                 "unlocking": []
@@ -1346,10 +1403,9 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
+                                            "type": "palladium:ability_enabled",
                                             "power": "decay:erasure",
-                                            "ability": "binding_ensnare",
-                                            "min": 10
+                                            "ability": "binding_serpent"
                                         }
                 ],
                 "unlocking": []
@@ -1357,7 +1413,7 @@
         },
         "binding_instance": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/erasure/instance.png",
             "title": "Binding cloth: Instance",
             "bar_color": "light_gray",
             "hidden": false,
@@ -1391,7 +1447,7 @@
             "list_index": 4,
             "gui_position": "null",
             "description": "desc",
-            "motion_scale": 1.1,
+            "motion_scale": 0.4,
             "direction": "facing",
             "conditions": {
                 "enabling": [
@@ -1399,9 +1455,14 @@
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
                                             "ability": "binding_instance",
-                                            "min": 6,
-                                            "max": 6
-                                        }
+                                            "min": 5,
+                                            "max": 20
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_instance"
+                                                                                }
                 ],
                 "unlocking": []
             }
@@ -1416,7 +1477,7 @@
             "list_index": 4,
             "gui_position": "null",
             "description": "desc",
-            "radius": 1,
+            "radius": 3,
             "knockback": 1.5,
             "invert": true,
             "cone": false,
@@ -1427,10 +1488,17 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "instance_dash"
-                                        }
+                                            "ability": "binding_instance",
+                                            "min": 5,
+                                            "max": 20
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_instance"
+                                                                                }
                 ],
                 "unlocking": []
             }
@@ -1457,10 +1525,17 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:erasure",
-                                            "ability": "instance_dash"
-                                        }
+                                            "ability": "binding_instance",
+                                            "min": 5,
+                                            "max": 20
+                                        }, 
+                                                                                {
+                                                                                    "type": "palladium:ability_enabled",
+                                                                                    "power": "decay:erasure",
+                                                                                    "ability": "binding_instance"
+                                                                                }
                 ],
                 "unlocking": []
             }
