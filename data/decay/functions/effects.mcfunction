@@ -1,0 +1,1 @@
+superpower add decay:effects @e

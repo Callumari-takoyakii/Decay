@@ -1,0 +1,90 @@
+{
+    "name": "zeroair",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "hidden": "true",
+    "abilities": {
+        "dragin": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "null",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "null",
+            "radius": 12,
+            "knockback": 1,
+            "invert": true,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 15
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "applyeffect": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "null",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "null",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect give @e[distance=..12] takolib:zeroair 5 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:true"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "killself": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "null",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "null",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 600
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

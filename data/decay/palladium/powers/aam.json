@@ -4,39 +4,38 @@
     "background": "minecraft:textures/block/iron_block.png",
     "icon": "decay:textures/icons/gui/powers/aamplusultra.png",
     "gui_display_type": "tree",
+    "energy_bars": {
+    "power": {
+       "max": 1200,
+       "color": "#67FCFF"
+      }
+    },
     "abilities": {
         "aam": {
             "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
-            "title": "null",
+            "title": "Armoured All Might",
             "bar_color": "light_gray",
             "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": -1,
+            "hidden_in_bar": true,
+            "list_index": 0,
             "gui_position": [0,0],
-            "description": "null",
+            "description": "Even the Quirkless can fight!",
             "conditions": {
                 "enabling": [],
                 "unlocking": []
             }
         },
-        "shoto_wheel": {
-            "type": "palladium:ability_wheel",
+        "shoto": {
+            "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
             "title": "Shoto",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "gui_position": [2,1],
-            "description": "null",
-            "abilities": [
-                "shoto_ice"
-            ],
-            "texture": "null",
-            "disable_mouse_scrolling": false,
-            "disable_center_icon": false,
-            "hide_locked": false,
+            "gui_position": [1,2],
+            "description": "Hold to shoot either ice or fire",
             "conditions": {
                 "enabling": [
                                         {
@@ -64,7 +63,7 @@
                 "Damage": 5,
                 "DamageType": "minecraft:freeze",
                 "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.02,
+                "Gravity": 0.0,
                 "Lifetime": 50,
                 "CommandOnBlockHit": "/function decay:aam_freeze",
                 "CommandOnEntityHit": "/function decay:aam_freeze",
@@ -82,6 +81,174 @@
             "swinging_arm": "right_arm",
             "damage_from_player": false,
             "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 5,
+                                            "key_type": "right_click",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:aam",
+                                            "ability": "shoto"
+                                        }
+                ]
+            }
+        },
+        "shoto_fire": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "shoto fire",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 6,
+                "DamageType": "minecraft:in_fire",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 50,
+                "CommandOnBlockHit": "/particle decay:aam_flame",
+                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:aam_fireball"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.9,
+            "swinging_arm": "left_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 5,
+                                            "key_type": "left_click",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:aam",
+                                            "ability": "shoto"
+                                        }
+                ]
+            }
+        },
+        "red_riot": {
+            "type": "gravecore:forcefield",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Red Riot",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [2,2],
+            "description": "Cloak yourself in your cape, blocking incoming damage. Knocks away nearby enemies but prevents use of other suit features.",
+            "sound": "minecraft:item.shield.block",
+            "max_health": 200,
+            "scoreboard": "null",
+            "regen_rate": 10,
+            "damage_sources": [
+                "minecraft:is_lightning",
+                "minecraft:is_fall"
+            ],
+            "thorns": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "acid_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "Super Acid Injection: Pinky",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": [3,2],
+            "description": "Fire a capsule of intense acid which embeds itself into a target.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 5,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.02,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/particle decay:aam_flame",
+                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:aam_frostball"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.8,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "twinkling": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Can't Stop Twinkling☆!",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "null",
+            "energy_beam": "example:energy_beam",
+            "damage_type": "null",
+            "damage": 5,
+            "max_distance": 30,
+            "speed": 0.5,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
             "conditions": {
                 "enabling": [],
                 "unlocking": []

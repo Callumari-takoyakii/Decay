@@ -2,12 +2,18 @@
     "name": "Permeation",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/permeation.png",
+    "icon": "decay:textures/icons/gui/powers/permeation/perm.png",
     "gui_display_type": "tree",
+    "energy_bars": {
+    "permeate": {
+       "max": 90,
+       "color": "#7DCBFC"
+      }
+    },
     "abilities": {
         "permeation_toggle": {
             "type": "palladium:intangibility",
-            "icon": "decay:textures/icons/gui/powers/permeation.png",
+            "icon": "decay:textures/icons/gui/powers/permeation/perm.png",
             "title": "Permeation",
             "bar_color": "light_gray",
             "hidden": false,
@@ -22,7 +28,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 800,
+                                            "cooldown": 0,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }

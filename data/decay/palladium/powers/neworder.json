@@ -1,0 +1,908 @@
+{
+    "name": "New Order",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/neworder/neworder.png",
+    "gui_display_type": "tree",
+    "energy_bars": {
+    "rule": {
+       "max": 2,
+       "color": "#E41212"
+      }
+    },
+    "abilities": {
+        "neworder": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/neworder/neworder.png",
+            "title": "New Order",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [0,0],
+            "description": "I am America, and I own the finish line!",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "increase_rule": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "rule addition",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "add 1 to rule when ability in use",
+            "first_tick_commands": [
+                "/energybar value add @s decay:neworder rule 1"
+            ],
+            "last_tick_commands": [
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:xor",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:neworder",
+                                                    "ability": "laser"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:neworder",
+                                                    "ability": "zeroair"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:neworder",
+                                                    "ability": "o2punch"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:neworder",
+                                                    "ability": "invert"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:neworder",
+                                                    "ability": "heartgrab"
+                                                }
+                                            ]
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "laser": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/neworder/neworder.png",
+            "title": "Freedom Laser",
+            "bar_color": "red",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": [-1,0],
+            "description": "Impose a rule on a laser, allowing you to change its direction.",
+            "time": 10,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 12,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "mainhand"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "offhand"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:neworder",
+                                                    "energy_bar": "rule",
+                                                    "min": 0,
+                                                    "max": 2
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "laser_projectile": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/neworder/laser.png",
+            "title": "laser projectile",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-1,0],
+            "description": "Impose a rule on a laser, allowing you to change its direction.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 6,
+                "Gravity": 0.0,
+                "Lifetime": 45,
+                "CommandOnBlockHit": "/particle decay:aam_flame",
+                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:neworder/laser"
+                    }
+                ]
+            },
+
+            "inaccuracy": 0,
+            "velocity": 0.9,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "laser"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "zeroair": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Zero Air",
+            "bar_color": "red",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [-1,1],
+            "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
+            "time": 36,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 36,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "mainhand"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "offhand"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:neworder",
+                                                    "energy_bar": "rule",
+                                                    "min": 0,
+                                                    "max": 2
+                                                }
+                                           
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "zero_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/neworder/zeroair.png",
+            "title": "Zero Air",
+            "bar_color": "red",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": [-1,1],
+            "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
+            "energy_beam": "decay:erasure",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 30,
+            "speed": 0.2,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "zeroair"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "o2punch": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/neworder/o2punch.png",
+            "title": "New Order: Oxygen",
+            "bar_color": "red",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": [-1,2],
+            "description": "Impose a rule on oxygen around you, shaping it like your fist, damaging targets in front of you.",
+            "time": 22,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 22,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "mainhand"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "offhand"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:neworder",
+                                                    "energy_bar": "rule",
+                                                    "min": 0,
+                                                    "max": 2
+                                                }
+                                           
+                                            
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "o2_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "o2 aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 4,
+            "damage": 8,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "o2_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "o2 knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "radius": 4,
+            "knockback": 6,
+            "invert": false,
+            "cone": true,
+            "crush": true,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "o2_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "commands for when ability in use",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/playsound ui.toast.in ui @a[distance=..16] ~ ~ ~ 0.5 1"
+            ],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle firework ~ ~0 ~ 0.2 0.2 0.8 0.5 35",
+                "/playsound ui.toast.challenge_complete ui @a[distance=..16] ~ ~ ~ 0.4 1.8"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "invert": {
+            "type": "palladium:command",
+            "icon": "decay:textures/icons/gui/powers/neworder/reverseeffects.png",
+            "title": "New Order: Invert",
+            "bar_color": "red",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": [-1,3],
+            "description": "Reverse negative effects into positive ones by imposing a rule on yourself.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "mainhand"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "offhand"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:neworder",
+                                                    "energy_bar": "rule",
+                                                    "min": 0,
+                                                    "max": 2
+                                                }
+                                           
+                                            
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "inv_luck": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert unluck",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:unluck",
+                "/effect give @s minecraft:luck 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:unluck"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_omen": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert omen",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:bad_omen",
+                "/effect give @s minecraft:hero_of_the_village 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:bad_omen"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_blindness": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert blindness",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:blindness",
+                "/effect give @s minecraft:night_vision 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:blindness"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_glow": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert glowing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:glowing",
+                "/effect give @s minecraft:invisibility 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:glowing"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_mining_fatigue": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert mining fatigue",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:mining_fatigue",
+                "/effect give @s minecraft:haste 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:mining_fatigue"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_hunger": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert hunger",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:hunger",
+                "/effect give @s minecraft:saturation 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:hunger"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_ins_dmg": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert instant damage if it works",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:instant_damage",
+                "/effect give @s minecraft:instant_health 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:instant_damage"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_levitation": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert levitation",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:levitation",
+                "/effect give @s minecraft:slow_falling 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:levitation"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_poison": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert poison",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:poison",
+                "/effect give @s minecraft:regeneration 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:poison"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_slowness": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert slowness",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:slowness",
+                "/effect give @s minecraft:speed 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:slowness"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "inv_weakness": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "invert weakness",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect clear @s minecraft:weakness",
+                "/effect give @s minecraft:strength 30 0 false"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:weakness"
+                                        },
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "heartgrab": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/neworder/heartgrab.png",
+            "title": "New Order",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": [-1,4],
+            "description": "Impose a rule on a target, limiting their movement.",
+            "time": 4,
+            "arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 4,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "mainhand"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "offhand"
+                                                },
+                                                {
+                                                    "type": "palladium:energy_bar",
+                                                    "power": "decay:neworder",
+                                                    "energy_bar": "rule",
+                                                    "min": 0,
+                                                    "max": 2
+                                                }
+                                           
+                                            
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "health1": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [1,0],
+            "description": "Unlock to increase your durability.",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2009-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 4,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "health2": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [2,0],
+            "description": "Unlock to increase your durability.",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2000-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 6,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "health3": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [3,0],
+            "description": "Unlock to increase your durability.",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 1,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2011-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 8,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        }
+
+    }
+}
