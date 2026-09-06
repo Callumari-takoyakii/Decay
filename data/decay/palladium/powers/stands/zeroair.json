@@ -9,13 +9,13 @@
         "dragin": {
             "type": "gravecore:aoe_knockback",
             "icon": "minecraft:fire_charge",
-            "title": "null",
+            "title": "drag enemies in",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
-            "description": "null",
+            "description": "desc",
             "radius": 12,
             "knockback": 1,
             "invert": true,
@@ -29,7 +29,7 @@
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 15
+                                            "disabled_ticks": 10
                                         }
                 ],
                 "unlocking": []
@@ -38,17 +38,17 @@
         "applyeffect": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "null",
+            "title": "apply the effect",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
-            "description": "null",
+            "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/effect give @e[distance=..12] takolib:zeroair 5 0 false"
+                "/effect give @e[distance=..12] takolib:bound 5 0 false"
             ],
             "conditions": {
                 "enabling": [
@@ -62,13 +62,13 @@
         "killself": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "null",
+            "title": "kill self after 30 sec",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
-            "description": "null",
+            "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
@@ -81,6 +81,62 @@
                                             "active_ticks": 0,
                                             "disabled_ticks": 600
                                         }
+                ],
+                "unlocking": []
+            }
+        },
+        "screenshake": {
+            "type": "gravecore:screenshake",
+            "icon": "minecraft:iron_chestplate",
+            "title": "screenshake",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "intensity": 1,
+            "duration": 15,
+            "distance": 12,
+            "conditions": {
+                "enabling": [
+          
+                              {
+                                  "type": "palladium:interval",
+                                  "active_ticks": 0,
+                                  "disabled_ticks": 10
+                              }           
+                ],
+                "unlocking": []
+            }
+        },
+        "particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "particle",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 12,
+            "start_hex": "#F83C3C",
+            "end_hex": "#FDEEEE",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "star",
+            "particle_size": 1.6,
+            "visibility": 1.4,
+            "conditions": {
+                "enabling": [
+              
+                                  {
+                                      "type": "palladium:interval",
+                                      "active_ticks": 0,
+                                      "disabled_ticks": 10
+                                  }       
                 ],
                 "unlocking": []
             }

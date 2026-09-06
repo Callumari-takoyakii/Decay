@@ -81,7 +81,7 @@
         },
         "laser": {
             "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/neworder/neworder.png",
+            "icon": "decay:textures/icons/gui/powers/neworder/laser.png",
             "title": "Freedom Laser",
             "bar_color": "red",
             "hidden": false,
@@ -173,7 +173,7 @@
         },
         "zeroair": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/neworder/zeroair.png",
             "title": "Zero Air",
             "bar_color": "red",
             "hidden": false,
@@ -212,8 +212,13 @@
                                                     "energy_bar": "rule",
                                                     "min": 0,
                                                     "max": 2
-                                                }
-                                           
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 3,
+                                                    "flat_levels": true
+                                                }     
+                                              
                                             ]
                                         }
                 ]
@@ -229,10 +234,10 @@
             "list_index": 1,
             "gui_position": [-1,1],
             "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
-            "energy_beam": "decay:erasure",
+            "energy_beam": "decay:blank",
             "damage_type": "null",
             "damage": 0,
-            "max_distance": 30,
+            "max_distance": 26,
             "speed": 0.2,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
@@ -245,11 +250,13 @@
             ],
             "conditions": {
                 "enabling": [
-                                        {
-                                            "type": "palladium:ability_last_tick",
-                                            "power": "decay:neworder",
-                                            "ability": "zeroair"
-                                        }
+                            {
+                                "type": "palladium:ability_ticks",
+                                "power": "decay:neworder",
+                                "ability": "zeroair",
+                                "min": 34,
+                                "max": 36
+                            }      
                 ],
                 "unlocking": []
             }
@@ -295,9 +302,13 @@
                                                     "energy_bar": "rule",
                                                     "min": 0,
                                                     "max": 2
-                                                }
-                                           
-                                            
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 3,
+                                                    "flat_levels": true
+                                                }     
+                                              
                                             ]
                                         }
                 ]
@@ -313,7 +324,7 @@
             "list_index": 2,
             "gui_position": "null",
             "description": "desc",
-            "radius": 4,
+            "radius": 7,
             "damage": 8,
             "fire_ticks": 0,
             "damage_type": "null",
@@ -358,24 +369,49 @@
                 "unlocking": []
             }
         },
-        "o2_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "commands for when ability in use",
+        "o2_particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "particles when o2 last tick",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
             "description": "desc",
-            "first_tick_commands": [
-                "/playsound ui.toast.in ui @a[distance=..16] ~ ~ ~ 0.5 1"
-            ],
-            "last_tick_commands": [],
-            "commands": [
-                "/particle firework ~ ~0 ~ 0.2 0.2 0.8 0.5 35",
-                "/playsound ui.toast.challenge_complete ui @a[distance=..16] ~ ~ ~ 0.4 1.8"
-            ],
+            "count": 10,
+            "start_hex": "#3E6DEF",
+            "end_hex": "#E6EDFF",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "star",
+            "particle_size": 1.3,
+            "visibility": 3.2,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "o2_screenshake": {
+            "type": "gravecore:screenshake",
+            "icon": "minecraft:iron_chestplate",
+            "title": "shake screen of nearby players",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "intensity": 1,
+            "duration": 6,
+            "distance": 12,
             "conditions": {
                 "enabling": [
                                         {
@@ -430,9 +466,13 @@
                                                     "energy_bar": "rule",
                                                     "min": 0,
                                                     "max": 2
-                                                }
-                                           
-                                            
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 3,
+                                                    "flat_levels": true
+                                                }     
+                                              
                                             ]
                                         }
                 ]
@@ -779,11 +819,41 @@
                 "unlocking": []
             }
         },
+        "invert_particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "invert particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "null",
+            "count": 12,
+            "start_hex": "#F93D3D",
+            "end_hex": "#FFF6F6",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "star",
+            "particle_size": 1.4,
+            "visibility": 0.8,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "invert"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "heartgrab": {
             "type": "palladium:aim",
             "icon": "decay:textures/icons/gui/powers/neworder/heartgrab.png",
             "title": "New Order",
-            "bar_color": "light_gray",
+            "bar_color": "red",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 4,
@@ -820,9 +890,13 @@
                                                     "energy_bar": "rule",
                                                     "min": 0,
                                                     "max": 2
-                                                }
-                                           
-                                            
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 3,
+                                                    "flat_levels": true
+                                                }     
+                                              
                                             ]
                                         }
                 ]
@@ -839,7 +913,7 @@
             "gui_position": [1,0],
             "description": "Unlock to increase your durability.",
             "attribute": "minecraft:generic.max_health",
-            "amount": 1,
+            "amount": 2,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-2009-e6ccdc0d99e1",
             "conditions": {
@@ -864,7 +938,7 @@
             "gui_position": [2,0],
             "description": "Unlock to increase your durability.",
             "attribute": "minecraft:generic.max_health",
-            "amount": 1,
+            "amount": 2,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-2000-e6ccdc0d99e1",
             "conditions": {
@@ -889,7 +963,7 @@
             "gui_position": [3,0],
             "description": "Unlock to increase your durability.",
             "attribute": "minecraft:generic.max_health",
-            "amount": 1,
+            "amount": 2,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-2011-e6ccdc0d99e1",
             "conditions": {

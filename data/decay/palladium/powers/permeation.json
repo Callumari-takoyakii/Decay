@@ -19,7 +19,7 @@
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "gui_position": "null",
+            "gui_position": [0,0],
             "description": "Permeate your body, allowing you to sink through blocks. However, you are unable to breathe while this is active or interact with things.",
             "vertical": true,
             "whitelist": "null",
@@ -33,7 +33,15 @@
                                             "needs_empty_hand": false
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                            {
+                                "type": "palladium:energy_bar",
+                                "power": "decay:permeation",
+                                "energy_bar": "permeate",
+                                "min": 1,
+                                "max": 90
+                            }      
+                ]
             }
         },
         "permeate_last_tick": {
@@ -154,6 +162,355 @@
                                         }
                 ],
                 "unlocking": []
+            }
+        },
+        "meter_regain": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "regain meter",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value add @s decay:permeation permeate 1"
+            ],
+            "conditions": {
+                "enabling": [
+                                  {
+                                      "type": "palladium:interval",
+                                      "active_ticks": 0,
+                                      "disabled_ticks": 20
+                                   }
+                ],
+                "unlocking": [
+                                  {
+                                      "type": "palladium:not",
+                                      "conditions": [
+                                       {
+                                           "type": "palladium:ability_enabled",
+                                           "power": "decay:permeation",
+                                           "ability": "permeation_toggle"
+                                       }  
+                                      ]
+                                  }   
+                ]
+            }
+        },
+        "perm_1": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Permeation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-1,0],
+            "description": "Permeating causes you to suffocate while also being on a timer. Train your Quirk to increase the time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 6"
+            ],
+            "conditions": {
+                "enabling": [
+                                  {
+                                      "type": "palladium:ability_enabled",
+                                      "power": "decay:permeation",
+                                      "ability": "permeation_toggle"
+                                  },
+                                  {
+                                      "type": "palladium:interval",
+                                      "active_ticks": 0,
+                                      "disabled_ticks": 20
+                                   }
+                ],
+                "unlocking": [
+                                      {
+                                          "type": "palladium:not",
+                                          "conditions": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:permeation",
+                                            "ability": "perm_2"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "perm_2": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Quirk Training I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-2,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 5"
+            ],
+            "conditions": {
+                "enabling": [
+                    
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:permeation",
+                                                            "ability": "perm_3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 4,
+                                                    "flat_levels": true
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "perm_3": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Quirk Training II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-3,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 4"
+            ],
+            "conditions": {
+                "enabling": [
+                    
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:permeation",
+                                                            "ability": "perm_4"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 4,
+                                                    "flat_levels": true
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "perm_4": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Quirk Training III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-4,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 3"
+            ],
+            "conditions": {
+                "enabling": [
+                    
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:permeation",
+                                                            "ability": "perm_3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 4,
+                                                    "flat_levels": true
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "perm_5": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Quirk Training IV",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-5,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 2"
+            ],
+            "conditions": {
+                "enabling": [
+                    
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:permeation",
+                                                            "ability": "perm_3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 4,
+                                                    "flat_levels": true
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "perm_6": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Quirk Training V",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-6,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:permeation permeate 1"
+            ],
+            "conditions": {
+                "enabling": [
+                    
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:permeation",
+                                            "ability": "permeation_toggle"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_unlocked",
+                                                            "power": "decay:permeation",
+                                                            "ability": "perm_3"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:experience_level_buyable",
+                                                    "xp_level": 4,
+                                                    "flat_levels": true
+                                                }
+                                            ]
+                                        }
+                ]
             }
         }
 
