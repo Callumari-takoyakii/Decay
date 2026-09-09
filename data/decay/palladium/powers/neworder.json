@@ -1,7 +1,7 @@
 {
     "name": "New Order",
     "persistent_data": true,
-    "background": "minecraft:textures/block/white_wool.png",
+    "background": "minecraft:textures/block/amethyst_block.png",
     "icon": "decay:textures/icons/gui/powers/neworder/neworder.png",
     "gui_display_type": "tree",
     "energy_bars": {
@@ -26,52 +26,25 @@
                 "unlocking": []
             }
         },
-        "increase_rule": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "rule addition",
+        "render_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "render arms",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
-            "description": "add 1 to rule when ability in use",
-            "first_tick_commands": [
-                "/energybar value add @s decay:neworder rule 1"
-            ],
-            "last_tick_commands": [
-                "/energybar value subtract @s decay:neworder rule 1"
-            ],
-            "commands": [],
+            "description": "desc",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:xor",
+                                            "type": "palladium:or",
                                             "conditions": [
                                                 {
                                                     "type": "palladium:ability_enabled",
                                                     "power": "decay:neworder",
-                                                    "ability": "laser"
-                                                },
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:neworder",
-                                                    "ability": "zeroair"
-                                                },
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:neworder",
                                                     "ability": "o2punch"
-                                                },
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:neworder",
-                                                    "ability": "invert"
-                                                },
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:neworder",
-                                                    "ability": "heartgrab"
                                                 }
                                             ]
                                         }
@@ -138,13 +111,13 @@
             "description": "Impose a rule on a laser, allowing you to change its direction.",
             "entity_type": "palladium:custom_projectile",
             "entity_data": {
-                "Damage": 8,
+                "Damage": 5,
                 "DamageType": "minecraft:freeze",
                 "SetEntityOnFireSeconds": 6,
                 "Gravity": 0.0,
                 "Lifetime": 45,
-                "CommandOnBlockHit": "/particle decay:aam_flame",
-                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "CommandOnBlockHit": "/particle falling_honey ~ ~ ~ 0 0 0 0.5 25 normal",
+                "CommandOnEntityHit": "/particle falling_honey ~ ~ ~ 0 0 0 0.5 25 normal",
                 "DieOnEntityHit": true,
                 "DieOnBlockHit": true,
                 "Appearances": [
@@ -156,7 +129,7 @@
             },
 
             "inaccuracy": 0,
-            "velocity": 0.9,
+            "velocity": 1.5,
             "swinging_arm": "none",
             "damage_from_player": false,
             "ignore_player_movement": false,
@@ -171,24 +144,83 @@
                 "unlocking": []
             }
         },
-        "zeroair": {
-            "type": "palladium:aim",
+        "laser_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "laser commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/energybar value add @s decay:neworder rule 1"
+            ],
+            "last_tick_commands": [
+                "/playsound entity.lightning_bolt.impact player @a[distance=..5] ~ ~ ~ 1 2",
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
+            "commands": [
+                "/particle block yellow_stained_glass ^ ^1 ^1 0 0 0 0.5 45 normal",
+                "/title @a[distance=..5] actionbar {\"text\":\"The laser's direction will change to where I aim!\",\"color\":\"red\",\"bold\":true}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:neworder",
+                                            "ability": "laser"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "zeroair_gui": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/neworder/zeroair.png",
             "title": "Zero Air",
             "bar_color": "red",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": [-1,1],
+            "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "zeroair": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/neworder/zeroair.png",
+            "title": "Zero Air",
+            "bar_color": "red",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 1,
             "gui_position": [-1,1],
             "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
-            "time": 36,
-            "arm": "both",
+            "energy_beam": "decay:blank",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 26,
+            "speed": 0.2,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 36,
+                                            "ticks": 5,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -214,50 +246,60 @@
                                                     "max": 2
                                                 },
                                                 {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 3,
-                                                    "flat_levels": true
-                                                }     
-                                              
-                                            ]
-                                        }
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:neworder",
+                                                    "ability": "zeroair_gui"
+                                                }   
+                                    ]
+                                }
                 ]
             }
         },
-        "zero_beam": {
-            "type": "palladium:energy_beam",
-            "icon": "decay:textures/icons/gui/powers/neworder/zeroair.png",
-            "title": "Zero Air",
-            "bar_color": "red",
+        "zeroair_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "zeroair commands",
+            "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 1,
-            "gui_position": [-1,1],
-            "description": "Take hold of the air, imposing a rule for it to thin and drag in nearby targets where you aim.",
-            "energy_beam": "decay:blank",
-            "damage_type": "null",
-            "damage": 0,
-            "max_distance": 26,
-            "speed": 0.2,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [
-                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1}"
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/energybar value add @s decay:neworder rule 1"
             ],
-            "commands_on_entity_hit": [
-                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/zeroair\"]}},Invulnerable:1,Invisible:1}"
+            "last_tick_commands": [
+                "/playsound entity.player.breath player @a[distance=..14] ~ ~ ~ 1 0.4",
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
+            "commands": [
+                "/particle block glass ^ ^1 ^1 0 0 0 0.5 50 normal",
+                "/playsound entity.player.attack.knockback player @a[distance=..14] ~ ~ ~ 1 0.2",
+                "/title @a[distance=..8] actionbar {\"text\":\"The air in front of me will disappear!\",\"color\":\"red\",\"bold\":true}"
             ],
             "conditions": {
                 "enabling": [
-                            {
-                                "type": "palladium:ability_ticks",
-                                "power": "decay:neworder",
-                                "ability": "zeroair",
-                                "min": 34,
-                                "max": 36
-                            }      
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "zeroair"
+                                        }
                 ],
+                "unlocking": []
+            }
+        },
+        "o2punch_gui": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/neworder/o2punch.png",
+            "title": "New Order: Oxygen",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": [-1,2],
+            "description": "Impose a rule on oxygen around you, shaping it like your fist, damaging targets in front of you.",
+            "conditions": {
+                "enabling": [],
                 "unlocking": []
             }
         },
@@ -266,7 +308,7 @@
             "icon": "decay:textures/icons/gui/powers/neworder/o2punch.png",
             "title": "New Order: Oxygen",
             "bar_color": "red",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 2,
             "gui_position": [-1,2],
@@ -304,12 +346,11 @@
                                                     "max": 2
                                                 },
                                                 {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 3,
-                                                    "flat_levels": true
-                                                }     
-                                              
-                                            ]
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:neworder",
+                                                    "ability": "o2punch_gui"
+                                                }   
+                                    ]
                                         }
                 ]
             }
@@ -351,7 +392,7 @@
             "gui_position": "null",
             "description": "desc",
             "radius": 4,
-            "knockback": 6,
+            "knockback": 3.5,
             "invert": false,
             "cone": true,
             "crush": true,
@@ -423,20 +464,120 @@
                 "unlocking": []
             }
         },
+        "o2_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "o2 commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/playsound entity.player.attack.knockback player @a[distance=..16] ~ ~ ~ 1 0.4"
+            ],
+            "commands": [
+                "/title @a[distance=..16] actionbar {\"text\":\"The air will be shaped into a fist 3 times the size of my own!\",\"color\":\"red\",\"bold\":true}",
+                "/playsound entity.player.attack.sweep player @a[distance=..16] ~ ~ ~ 1 0.6",
+                "/particle block glass ^ ^1 ^0 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^1 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^2 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^3 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^4 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^5 0 0 0 0.5 45 normal",
+                "/particle block glass ^ ^1 ^6 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^0 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^1 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^2 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^3 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^4 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^5 0 0 0 0.5 45 normal",
+                "/particle block glass ^1 ^1 ^6 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^0 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^1 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^2 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^3 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^4 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^5 0 0 0 0.5 45 normal",
+                "/particle block glass ^-1 ^1 ^6 0 0 0 0.5 45 normal"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "o2_inc_rule": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "o2 inc rule",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/energybar value add @s decay:neworder rule 1"
+            ],
+            "last_tick_commands": [
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:neworder",
+                                            "ability": "o2punch"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "invert_gui": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/neworder/reverseeffects.png",
+            "title": "New Order: Invert",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": [-1,3],
+            "description": "Reverse negative effects into positive ones by imposing a rule on yourself.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
         "invert": {
             "type": "palladium:command",
             "icon": "decay:textures/icons/gui/powers/neworder/reverseeffects.png",
             "title": "New Order: Invert",
             "bar_color": "red",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 3,
             "gui_position": [-1,3],
             "description": "Reverse negative effects into positive ones by imposing a rule on yourself.",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
+            "first_tick_commands": [
+                "/energybar value add @s decay:neworder rule 1"
+            ],
+            "last_tick_commands": [
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
             "commands": [
-                "say Hello World"
+                "/playsound entity.ender_eye.death player @a[distance=..8] ~ ~ ~ 1 0.5",
+                "/title @a[distance=..8] actionbar {\"text\":\"My body will invert negative effects!\",\"color\":\"red\",\"bold\":true}",
+                "/particle glow ^ ^1 ^ 0 0 0 0.5 30 normal",
+                "/particle glow ^ ^2 ^ 0 0 0 0.5 30 normal"
             ],
             "conditions": {
                 "enabling": [
@@ -468,12 +609,11 @@
                                                     "max": 2
                                                 },
                                                 {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 3,
-                                                    "flat_levels": true
-                                                }     
-                                              
-                                            ]
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:neworder",
+                                                    "ability": "invert_gui"
+                                                }   
+                                    ]
                                         }
                 ]
             }
@@ -819,57 +959,38 @@
                 "unlocking": []
             }
         },
-        "invert_particles": {
-            "type": "gravecore:particle_aura",
-            "icon": "minecraft:amethyst_shard",
-            "title": "invert particles",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "null",
-            "count": 12,
-            "start_hex": "#F93D3D",
-            "end_hex": "#FFF6F6",
-            "property_start_hex": "null",
-            "property_end_hex": "null",
-            "aura_type": "aura",
-            "particle_type": "star",
-            "particle_size": 1.4,
-            "visibility": 0.8,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_last_tick",
-                                            "power": "decay:neworder",
-                                            "ability": "invert"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "heartgrab": {
-            "type": "palladium:aim",
+        "heartgrab_gui": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/neworder/heartgrab.png",
             "title": "New Order",
             "bar_color": "red",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": [-1,4],
+            "description": "Hold to enable a state where you can impose a rule on a target.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "heartgrab": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/neworder/heartgrab.png",
+            "title": "New Order",
+            "bar_color": "red",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 4,
             "gui_position": [-1,4],
             "description": "Impose a rule on a target, limiting their movement.",
-            "time": 4,
-            "arm": "main_arm",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 4,
+                                            "type": "palladium:held",
+                                            "cooldown": 600,
                                             "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
+                                            "needs_empty_hand": false
                                         }
                 ],
                 "unlocking": [
@@ -892,14 +1013,69 @@
                                                     "max": 2
                                                 },
                                                 {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 3,
-                                                    "flat_levels": true
-                                                }     
-                                              
-                                            ]
-                                        }
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:neworder",
+                                                    "ability": "heartgrab_gui"
+                                                }   
+                                    ]
+                            }
                 ]
+            }
+        },
+        "heartgrab_potionpunch": {
+            "type": "gravecore:potion_punch",
+            "icon": "minecraft:iron_chestplate",
+            "title": "heartgrab punch",
+            "bar_color": "red",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "effect": "minecraft:poison",
+            "time": 15,
+            "conditions": {
+                "enabling": [
+              {
+                  "type": "palladium:ability_enabled",
+                  "power": "decay:neworder",
+                  "ability": "heartgrab"
+              }        
+                ],
+                "unlocking": []
+            }
+        },
+        "heartgrab_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "heartgrab commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [
+                "/playsound entity.player.levelup player @a[distance=..8] ~ ~ ~ 1 0.2",
+                "/particle glow ^ ^1 ^1 0 0 0 0.5 45 normal",
+                "/title @a[distance=..8] actionbar {\"text\":\"I will impose a rule on anything I hit!\",\"color\":\"red\",\"bold\":true}",
+                "/energybar value add @s decay:neworder rule 1"
+            ],
+            "last_tick_commands": [
+                "/playsound entity.player.levelup player @a[distance=..8] ~ ~ ~ 1 2",
+                "/particle glow ^ ^1 ^0.4 0 0 0 0.5 25 normal",
+                "/energybar value subtract @s decay:neworder rule 1"
+            ],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:neworder",
+                                            "ability": "heartgrab"
+                                        }
+                ],
+                "unlocking": []
             }
         },
         "health1": {

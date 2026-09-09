@@ -5,6 +5,51 @@
     "icon": "minecraft:stick",
     "gui_display_type": "tree",
     "abilities": {
+        "hide_body": {
+            "type": "palladium:invisibility",
+            "icon": "palladium:textures/icon/invisibility.png",
+            "title": "hide main body",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "body_mist": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "portal particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#0D0412",
+            "end_hex": "#13031A",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "smoke",
+            "particle_size": 4.5,
+            "visibility": 24.2,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 15
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "portal1": {
             "type": "palladium:energy_beam",
             "icon": "minecraft:blaze_rod",
@@ -24,10 +69,10 @@
             "cause_fire": false,
             "smelt_blocks": false,
             "commands_on_block_hit": [
-                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal2\"]}"
+                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:1b,Tags:[\"portal2\"]}"
             ],
             "commands_on_entity_hit": [
-                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal2\"]}"
+                "/summon armor_stand ^ ^-0.5 ^ {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:1b,Tags:[\"portal2\"]}"
             ],
             "conditions": {
                 "enabling": [
@@ -65,7 +110,7 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/summon armor_stand ^ ^0.5 ^2 {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:0b,Tags:[\"portal1\"]}"
+                "/summon armor_stand ^ ^0.5 ^1 {Palladium:{Properties:{superpowers:[\"decay:portalgate\"]}},NoGravity:1b,Silent:1b,Invulnerable:1b,Invisible:1b,Tags:[\"portal1\"]}"
             ],
             "conditions": {
                 "enabling": [

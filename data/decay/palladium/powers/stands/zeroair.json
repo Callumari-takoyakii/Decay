@@ -17,7 +17,7 @@
             "gui_position": "null",
             "description": "desc",
             "radius": 12,
-            "knockback": 1,
+            "knockback": 1.5,
             "invert": true,
             "cone": false,
             "crush": false,
@@ -29,7 +29,7 @@
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 10
+                                            "disabled_ticks": 7
                                         }
                 ],
                 "unlocking": []
@@ -72,7 +72,9 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/kill @s"
+                "/kill @s",
+                "/particle bubble_pop ^ ^1 ^ 0 0 0 0.5 65 normal",
+                "/playsound entity.player.breath player @a[distance=..14] ~ ~ ~ 1 2"
             ],
             "conditions": {
                 "enabling": [
@@ -104,39 +106,60 @@
                               {
                                   "type": "palladium:interval",
                                   "active_ticks": 0,
-                                  "disabled_ticks": 10
+                                  "disabled_ticks": 7
                               }           
                 ],
                 "unlocking": []
             }
         },
-        "particles": {
-            "type": "gravecore:particle_aura",
-            "icon": "minecraft:amethyst_shard",
-            "title": "particle",
+        "particles_area": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "particles in the area",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
             "description": "desc",
-            "count": 12,
-            "start_hex": "#F83C3C",
-            "end_hex": "#FDEEEE",
-            "property_start_hex": "null",
-            "property_end_hex": "null",
-            "aura_type": "aura",
-            "particle_type": "star",
-            "particle_size": 1.6,
-            "visibility": 1.4,
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle block glass ^0 ^1 ^0 4.4 0 4.4 0.5 250 normal"
+            ],
             "conditions": {
                 "enabling": [
-              
-                                  {
-                                      "type": "palladium:interval",
-                                      "active_ticks": 0,
-                                      "disabled_ticks": 10
-                                  }       
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 5
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "sound_area": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "sound played in vicinity",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/playsound entity.player.breath player @a[distance=..12] ~ ~ ~ 1 0.2"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
                 ],
                 "unlocking": []
             }

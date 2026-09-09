@@ -11,34 +11,6 @@
       }
     },
     "abilities": {
-        "transmission_scoreboard": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "make transmission scoreboard",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [
-                "/scoreboard players add @a transmission 0"
-            ],
-            "commands": [
-                "/scoreboard objectives add transmission dummy \"Transmission\""
-            ],
-            "conditions": {
-                "enabling": [],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:ability_unlocked",
-                                            "power": "decay:ofa",
-                                            "ability": "full_cowl"
-                                        }
-                ]
-            }
-        },
         "full_cowl": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/fajin.png",
@@ -54,7 +26,7 @@
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 60,
+                                            "ticks": 1200,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -115,7 +87,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.3,
+            "amount": 0.02,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-8920-e6ccdc0d99e1",
             "conditions": {
@@ -325,7 +297,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.8,
+            "amount": 0.08,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-8953-e6ccdc0d99e1",
             "conditions": {
@@ -529,58 +501,6 @@
                 ]
             }
         },
-        "gearshift_transmission": {
-            "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/transmission.png",
-            "title": "Gearshift: Transmission",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "While Gearshift is active, you're able to punch enemies with left-click. Punching an enemy five ",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 4,
-                "DamageType": "decay:transmission",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.02,
-                "Lifetime": 10,
-                "CommandOnBlockHit": "",
-                "CommandOnEntityHit": "/function decay:transmission_punch",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:ofa/transmission"
-                    }
-                ]
-            },
-            "inaccuracy": 0,
-            "velocity": 1.5,
-            "swinging_arm": "main_arm",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:action",
-                                            "cooldown": 10,
-                                            "key_type": "left_click",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:ofa",
-                                            "ability": "gearshift"
-                                        }
-                ]
-            }
-        },
         "fajin": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/ofa_3rd.png",
@@ -616,18 +536,17 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/energybar value add @s decay:ofa fajin 20"
+                "/energybar value add @s decay:ofa fajin 18"
             ],
             "conditions": {
                 "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 4,
-                                            "ticks": 2,
-                                            "key_type": "scroll_either",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
+                    {
+                        "type": "palladium:action",
+                        "cooldown": 10,
+                        "key_type": "scroll_either",
+                        "needs_empty_hand": false,
+                        "allow_scrolling_when_crouching": true
+                    }
                 ],
                 "unlocking": [
                                         {
@@ -646,6 +565,36 @@
                                             ]
                                         }
                 ]
+            }
+        },
+        "fajin_stocking": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "fajin stocking particle",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 4,
+            "start_hex": "#E47A29",
+            "end_hex": "#CE7227",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "spark",
+            "particle_size": 0.8,
+            "visibility": 1.6,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "fajin_stock"
+                                        }
+                ],
+                "unlocking": []
             }
         },
         "fajin_drain": {
@@ -721,7 +670,7 @@
                                             "type": "palladium:energy_bar",
                                             "power": "decay:ofa",
                                             "energy_bar": "fajin",
-                                            "min": 75,
+                                            "min": 25,
                                             "max": 199
                                         }
                 ]
@@ -802,7 +751,7 @@
                                             "type": "palladium:energy_bar",
                                             "power": "decay:ofa",
                                             "energy_bar": "fajin",
-                                            "min": 75,
+                                            "min": 25,
                                             "max": 199
                                         }
                 ]
@@ -862,6 +811,54 @@
                 ]
             }
         },
+        "fajin_jump_particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "fajin jump particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#A2A2A2",
+            "end_hex": "#797979",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "smoke",
+            "particle_size": 0.4,
+            "visibility": 0.8,
+            "conditions": {
+                "enabling": [
+                                {
+                                    "type": "palladium:action",
+                                    "cooldown": 0,
+                                    "key_type": "space_bar",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }    
+                ],
+                "unlocking": [
+                                {
+                                    "type": "palladium:and",
+                                    "conditions": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:ofa",
+                                            "energy_bar": "fajin",
+                                            "min": 25,
+                                            "max": 500
+                                        },
+                                        {
+                                            "type": "palladium:on_ground"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
         "smokescreen": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/ofa_6th.png",
@@ -877,60 +874,78 @@
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 10,
+                                            "ticks": 25,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:not",
-                                                    "conditions": [
-                                                        {
-                                                            "type": "palladium:crouching"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                ]
+                "unlocking": []
             }
         },
-        "smokescreen_smash": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/ofa_6th.png",
-            "title": "Sixth: Smokescreen Smash",
+        "smokescreen_particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "smokescreen particles",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
-            "description": "Use while sneaking to punch forward, knocking back enemies and producing purple smoke ahead of you.",
+            "description": "desc",
+            "count": 18,
+            "start_hex": "#6A25C3",
+            "end_hex": "#6319A3",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "smoke",
+            "particle_size": 8.2,
+            "visibility": 8.0,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 10,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "smokescreen"
+                                        },
+                                                                        {
+                                                                            "type": "palladium:interval",
+                                                                            "active_ticks": 0,
+                                                                            "disabled_ticks": 1
+                                                                        }    
                 ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:crouching"
-                                                }
-                                            ]
-                                        }
-                ]
+                "unlocking": []
+            }
+        },
+        "smokescreen_lasttick": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "smokescreen last tick particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#671F98",
+            "end_hex": "#581D8B",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "smoke",
+            "particle_size": 1.8,
+            "visibility": 2.0,
+            "conditions": {
+                "enabling": [
+                                    {
+                                        "type": "palladium:ability_last_tick",
+                                        "power": "decay:ofa",
+                                        "ability": "smokescreen"
+                                    }  
+                ],
+                "unlocking": []
             }
         },
         "float": {
@@ -947,10 +962,75 @@
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 1200,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
+                ],
+                "unlocking": []
+            }
+        },
+        "float_particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "float particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#D39AC5",
+            "end_hex": "#FFD6F5",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "twinkle",
+            "particle_size": 0.1,
+            "visibility": 1.8,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:ofa",
+                                            "ability": "float"
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:interval",
+                                                                                    "active_ticks": 0,
+                                                                                    "disabled_ticks": 10
+                                                                                }
+                ],
+                "unlocking": []
+            }
+        },
+        "float_lasttick": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "float last tick particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 12,
+            "start_hex": "#FD87E0",
+            "end_hex": "#DE81C6",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "star",
+            "particle_size": 0.7,
+            "visibility": 1.8,
+            "conditions": {
+                "enabling": [
+                          {
+                              "type": "palladium:ability_last_tick",
+                              "power": "decay:ofa",
+                              "ability": "float"
+                          }
                 ],
                 "unlocking": []
             }
@@ -1006,51 +1086,41 @@
             }
         },
         "blackwhip": {
-            "type": "gravestone:telekinesis",
+            "type": "palladium:aim",
             "icon": "decay:textures/icons/gui/powers/ofa_5th.png",
-            "title": "Blackwhip",
+            "title": "Fifth: Blackwhip",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 4,
             "gui_position": "null",
-            "description": "desc",
-            "allowed_blocks": "grave.ht:magnetic",
-            "banned_entities": "grave.ht:magnetic_entities",
-            "distance": 10,
-            "grip_score": "grave.biot.scroll",
+            "description": "Create 3 slashes in front of you using Blackwhip.",
+            "time": 18,
+            "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:held",
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 18,
                                             "key_type": "key_bind",
-                                            "needs_empty_hand": false
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "blackwhip_beam": {
-            "type": "palladium:energy_beam",
+        "blackwhip_arms": {
+            "type": "palladium:show_both_arms",
             "icon": "minecraft:blaze_rod",
-            "title": "blackwhip beam",
+            "title": "render both arms",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
             "description": "desc",
-            "energy_beam": "decay:blackwhip",
-            "damage_type": "null",
-            "damage": 0,
-            "max_distance": 30,
-            "speed": 0.5,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [],
-            "commands_on_entity_hit": [],
             "conditions": {
                 "enabling": [
                                         {
@@ -1062,77 +1132,46 @@
                 "unlocking": []
             }
         },
-        "carnage": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/carnage.png",
-            "title": "Carnage",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 4,
-            "gui_position": "null",
-            "description": "Reinforce your body with Blackwhip and Blackchain, vastly increasing your stats. Requires Gearshift, Blackchain, high Fajin and you to be crouching to use.",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 60,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:ofa",
-                                                    "ability": "gearshift"
-                                                },
-                                                {
-                                                    "type": "palladium:energy_bar",
-                                                    "power": "decay:ofa",
-                                                    "energy_bar": "fajin",
-                                                    "min": 485,
-                                                    "max": 500
-                                                },
-                                                {
-                                                    "type": "palladium:crouching"
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "carnage_render": {
-            "type": "palladium:energy_beam",
-            "icon": "minecraft:blaze_rod",
-            "title": "carnage overlay",
+        "blackwhip_slashes": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "blackwhip slashes",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
             "description": "desc",
-            "energy_beam": "decay:carnage",
-            "damage_type": "null",
-            "damage": 0,
-            "max_distance": 4,
-            "speed": 0.5,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [],
-            "commands_on_entity_hit": [],
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 6,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 20,
+                "CommandOnBlockHit": "/particle decay:aam_flame",
+                "CommandOnEntityHit": "/particle decay:aam_flame",
+                "DieOnEntityHit": false,
+                "DieOnBlockHit": false,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:ofa/blackwhip_slashes"
+                    }
+                ]
+            },
+
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_last_tick",
                                             "power": "decay:ofa",
-                                            "ability": "carnage"
+                                            "ability": "blackwhip"
                                         }
                 ],
                 "unlocking": []

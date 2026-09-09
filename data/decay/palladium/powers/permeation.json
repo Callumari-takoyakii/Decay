@@ -15,7 +15,7 @@
             "type": "palladium:intangibility",
             "icon": "decay:textures/icons/gui/powers/permeation/perm.png",
             "title": "Permeation",
-            "bar_color": "light_gray",
+            "bar_color": "cyan",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
@@ -127,7 +127,7 @@
             "gui_position": "null",
             "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.5,
+            "amount": 0.05,
             "operation": 0,
             "uuid": "498be4fb-af04-42f2-4216-e6ccdc0d19e1",
             "conditions": {
@@ -201,12 +201,132 @@
                 ]
             }
         },
+        "unlock1": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Permeation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-1,0],
+            "description": "Permeating causes you to suffocate while also being on a timer. Train your Quirk to increase the time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "unlock2": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk Training I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-2,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "unlock3": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk Training II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-3,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "unlock4": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk Training III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-4,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "unlock5": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk Training IV",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-5,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "unlock6": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk Training V",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [-6,0],
+            "description": "Increase time you can spend using your Quirk.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
         "perm_1": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
             "title": "Permeation",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-1,0],
@@ -236,7 +356,7 @@
                                         {
                                             "type": "palladium:ability_unlocked",
                                             "power": "decay:permeation",
-                                            "ability": "perm_2"
+                                            "ability": "unlock2"
                                         }
                                     ]
                                 }
@@ -248,7 +368,7 @@
             "icon": "minecraft:command_block",
             "title": "Quirk Training I",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-2,0],
@@ -283,17 +403,17 @@
                                                         {
                                                             "type": "palladium:ability_unlocked",
                                                             "power": "decay:permeation",
-                                                            "ability": "perm_3"
+                                                            "ability": "unlock3"
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 4,
-                                                    "flat_levels": true
-                                                }
-                                            ]
-                                        }
+                                            {
+                                                "type": "palladium:ability_unlocked",
+                                                "power": "decay:permeation",
+                                                "ability": "unlock2"
+                                            }     
+                                        ]
+                                    }
                 ]
             }
         },
@@ -302,7 +422,7 @@
             "icon": "minecraft:command_block",
             "title": "Quirk Training II",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-3,0],
@@ -337,16 +457,16 @@
                                                         {
                                                             "type": "palladium:ability_unlocked",
                                                             "power": "decay:permeation",
-                                                            "ability": "perm_4"
+                                                            "ability": "unlock4"
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 4,
-                                                    "flat_levels": true
-                                                }
-                                            ]
+                                            {
+                                                "type": "palladium:ability_unlocked",
+                                                "power": "decay:permeation",
+                                                "ability": "unlock3"
+                                            }     
+                                        ]
                                         }
                 ]
             }
@@ -356,7 +476,7 @@
             "icon": "minecraft:command_block",
             "title": "Quirk Training III",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-4,0],
@@ -391,16 +511,16 @@
                                                         {
                                                             "type": "palladium:ability_unlocked",
                                                             "power": "decay:permeation",
-                                                            "ability": "perm_3"
+                                                            "ability": "unlock5"
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 4,
-                                                    "flat_levels": true
-                                                }
-                                            ]
+                                            {
+                                                "type": "palladium:ability_unlocked",
+                                                "power": "decay:permeation",
+                                                "ability": "unlock4"
+                                            }     
+                                        ]
                                         }
                 ]
             }
@@ -410,7 +530,7 @@
             "icon": "minecraft:command_block",
             "title": "Quirk Training IV",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-5,0],
@@ -445,16 +565,16 @@
                                                         {
                                                             "type": "palladium:ability_unlocked",
                                                             "power": "decay:permeation",
-                                                            "ability": "perm_3"
+                                                            "ability": "unlock6"
                                                         }
                                                     ]
                                                 },
-                                                {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 4,
-                                                    "flat_levels": true
-                                                }
-                                            ]
+                                            {
+                                                "type": "palladium:ability_unlocked",
+                                                "power": "decay:permeation",
+                                                "ability": "unlock5"
+                                            }     
+                                        ]
                                         }
                 ]
             }
@@ -464,7 +584,7 @@
             "icon": "minecraft:command_block",
             "title": "Quirk Training V",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": [-6,0],
@@ -490,27 +610,12 @@
                 
                 ],
                 "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:not",
-                                                    "conditions": [
-                                                        {
-                                                            "type": "palladium:ability_unlocked",
-                                                            "power": "decay:permeation",
-                                                            "ability": "perm_3"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "type": "palladium:experience_level_buyable",
-                                                    "xp_level": 4,
-                                                    "flat_levels": true
-                                                }
-                                            ]
-                                        }
-                ]
+                                            {
+                                                "type": "palladium:ability_unlocked",
+                                                "power": "decay:permeation",
+                                                "ability": "unlock6"
+                                            }     
+                                        ]
             }
         }
 

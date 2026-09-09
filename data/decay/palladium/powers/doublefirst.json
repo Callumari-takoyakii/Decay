@@ -1,0 +1,321 @@
+{
+    "name": "Double",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/mudimitation.png",
+    "gui_display_type": "tree",
+    "abilities": {
+        "tag_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "helpdupe tag",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add doubler"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "fling_double": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/helpdupe.png",
+            "title": "Help Duplicate",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "description": "Fling a double wherever you're looking. The double is passive and heals you over time.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.04,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
+                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.8,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "helpdupe_fling_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "first tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add helpsummoner"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "fling_attack_double": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
+            "title": "Mud Imitation",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "description": "Fling a double wherever you're looking. The double is aggresive and will attack enemies.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.04,
+                "Lifetime": 80,
+                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
+                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                    {
+                                    "type": "palladium:action",
+                                    "cooldown": 10,
+                                    "key_type": "key_bind",
+                                    "needs_empty_hand": false,
+                                    "allow_scrolling_when_crouching": true
+                                }
+                            ],
+                "unlocking": []
+            }
+        },
+        "imitation_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "first tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/tag @s add imitationsummoner"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:double",
+                                            "ability": "fling_attack_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "noise_maker": {
+            "type": "palladium:command",
+            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
+            "title": "Noise Maker",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "description": "Produce a duplicate from mud that flees every other entity while making audio distractions.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/summon fox ^ ^ ^1 {Palladium:{Properties:{superpowers:[\"decay:double_dummy\"]}},Silent:1b,CustomNameVisible:0b,CanPickUpLoot:1b,Tags:[\"noisemaker\"],ActiveEffects:[{Id:14,Amplifier:5b,Duration:199999980,ShowParticles:0b}],Attributes:[{Name:generic.movement_speed,Base:1}]}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "parade_setup": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "title",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "null",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/scoreboard players add @a sadmansparade 0"
+            ],
+            "commands": [
+                "/scoreboard objectives add sadmansparade dummy \"Parade\""
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:double",
+                                            "ability": "fling_double"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "sad_mans_parade": {
+            "type": "palladium:command",
+            "icon": "decay:textures/icons/gui/powers/sadmansparade.png",
+            "title": "Sad Man's Parade",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "description": "Create a small army of duplicates around you.",
+            "first_tick_commands": [
+                "/scoreboard objectives add sadmansparade dummy \"Parade\""
+            ],
+            "last_tick_commands": [],
+            "commands": [
+                "/scoreboard players add @s sadmansparade 1",
+                "/function decay:spawn_parade_clone"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:objective_score",
+                                                    "objective": "sadmansparade",
+                                                    "max_score": 29
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "parade_regain": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "regain",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": -1,
+            "gui_position": "null",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/scoreboard players remove @e[tag=doubler] sadmansparade 1",
+                "/title @s actionbar {\"text\":\"Regained 1 parade member.\",\"color\":\"blue\"}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 2000
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:objective_score",
+                                            "objective": "sadmansparade",
+                                            "min_score": 1
+                                        }
+                ]
+            }
+        },
+        "whole": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/twicewrappedup.png",
+            "title": "No splitting!",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "Man, I'm terrified. Nothing to worry about!",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        }
+
+    }
+}

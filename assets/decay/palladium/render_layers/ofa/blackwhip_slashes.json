@@ -3,8 +3,8 @@
     "layers": [
         {
             "model_type": "palladium:basic",
-            "model_layer": "decay:transmission",
-            "texture": "decay:textures/models/projectiles/transmission.png",
+            "model_layer": "decay:ofa/blackwhip_slashes",
+            "texture": "decay:textures/models/projectiles/ofa/blackwhip_slashes.png",
 			"render_type": "glow"
         }
     ]

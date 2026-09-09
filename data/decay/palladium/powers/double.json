@@ -4,193 +4,32 @@
     "background": "minecraft:textures/block/white_wool.png",
     "icon": "decay:textures/icons/gui/powers/mudimitation.png",
     "gui_display_type": "tree",
+    "energy_bars": {
+    "parade": {
+       "max": 35,
+       "color": "#A57539"
+      }
+    },
     "abilities": {
-        "tag_self": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "helpdupe tag",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 4,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/tag @s add doubler"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_first_tick",
-                                            "power": "decay:double",
-                                            "ability": "fling_double"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fling_double": {
-            "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/helpdupe.png",
+        "help_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
             "title": "Help Duplicate",
+            "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "description": "Fling a double wherever you're looking. The double is passive and heals you over time.",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 8,
-                "DamageType": "decay:doubleimpact",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.04,
-                "Lifetime": 80,
-                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
-                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:helpdupesummon\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonhelpdupe\"]}",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:twiceprojectile"
-                    }
-                ]
-            },
-            "inaccuracy": 0,
-            "velocity": 0.8,
-            "swinging_arm": "both",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
-            "conditions": {
-                "enabling": [
-                    {
-                                    "type": "palladium:action",
-                                    "cooldown": 10,
-                                    "key_type": "key_bind",
-                                    "needs_empty_hand": false,
-                                    "allow_scrolling_when_crouching": true
-                                }
-                            ],
-                "unlocking": []
-            }
-        },
-        "helpdupe_fling_first_tick": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "first tick",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": -1,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/tag @s add helpsummoner"
-            ],
+            "gui_position": [0,2],
+            "gui_frame_type": "task",
+            "description": "Fling a double away. It will heal you passively when nearby.",
+            "time": 15,
+            "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_first_tick",
-                                            "power": "decay:double",
-                                            "ability": "fling_double"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fling_attack_double": {
-            "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
-            "title": "Mud Imitation",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 1,
-            "description": "Fling a double wherever you're looking. The double is aggresive and will attack enemies.",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 8,
-                "DamageType": "decay:doubleimpact",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.04,
-                "Lifetime": 80,
-                "CommandOnBlockHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
-                "CommandOnEntityHit": "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:mudimitation\"]}},Invulnerable:1,Invisible:1,Tags:[\"summonimitation\"]}",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:twiceprojectile"
-                    }
-                ]
-            },
-            "inaccuracy": 0,
-            "velocity": 1.2,
-            "swinging_arm": "both",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
-            "conditions": {
-                "enabling": [
-                    {
-                                    "type": "palladium:action",
-                                    "cooldown": 10,
-                                    "key_type": "key_bind",
-                                    "needs_empty_hand": false,
-                                    "allow_scrolling_when_crouching": true
-                                }
-                            ],
-                "unlocking": []
-            }
-        },
-        "imitation_first_tick": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "first tick",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 1,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/tag @s add imitationsummoner"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_first_tick",
-                                            "power": "decay:double",
-                                            "ability": "fling_attack_double"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "noise_maker": {
-            "type": "palladium:command",
-            "icon": "decay:textures/icons/gui/powers/mudimitation.png",
-            "title": "Noise Maker",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 2,
-            "gui_position": "null",
-            "description": "Produce a duplicate from mud that flees every other entity while making audio distractions.",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/summon fox ^ ^ ^1 {Palladium:{Properties:{superpowers:[\"decay:double_dummy\"]}},Silent:1b,CustomNameVisible:0b,CanPickUpLoot:1b,Tags:[\"noisemaker\"],ActiveEffects:[{Id:14,Amplifier:5b,Duration:199999980,ShowParticles:0b}],Attributes:[{Name:generic.movement_speed,Base:1}]}"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:action",
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 15,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -199,120 +38,495 @@
                 "unlocking": []
             }
         },
-        "parade_setup": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "title",
+        "help_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "fling help duplicate",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "null",
-            "first_tick_commands": [],
-            "last_tick_commands": [
-                "/scoreboard players add @a sadmansparade 0"
-            ],
-            "commands": [
-                "/scoreboard objectives add sadmansparade dummy \"Parade\""
-            ],
+            "gui_frame_type": "task",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 4,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.03,
+                "Lifetime": 25,
+                "CommandOnBlockHit": "/function decay:double/helpdupe",
+                "CommandOnEntityHit": "/function decay:double/helpdupe",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0.2,
+            "velocity": 1.2,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_unlocked",
+                                            "type": "palladium:ability_last_tick",
                                             "power": "decay:double",
-                                            "ability": "fling_double"
+                                            "ability": "help_aim"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "sad_mans_parade": {
+        "help_last_tick_commands": {
             "type": "palladium:command",
-            "icon": "decay:textures/icons/gui/powers/sadmansparade.png",
+            "icon": "minecraft:command_block",
+            "title": "commands when help aim last tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [
+                "/tag @s add helpsummoner"
+            ],
+            "last_tick_commands": [],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "help_heal": {
+            "type": "palladium:healing",
+            "icon": "minecraft:apple",
+            "title": "heal self when double is thrown",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "frequency": 0,
+            "amount": 2.5,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "help_mud": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "help aim mud last tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#A57539",
+            "end_hex": "#865F2F",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "scream",
+            "particle_type": "smoke",
+            "particle_size": 1.6,
+            "visibility": 2.4,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Mud Imitation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [0,3],
+            "gui_frame_type": "task",
+            "description": "Fling a double away. It will fight for you.",
+            "time": 15,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 15,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "fling attack dupe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 5,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.03,
+                "Lifetime": 25,
+                "CommandOnBlockHit": "/function decay:double/mudimitation",
+                "CommandOnEntityHit": "/function decay:double/mudimitation",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0.2,
+            "velocity": 1.2,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "imitation_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_last_tick_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "commands when imitation aim last tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [
+                "/tag @s add imitationsummoner"
+            ],
+            "last_tick_commands": [],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "imitation_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_mud": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "imitation aim mud last tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#A57539",
+            "end_hex": "#865F2F",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "scream",
+            "particle_type": "smoke",
+            "particle_size": 1.6,
+            "visibility": 2.4,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "imitation_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "parade_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
             "title": "Sad Man's Parade",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
-            "list_index": 3,
+            "list_index": 2,
             "gui_position": "null",
-            "description": "Create a small army of duplicates around you.",
-            "first_tick_commands": [
-                "/scoreboard objectives add sadmansparade dummy \"Parade\""
-            ],
-            "last_tick_commands": [],
-            "commands": [
-                "/scoreboard players add @s sadmansparade 1",
-                "/function decay:spawn_parade_clone"
-            ],
+            "gui_frame_type": "task",
+            "description": "Create an army of doubles.",
+            "time": 10,
+            "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 1200,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:objective_score",
-                                                    "objective": "sadmansparade",
-                                                    "max_score": 29
-                                                }
-                                            ]
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:double",
+                                            "energy_bar": "parade",
+                                            "min": 0,
+                                            "max": 35
                                         }
                 ]
             }
         },
-        "parade_regain": {
+        "parade_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "regain",
+            "title": "summon parade clones",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
-            "gui_position": "null",
+            "list_index": 2,
+            "gui_position": [1,3],
+            "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/scoreboard players remove @e[tag=doubler] sadmansparade 1",
-                "/title @s actionbar {\"text\":\"Regained 1 parade member.\",\"color\":\"blue\"}"
+                "/energybar value add @s decay:double parade 1"
             ],
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 2000
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:double",
+                                            "ability": "parade_aim",
+                                            "min": 10,
+                                            "max": 1200
                                         }
                 ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:objective_score",
-                                            "objective": "sadmansparade",
-                                            "min_score": 1
-                                        }
-                ]
+                "unlocking": []
             }
         },
-        "whole": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/twicewrappedup.png",
-            "title": "No splitting!",
+        "parade_mud": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "parade mud when summoning",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 12,
+            "start_hex": "#A57539",
+            "end_hex": "#865F2F",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "inner_aura",
+            "particle_type": "smoke",
+            "particle_size": 3.6,
+            "visibility": 2.4,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:double",
+                                            "ability": "parade_commands"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "crit_tape_measure": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Critical Tape Measure",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": [0,-2],
+            "gui_frame_type": "task",
+            "description": "Extend your tape measure, marking enemies hit with it. Hit the same enemies again to deal increased damage.",
+            "time": 2,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "crit_tape": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "beam",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:tape_right",
+            "damage_type": "null",
+            "damage": 4,
+            "max_distance": 18,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "crit_tape_measure"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "tape_snap": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Tape Measure Snap",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 4,
-            "gui_position": "null",
-            "description": "Man, I'm terrified. Nothing to worry about!",
+            "gui_position": [0,-3],
+            "gui_frame_type": "task",
+            "description": "Use your Tape Measure to snap forward a short distance.",
+            "time": 2,
+            "arm": "left_arm",
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "snap_tape": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "snap tape",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:tape_left",
+            "damage_type": "null",
+            "damage": 2,
+            "max_distance": 6,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "tape_snap"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "snap_movement": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "snap movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 4.5,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:double",
+                                            "ability": "tape_snap"
+                                        }
+                ],
                 "unlocking": []
             }
         }

@@ -56,7 +56,7 @@
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 35
+                                            "disabled_ticks": 65
                                         }
                 ],
                 "unlocking": [
@@ -88,6 +88,96 @@
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
                                             "disabled_ticks": 600
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "particles": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "portal particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#0D0412",
+            "end_hex": "#13031A",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "smoke",
+            "particle_size": 1.6,
+            "visibility": 8.0,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "particles_2": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "portal particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 8,
+            "start_hex": "#0D0412",
+            "end_hex": "#13031A",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "wisp",
+            "particle_size": 0.8,
+            "visibility": 8.0,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "particles_3": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "portal particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "description": "desc",
+            "count": 6,
+            "start_hex": "#390D52",
+            "end_hex": "#501764",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "inner_aura",
+            "particle_type": "smoke",
+            "particle_size": 0.8,
+            "visibility": 8.0,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
                                         }
                 ],
                 "unlocking": []

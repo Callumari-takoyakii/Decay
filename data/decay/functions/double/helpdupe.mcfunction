@@ -1,0 +1,1 @@
+summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:["decay:stands/doubles"]}},Invulnerable:1,Invisible:1,Tags:["summonhelpdupe"]}

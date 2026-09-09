@@ -1,0 +1,183 @@
+{
+    "name": "doubles",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "hidden": true,
+    "abilities": {
+        "helpdupesummoning": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "summonhelpdupe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/kill @s",
+                "/tag @e[limit=1,sort=nearest] remove helpsummoner"
+            ],
+            "commands": [
+                "/execute as @e[limit=1,sort=nearest,tag=helpsummoner] at @e[limit=1,sort=nearest,tag=summonhelpdupe] run function decay:spawn_tamed_cat"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:armor_stand"
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:interval",
+                                                                                    "active_ticks": 0,
+                                                                                    "disabled_ticks": 0
+                                                                                }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "summonhelpdupe"
+                                        }
+                ]
+            }
+        },
+        "impact_mud": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "impact mud",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 16,
+            "start_hex": "#A57539",
+            "end_hex": "#855E2F",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "smoke",
+            "particle_size": 1.8,
+            "visibility": 3.6,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 0
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:stands/doubles",
+                                                    "ability": "helpdupesummoning"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:stands/doubles",
+                                                    "ability": "imitationsummoning"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "mud_cloud": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "mud cloud",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 24,
+            "start_hex": "#A57539",
+            "end_hex": "#855E2F",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "aura",
+            "particle_type": "smoke",
+            "particle_size": 1.8,
+            "visibility": 3.6,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 0
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:stands/doubles",
+                                                    "ability": "helpdupesummoning"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:stands/doubles",
+                                                    "ability": "imitationsummoning"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "imitationsummoning": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "summonhelpdupe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/kill @s",
+                "/tag @e[limit=1,sort=nearest] remove imitationsummoner"
+            ],
+            "commands": [
+                "/execute as @e[limit=1,sort=nearest,tag=imitationsummoner] at @e[limit=1,sort=nearest,tag=summonimitation] run function decay:spawn_tamed_wolf"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:entity_type",
+                                            "entity_type": "minecraft:armor_stand"
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:interval",
+                                                                                    "active_ticks": 0,
+                                                                                    "disabled_ticks": 0
+                                                                                }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "summonimitation"
+                                        }
+                ]
+            }
+        }
+
+    }
+}
