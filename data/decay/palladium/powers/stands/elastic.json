@@ -1,0 +1,249 @@
+{
+    "name": "rebound",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "hidden": true,
+    "abilities": {
+        "knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "repel enemies",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 4,
+            "knockback": 3,
+            "invert": false,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "rebound"
+                                        }
+                ]
+            }
+        },
+        "render": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle block glass ^ ^0 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^ ^0 ^0 0 0 0 0.5 30 normal",
+                "/particle block glass ^0 ^0 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^ ^1 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^ ^1 ^1 0 0 0 0.5 30 normal",
+                "/particle block glass ^1 ^1 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^ ^2 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^ ^2 ^2 0 0 0 0.5 30 normal",
+                "/particle block glass ^2 ^2 ^ 0 0 0 0.5 30 normal"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "rebound"
+                                        }
+                ]
+            }
+        },
+        "killself": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "kill self",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 500
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "rebound"
+                                        }
+                ]
+            }
+        },
+        "trampoline_propell": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "trampoline propell",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 1,
+            "knockback": 8,
+            "invert": true,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 5
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "trampoline"
+                                        }
+                ]
+            }
+        },
+        "trampoline_slowfall": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "apply slow fall",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect give @e[distance=..1,tag=!trampoline] minecraft:slow_falling 90 0 true"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:stands/elastic",
+                                            "ability": "trampoline_propell"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "trampoline"
+                                        }
+                ]
+            }
+        },
+        "trampoline_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "trampoline commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle block glass ^ ^1 ^ 0 0 0 0.5 40 normal"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "trampoline"
+                                        }
+                ]
+            }
+        },
+        "trampoline_killself": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "trampoline killself",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/kill @s"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 700
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:has_tag",
+                                            "tag": "trampoline"
+                                        }
+                ]
+            }
+        }
+
+    }
+}

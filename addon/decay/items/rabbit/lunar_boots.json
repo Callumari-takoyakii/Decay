@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "boots",
+    "armor_material": "decay:lunar_fabric",
+    "armor_renderer": "decay:rabbit/lunar_boots",
+    "openable": false
+}

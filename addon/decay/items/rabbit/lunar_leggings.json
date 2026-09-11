@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "leggings",
+    "armor_material": "decay:lunar_fabric",
+    "armor_renderer": "decay:rabbit/lunar_leggings",
+    "openable": false
+}

@@ -1,5 +1,5 @@
 {
-    "icon": "decay:aam_helmet",
+    "icon": "decay:paperbag_disguise",
     "title": "Quirk Assist Gear",
     "items": [
         "decay:aam_helmet",
@@ -15,6 +15,9 @@
         "decay:twice_leggings",
         "decay:twice_boots",
         "decay:paperbag_disguise",
-        "decay:tape_measure"
+        "decay:tape_measure",
+        "decay:rabbit/lunar_chestplate",
+        "decay:rabbit/lunar_leggings",
+        "decay:rabbit/lunar_boots"
     ]
 }

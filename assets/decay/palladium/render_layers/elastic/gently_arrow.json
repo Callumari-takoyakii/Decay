@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:elastic/gently_arrow",
+            "texture": "decay:textures/models/projectiles/elastic/gently_arrow.png",
+			"render_type": "glow"
+        }
+    ]
+}
