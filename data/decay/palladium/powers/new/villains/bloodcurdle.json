@@ -22,7 +22,7 @@
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 20,
+                                            "ticks": 16,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -45,38 +45,35 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:bloodcurdle",
+                                            "power": "decay:new/villains/bloodcurdle",
                                             "ability": "curdle_aim"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "curdle_projectile": {
-            "type": "palladium:projectile",
-            "icon": "minecraft:snowball",
-            "title": "projectile",
+        "curdle_nearest": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "curdle nearest target",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": "null",
-            "inaccuracy": 0,
-            "velocity": 0.5,
-            "swinging_arm": "none",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:bloodcurdle",
-                                            "ability": "curdle_aim",
-                                            "min": 19,
-                                            "max": 20
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/bloodcurdle",
+                                            "ability": "ability_id"
                                         }
                 ],
                 "unlocking": []

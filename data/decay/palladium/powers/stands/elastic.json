@@ -17,7 +17,7 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "radius": 4,
+            "radius": 2,
             "knockback": 3,
             "invert": false,
             "cone": false,
@@ -56,21 +56,21 @@
             "last_tick_commands": [],
             "commands": [
                 "/particle block glass ^ ^0 ^ 0 0 0 0.5 30 normal",
-                "/particle block glass ^ ^0 ^0 0 0 0 0.5 30 normal",
-                "/particle block glass ^0 ^0 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^1 ^0 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^-1 ^0 ^ 0 0 0 0.5 30 normal",
                 "/particle block glass ^ ^1 ^ 0 0 0 0.5 30 normal",
-                "/particle block glass ^ ^1 ^1 0 0 0 0.5 30 normal",
                 "/particle block glass ^1 ^1 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^-1 ^1 ^ 0 0 0 0.5 30 normal",
                 "/particle block glass ^ ^2 ^ 0 0 0 0.5 30 normal",
-                "/particle block glass ^ ^2 ^2 0 0 0 0.5 30 normal",
-                "/particle block glass ^2 ^2 ^ 0 0 0 0.5 30 normal"
+                "/particle block glass ^1 ^2 ^ 0 0 0 0.5 30 normal",
+                "/particle block glass ^-1 ^2 ^ 0 0 0 0.5 30 normal"
             ],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 10
+                                            "disabled_ticks": 5
                                         }
                 ],
                 "unlocking": [
@@ -201,7 +201,7 @@
                                         {
                                             "type": "palladium:interval",
                                             "active_ticks": 0,
-                                            "disabled_ticks": 10
+                                            "disabled_ticks": 5
                                         }
                 ],
                 "unlocking": [

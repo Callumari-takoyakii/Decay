@@ -3,8 +3,8 @@
     "layers": [
         {
             "model_type": "palladium:basic",
-            "model_layer": "decay:rabbit/crescent",
-            "texture": "decay:textures/models/projectiles/rabbit/crescent.png",
+            "model_layer": "decay:rabbit/lunacrescent",
+            "texture": "decay:textures/models/projectiles/rabbit/lunacrescent.png",
 			"render_type": "glow"
         }
     ]

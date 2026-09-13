@@ -17,7 +17,7 @@
             "gui_frame_type": "task",
             "description": "Elasticise the air you touch, creating an elastic surface that knocks back everything!",
             "time": 14,
-            "arm": "both",
+            "arm": "main_arm",
             "conditions": {
                 "enabling": [
                                         {
@@ -29,13 +29,118 @@
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "rebound_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "rebound beam",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:blank",
+            "damage_type": "null",
+            "damage": 0,
+            "max_distance": 6,
+            "speed": 0.1,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ^ ^1 ^ {Palladium:{Properties:{superpowers:[\"decay:stands/elastic\"]}},Invulnerable:1,Invisible:1,NoGravity:1b,Tags:[\"rebound\"]}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ^ ^1 ^ {Palladium:{Properties:{superpowers:[\"decay:stands/elastic\"]}},Invulnerable:1,Invisible:1,NoGravity:1b,Tags:[\"rebound\"]}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "gently_rebound",
+                                            "min": 14,
+                                            "max": 14
+                                        }
+                ],
                 "unlocking": []
             }
         },
-        "rebound_commands": {
+        "rebound_swinghand": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "rebound swinghang",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "gently_rebound"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "lover_gently_rebound": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/elastic/rebound.png",
+            "title": "Love: Gently Rebound",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Elasticise the air with the power of love, shielding yourself and repelling targets!",
+            "time": 8,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 8,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                            ]
+            }
+        },
+        "lover_rebound_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "rebound create stand",
+            "title": "love rebound create stand",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -46,16 +151,16 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/summon minecraft:armor_stand ^ ^ ^4 {Palladium:{Properties:{superpowers:[\"decay:stands/elastic\"]}},Invulnerable:1,Invisible:1,NoGravity:1b,Tags:[\"rebound\"]}"
+                "/summon minecraft:armor_stand ^ ^ ^4 {Palladium:{Properties:{superpowers:[\"decay:stands/elastic\"]}},Invulnerable:1,Invisible:1,NoGravity:1b,Tags:[\"love_rebound\"]}"
             ],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:new/villains/elasticity",
-                                            "ability": "gently_rebound",
-                                            "min": 13,
-                                            "max": 13
+                                            "ability": "lover_gently_rebound",
+                                            "min": 7,
+                                            "max": 7
                                         }
                 ],
                 "unlocking": []
@@ -71,7 +176,7 @@
             "list_index": 1,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Elasticise a surface ahead of you, creating a rubbery trampoline that launches things forwards.",
+            "description": "Elasticise a surface below you, launching you upwards.",
             "time": 8,
             "arm": "both",
             "conditions": {
@@ -85,13 +190,105 @@
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "trampoline_launch": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "trampoline launch",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 1.6,
+            "direction": "up",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "gently_trampoline"
+                                        }
+                ],
                 "unlocking": []
             }
         },
-        "trampoline": {
+        "lover_gently_trampoline": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/elastic/trampoline.png",
+            "title": "Love: Gently Trampoline",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Create a trampoline at your feet, propelling yourself into the air!",
+            "time": 4,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 4,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                            ]
+            }
+        },
+        "lover_gently_trampoline_boost": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "lover trampoline boost",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 6.5,
+            "direction": "up",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "lover_gently_trampoline"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "lover_gently_trampoline_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "trampoline commands",
+            "title": "lover trampoline commands",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -102,16 +299,14 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/summon minecraft:armor_stand ^ ^ ^2 {Palladium:{Properties:{superpowers:[\"decay:stands/elastic\"]}},Invulnerable:1,Invisible:1,NoGravity:1b,Tags:[\"trampoline\"]}"
+                "/particle block glass ^ ^0 ^ 0 0 0 0.5 45 normal"
             ],
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
+                                            "type": "palladium:ability_first_tick",
                                             "power": "decay:new/villains/elasticity",
-                                            "ability": "gently_trampoline",
-                                            "min": 7,
-                                            "max": 7
+                                            "ability": "lover_gently_trampoline_boost"
                                         }
                 ],
                 "unlocking": []
@@ -141,7 +336,18 @@
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                                            ]
+                                        }
+                ]
             }
         },
         "elasticise_commands": {
@@ -166,6 +372,69 @@
                                             "ability": "gently_elasticise",
                                             "min": 6,
                                             "max": 6
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "lover_gently_elasticise": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Love: Gently Elasticise",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Elasticise a large surface of the air, dragging in nearby targets.",
+            "time": 8,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 8,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "lover_mode"
+                                        }
+                ]
+            }
+        },
+        "lover_gently_elasticise_dragin": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "elasticise drag into user",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 12,
+            "knockback": 4,
+            "invert": true,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "lover_gently_elasticise"
                                         }
                 ],
                 "unlocking": []
@@ -200,7 +469,6 @@
                     }
                 ]
             },
-
             "inaccuracy": 0,
             "velocity": 1.2,
             "swinging_arm": "main_arm",
@@ -216,30 +484,71 @@
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/elasticity",
+                                                    "ability": "lover_mode"
+                                                }
+                                            ]
+                                        }
+                ]
             }
         },
-        "arrow_swing": {
-            "type": "gravecore:swing_hand",
-            "icon": "minecraft:iron_chestplate",
-            "title": "swing arm",
+        "lover_gently_superarrow": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "Love: Gently Super Arrow",
             "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
+            "hidden": false,
+            "hidden_in_bar": false,
             "list_index": 3,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "desc",
+            "description": "Create a rubbery arrow by elasticising the air which travels at rapid speeds! How stylish!",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 7,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 60,
+                "CommandOnBlockHit": "",
+                "CommandOnEntityHit": "",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:elastic/gently_arrow"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 1.5,
             "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_last_tick",
-                                            "power": "decay:new/villains/elasticity",
-                                            "ability": "gently_arrow"
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/elasticity",
+                                            "ability": "lover_mode"
+                                        }
+                ]
             }
         },
         "lover_mode": {

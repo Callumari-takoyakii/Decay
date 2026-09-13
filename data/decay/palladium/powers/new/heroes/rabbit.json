@@ -2,7 +2,7 @@
     "name": "Rabbit",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/rabbit/rabbit.png",
+    "icon": "decay:textures/icons/gui/powers/rabbit/bunny.png",
     "gui_display_type": "tree",
     "energy_bars": {
     "stamina": {
@@ -23,7 +23,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [
-                "/energybar value set @s decay:rabbit stamina 40"
+                "/energybar value set @s decay:new/heroes/rabbit stamina 40"
             ],
             "last_tick_commands": [],
             "commands": [],
@@ -31,7 +31,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:has_power",
-                                            "power": "decay:rabbit"
+                                            "power": "decay:new/heroes/rabbit"
                                         }
                 ],
                 "unlocking": []
@@ -101,7 +101,7 @@
         },
         "fight_toggle": {
             "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/rabbit/fight_mode.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/fightmodeon.png",
             "title": "Fight Mode",
             "bar_color": "light_gray",
             "hidden": false,
@@ -118,482 +118,6 @@
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fight_speed": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "speed when fight mode on",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "minecraft:generic.movement_speed",
-            "amount": 0.02,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1920-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
-                                            "ability": "fight_toggle"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fight_leap": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "leap when fight mode on",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "palladium:leaping",
-            "amount": 0.4,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1921-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
-                                            "ability": "fight_toggle"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fight_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "commands when toggled",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
-                                            "ability": "fight_toggle"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "fight_beyond_40_30": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "decrease stamina when fight active and health low",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value subtract @s decay:rabbit stamina 1"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 600
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
-                                                    "ability": "fight_toggle"
-                                                },
-                                                {
-                                                    "type": "palladium:health",
-                                                    "min_health": 0,
-                                                    "max_health": 8
-                                                },
-                                                {
-                                                    "type": "palladium:energy_bar",
-                                                    "power": "decay:rabbit",
-                                                    "energy_bar": "stamina",
-                                                    "min": 30,
-                                                    "max": 40
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "fight_beyond_20_30": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "decrease stamina when fight active and health low",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value subtract @s decay:rabbit stamina 1"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 500
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
-                                                    "ability": "fight_toggle"
-                                                },
-                                                {
-                                                    "type": "palladium:health",
-                                                    "min_health": 0,
-                                                    "max_health": 8
-                                                },
-                                                {
-                                                    "type": "palladium:energy_bar",
-                                                    "power": "decay:rabbit",
-                                                    "energy_bar": "stamina",
-                                                    "min": 20,
-                                                    "max": 30
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "fight_beyond_10_20": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "decrease stamina when fight active and health low",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value subtract @s decay:rabbit stamina 1"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 400
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
-                                                    "ability": "fight_toggle"
-                                                },
-                                                {
-                                                    "type": "palladium:health",
-                                                    "min_health": 0,
-                                                    "max_health": 8
-                                                },
-                                                {
-                                                    "type": "palladium:energy_bar",
-                                                    "power": "decay:rabbit",
-                                                    "energy_bar": "stamina",
-                                                    "min": 10,
-                                                    "max": 20
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "fight_beyond_0_10": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "decrease stamina when fight active and health low",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value subtract @s decay:rabbit stamina 1"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 200
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:and",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
-                                                    "ability": "fight_toggle"
-                                                },
-                                                {
-                                                    "type": "palladium:health",
-                                                    "min_health": 0,
-                                                    "max_health": 8
-                                                },
-                                                {
-                                                    "type": "palladium:energy_bar",
-                                                    "power": "decay:rabbit",
-                                                    "energy_bar": "stamina",
-                                                    "min": 0,
-                                                    "max": 10
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "stamina_speed1": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "lower speed when stamina lower",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "minecraft:generic.movement_speed",
-            "amount": -0.01,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1987-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 30
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "stamina_speed2": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "lower speed when stamina lower",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "minecraft:generic.movement_speed",
-            "amount": -0.01,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1983-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 20
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "stamina_speed3": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "lower speed when stamina lower",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "minecraft:generic.movement_speed",
-            "amount": -0.03,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1981-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 10
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "stamina_disable_leap": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "disable leap when stamina lowered",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "palladium:leaping",
-            "amount": -50,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-2007-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 18
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "beyond_left_arm_loss": {
-            "type": "palladium:hide_body_part",
-            "icon": "minecraft:blaze_rod",
-            "title": "lose left arm from continued fighting",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "body_parts": [
-                "left_arm",
-                "left_arm_overlay"
-            ],
-            "affects_first_person": true,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 30
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "beyond_right_leg_loss": {
-            "type": "palladium:hide_body_part",
-            "icon": "minecraft:blaze_rod",
-            "title": "lose right leg from continued fighting",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "body_parts": [
-                "right_leg",
-                "right_leg_overlay"
-            ],
-            "affects_first_person": true,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 20
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "beyond_right_arm_loss": {
-            "type": "palladium:hide_body_part",
-            "icon": "minecraft:blaze_rod",
-            "title": "lose right arm from continued fighting",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "body_parts": [
-                "right_arm",
-                "right_arm_overlay"
-            ],
-            "affects_first_person": true,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:rabbit",
-                                            "energy_bar": "stamina",
-                                            "min": 0,
-                                            "max": 10
                                         }
                 ],
                 "unlocking": []
@@ -621,14 +145,14 @@
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
-                            ],
+                ],
                 "unlocking": [
                                         {
                                             "type": "palladium:not",
                                             "conditions": [
                                                 {
                                                     "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
+                                                    "power": "decay:new/heroes/rabbit",
                                                     "ability": "fight_toggle"
                                                 }
                                             ]
@@ -638,7 +162,7 @@
         },
         "luna_strike": {
             "type": "gravecore:movement",
-            "icon": "decay:textures/icons/gui/powers/rabbit/luna_strike.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunastrike.png",
             "title": "Luna Strike",
             "bar_color": "light_gray",
             "hidden": false,
@@ -660,7 +184,7 @@
                                         },
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "fight_toggle"
                                         }
                 ],
@@ -687,7 +211,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_strike"
                                         }
                 ],
@@ -717,7 +241,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_strike"
                                         }
                 ],
@@ -753,7 +277,7 @@
                                             "conditions": [
                                                 {
                                                     "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
+                                                    "power": "decay:new/heroes/rabbit",
                                                     "ability": "fight_toggle"
                                                 }
                                             ]
@@ -778,7 +302,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "arc_normal"
                                         }
                 ],
@@ -787,7 +311,7 @@
         },
         "luna_arc": {
             "type": "gravecore:movement",
-            "icon": "decay:textures/icons/gui/powers/rabbit/luna_arc.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaarc.png",
             "title": "Luna Arc",
             "bar_color": "light_gray",
             "hidden": false,
@@ -809,7 +333,7 @@
                                         },
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "fight_toggle"
                                         }
                 ],
@@ -833,7 +357,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_arc"
                                         }
                 ],
@@ -860,7 +384,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "arc_drop"
                                         }
                 ],
@@ -890,7 +414,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "arc_drop"
                                         }
                 ],
@@ -899,7 +423,7 @@
         },
         "crescent_stomp": {
             "type": "gravecore:aoe_knockback",
-            "icon": "decay:textures/icons/gui/powers/rabbit/crescent_stomp.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/stomp.png",
             "title": "Crescent Stomp",
             "bar_color": "light_gray",
             "hidden": false,
@@ -912,7 +436,7 @@
             "knockback": 8,
             "invert": false,
             "cone": false,
-            "crush": true,
+            "crush": false,
             "is_charged": false,
             "scoreboard": "Score.Board",
             "scoreboard_max": "Score.Board.Max",
@@ -932,7 +456,7 @@
                                             "conditions": [
                                                 {
                                                     "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
+                                                    "power": "decay:new/heroes/rabbit",
                                                     "ability": "fight_toggle"
                                                 }
                                             ]
@@ -942,7 +466,7 @@
         },
         "luna_crescent": {
             "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/rabbit/luna_crescent.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunacrescent.png",
             "title": "Luna Crescent",
             "bar_color": "light_gray",
             "hidden": false,
@@ -987,7 +511,7 @@
                 "unlocking": [
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "fight_toggle"
                                         }
                 ]
@@ -1022,7 +546,7 @@
                                             "conditions": [
                                                 {
                                                     "type": "palladium:ability_enabled",
-                                                    "power": "decay:rabbit",
+                                                    "power": "decay:new/heroes/rabbit",
                                                     "ability": "fight_toggle"
                                                 }
                                             ]
@@ -1032,7 +556,7 @@
         },
         "luna_turn": {
             "type": "gravecore:movement",
-            "icon": "decay:textures/icons/gui/powers/rabbit/luna_turn.png",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaturn.png",
             "title": "Luna Turn",
             "bar_color": "light_gray",
             "hidden": false,
@@ -1054,7 +578,7 @@
                                         },
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "fight_toggle"
                                         }
                 ],
@@ -1081,7 +605,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_first_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_turn"
                                         }
                 ],
@@ -1111,7 +635,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_first_tick",
-                                            "power": "decay:rabbit",
+                                            "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_turn"
                                         }
                 ],
