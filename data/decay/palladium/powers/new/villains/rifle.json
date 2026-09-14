@@ -1,0 +1,456 @@
+{
+    "name": "Rifle",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+    "gui_display_type": "tree",
+    "abilities": {
+        "sniper": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+            "title": "Sniper",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": [0,-1],
+            "gui_frame_type": "task",
+            "description": "Switch between close and ranged combat.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "rifle_knowledge1": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/knowledge/purple.png",
+            "title": "Rifle Knowledge I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [0,-2],
+            "gui_frame_type": "task",
+            "description": "While Sniper is active: Left-click to scope in. Right-click to fire a bullet in your offhand. Your mainhand must be empty to fire a bullet, otherwise your gun will jam.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "rifle_knowledge2": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/knowledge/purple.png",
+            "title": "Rifle Knowledge II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [0,-3],
+            "gui_frame_type": "task",
+            "description": "Your shots will deal increased damage when scoped in. If your rifle jams, you will take damage and your rifle will be unusable for a short time.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "rifle_knowledge3": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/knowledge/purple.png",
+            "title": "Rifle Knowledge III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": [1,-3],
+            "gui_frame_type": "task",
+            "description": "You are able to create the following ammunition while Sniper is active; Standard, Hollow-Point, Explosive Rounds, Shattering and Curving.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "sweep": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/swing.png",
+            "title": "Sweep",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Swing the barrel of your rifle as if it were a sword.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "hook": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/hook.png",
+            "title": "Hook",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Swing the barrel of your rifle diagonally, dragging targets closer.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "uppercut": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/uppercut.png",
+            "title": "Uppercut",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Swing the barrel of your rifle upwards, delivering an uppercut that knocks a target away.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "rotation": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/rotation.png",
+            "title": "Rotation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spin around, knocking back nearby targets with the barrel of your rifle.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "scope": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+            "title": "scope in",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "left_click",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/rifle",
+                                            "ability": "sniper"
+                                        }
+                ]
+            }
+        },
+        "shoot_standard": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/rifle/standard.png",
+            "title": "shoot standard bullet",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 10,
+                                            "key_type": "right_click",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/rifle",
+                                            "ability": "sniper"
+                                        }
+                ]
+            }
+        },
+        "bullet_creation": {
+            "type": "palladium:ability_wheel",
+            "icon": "decay:textures/icons/gui/powers/rifle/creation.png",
+            "title": "Bullet Creation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Mold your hair like Epoxy Putty into various types of bullets.",
+            "abilities": [],
+            "texture": "null",
+            "disable_mouse_scrolling": false,
+            "disable_center_icon": false,
+            "hide_locked": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/rifle",
+                                            "ability": "sniper"
+                                        }
+                ]
+            }
+        },
+        "bullet_shower": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/barrage.png",
+            "title": "Bullet Shower",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Fire a barrage of bullets where you're aimming.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/rifle",
+                                            "ability": "sniper"
+                                        }
+                ]
+            }
+        },
+        "shotgun": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+            "title": "Shotgun",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Fire multiple bullets ahead of you in a shotgun-like fashion. Use mid-air to launch yourself backwards instead.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                },
+                                                {
+                                                    "type": "palladium:on_ground"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "kickback": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+            "title": "Kickback Shot",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Launch self backwards.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/rifle",
+                                                    "ability": "sniper"
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:on_ground"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "modify": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rifle/sniper.png",
+            "title": "Modify",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Increase the power of your rifle, increasing distance and damage, but increasing the risk of your barrel jamming.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 60,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/rifle",
+                                            "ability": "sniper"
+                                        }
+                ]
+            }
+        }
+
+    }
+}

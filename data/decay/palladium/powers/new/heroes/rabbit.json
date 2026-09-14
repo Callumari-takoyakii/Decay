@@ -4,17 +4,11 @@
     "background": "minecraft:textures/block/white_wool.png",
     "icon": "decay:textures/icons/gui/powers/rabbit/bunny.png",
     "gui_display_type": "tree",
-    "energy_bars": {
-    "stamina": {
-       "max": 40,
-       "color": "#CC87F4"
-      }
-    },
     "abilities": {
-        "max_stamina": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "set stamina to max when receiving ability",
+        "no_helmet": {
+            "type": "palladium:restrict_slots",
+            "icon": "minecraft:blaze_rod",
+            "title": "no helmet",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -22,16 +16,93 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "first_tick_commands": [
-                "/energybar value set @s decay:new/heroes/rabbit stamina 40"
+            "slots": [
+                "head"
             ],
-            "last_tick_commands": [],
-            "commands": [],
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "chestplate_buff": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "chestplate buff",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2019-e6ccdc0d99e1",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:has_power",
-                                            "power": "decay:new/heroes/rabbit"
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:rabbit/lunar_chestplate"
+                                            },
+                                            "slot": "chest"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "leggings_buff": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "leggings buff",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2018-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:rabbit/lunar_leggings"
+                                            },
+                                            "slot": "legs"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "boots_buff": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "boots buff",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2020-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:rabbit/lunar_boots"
+                                            },
+                                            "slot": "feet"
                                         }
                 ],
                 "unlocking": []
@@ -71,34 +142,6 @@
                 "unlocking": []
             }
         },
-        "boost_chestplate": {
-            "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
-            "title": "boost dmg when chestplate worn",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "desc",
-            "attribute": "minecraft:generic.attack_damage",
-            "amount": 1,
-            "operation": 0,
-            "uuid": "498be4fb-af04-42f2-1009-e6ccdc0d99e1",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:item_in_slot",
-                                            "item": {
-                                                "item": "decay:rabbit/lunar_chestplate"
-                                            },
-                                            "slot": "chest"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
         "fight_toggle": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/fightmodeon.png",
@@ -109,7 +152,7 @@
             "list_index": 0,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Toggle on to activate Fight Mode. Your abilities will gain damage and allow you to fight longer.",
+            "description": "Toggle on to activate Fight Mode. Your abilities will change to damaging variants.",
             "conditions": {
                 "enabling": [
                                         {
@@ -123,24 +166,45 @@
                 "unlocking": []
             }
         },
-        "strike_normal": {
-            "type": "gravecore:movement",
+        "strike_normal_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/strike.png",
             "title": "Strike",
             "bar_color": "light_gray",
             "hidden": false,
-            "hidden_in_bar": false,
+            "hidden_in_bar": true,
             "list_index": 1,
-            "gui_position": "null",
+            "gui_position": [0,2],
             "gui_frame_type": "task",
             "description": "Dash forward in a direction you're facing.",
-            "motion_scale": 1.6,
-            "direction": "facing",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "strike_normal": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/strike.png",
+            "title": "Strike",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [0,2],
+            "gui_frame_type": "task",
+            "description": "Dash forward in a direction you're facing.",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -148,44 +212,138 @@
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:not",
+                                            "type": "palladium:and",
                                             "conditions": [
                                                 {
-                                                    "type": "palladium:ability_enabled",
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
                                                     "power": "decay:new/heroes/rabbit",
-                                                    "ability": "fight_toggle"
+                                                    "ability": "strike_normal_buy"
                                                 }
                                             ]
                                         }
                 ]
             }
         },
-        "luna_strike": {
+        "strike_normal_dash": {
             "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/rabbit/strike.png",
+            "title": "strike normal dash",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 1.6,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "strike_normal",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "luna_strike_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunastrike.png",
             "title": "Luna Strike",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": [1,2],
+            "gui_frame_type": "task",
+            "description": "Kick forward in the aim direction, creating a small shockwave where you land.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "luna_strike": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunastrike.png",
+            "title": "Luna Strike",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [1,2],
+            "gui_frame_type": "task",
+            "description": "Kick forward in the aim direction, creating a small shockwave where you land.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/rabbit",
+                                                    "ability": "luna_strike_buy"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "luna_strike_movement": {
+            "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunastrike.png",
+            "title": "luna strike movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 1,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Kick forward. Enemies you hit will be knocked away.",
+            "description": "desc",
             "motion_scale": 2.6,
             "direction": "facing",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
-                                            "cooldown": 0,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        },
-                                        {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "fight_toggle"
+                                            "ability": "luna_strike",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
@@ -212,7 +370,7 @@
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "luna_strike"
+                                            "ability": "luna_strike_movement"
                                         }
                 ],
                 "unlocking": []
@@ -242,30 +400,51 @@
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "luna_strike"
+                                            "ability": "luna_strike_movement"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "arc_normal": {
-            "type": "gravecore:movement",
+        "spring_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/arc.png",
-            "title": "Arc",
+            "title": "Spring",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": [0,3],
+            "gui_frame_type": "task",
+            "description": "Spring up into the air.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "spring": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/arc.png",
+            "title": "Spring",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 2,
-            "gui_position": "null",
+            "gui_position": [0,3],
             "gui_frame_type": "task",
-            "description": "Jump up, following through in an arc after.",
-            "motion_scale": 1.1,
-            "direction": "up",
+            "description": "Spring up into the air.",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -273,22 +452,32 @@
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:not",
+                                            "type": "palladium:and",
                                             "conditions": [
                                                 {
-                                                    "type": "palladium:ability_enabled",
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
                                                     "power": "decay:new/heroes/rabbit",
-                                                    "ability": "fight_toggle"
+                                                    "ability": "spring_buy"
                                                 }
                                             ]
                                         }
                 ]
             }
         },
-        "arc_normal_drop": {
+        "spring_movement": {
             "type": "gravecore:movement",
             "icon": "minecraft:fire_charge",
-            "title": "arc normal drop",
+            "title": "spring movement",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -296,51 +485,111 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "motion_scale": 1.2,
-            "direction": "down",
+            "motion_scale": 1.4,
+            "direction": "up",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_last_tick",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "arc_normal"
+                                            "ability": "spring",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "luna_arc": {
-            "type": "gravecore:movement",
+        "luna_arc_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunaarc.png",
             "title": "Luna Arc",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": [1,3],
+            "gui_frame_type": "task",
+            "description": "Leap up in an arc, delivering an axe kick to a target's skull.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "luna_arc": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaarc.png",
+            "title": "Luna Arc",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": [1,3],
+            "gui_frame_type": "task",
+            "description": "Leap up in an arc, delivering an axe kick to a target's skull.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/rabbit",
+                                                    "ability": "luna_arc_buy"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "l_arc_up": {
+            "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaarc.png",
+            "title": "l arc up",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Leap up in an arc, delivering an axe kick to a target's skull.",
+            "description": "desc",
             "motion_scale": 0.8,
             "direction": "up",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
-                                            "cooldown": 0,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        },
-                                        {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "fight_toggle"
+                                            "ability": "luna_arc",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "arc_drop": {
+        "l_arc_drop": {
             "type": "gravecore:movement",
             "icon": "minecraft:fire_charge",
             "title": "arc dropdown",
@@ -358,7 +607,7 @@
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "luna_arc"
+                                            "ability": "l_arc_up"
                                         }
                 ],
                 "unlocking": []
@@ -385,7 +634,7 @@
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "arc_drop"
+                                            "ability": "l_arc_drop"
                                         }
                 ],
                 "unlocking": []
@@ -415,23 +664,91 @@
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "arc_drop"
+                                            "ability": "l_arc_drop"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "crescent_stomp": {
-            "type": "gravecore:aoe_knockback",
+        "stomp_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/stomp.png",
             "title": "Crescent Stomp",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": [0,4],
+            "gui_frame_type": "task",
+            "description": "Stomp below you, knocking back enemies.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "stomp": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/stomp.png",
+            "title": "Cresent Stomp",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": [0,4],
+            "gui_frame_type": "task",
+            "description": "Stomp below you, knocking back enemies.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/rabbit",
+                                                    "ability": "stomp_buy"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "stomp_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "decay:textures/icons/gui/powers/rabbit/stomp.png",
+            "title": "stomp knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 3,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Stomp below you, knocking back enemies.",
+            "description": "desc",
             "radius": 12,
             "knockback": 8,
             "invert": false,
@@ -440,6 +757,52 @@
             "is_charged": false,
             "scoreboard": "Score.Board",
             "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "stomp",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "luna_crescent_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunacrescent.png",
+            "title": "Luna Crescent",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": [1,4],
+            "gui_frame_type": "task",
+            "description": "Kick forwards, propelling a wave of air that momentarily stuns targets.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "luna_crescent": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunacrescent.png",
+            "title": "Luna Crescent",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": [1,4],
+            "gui_frame_type": "task",
+            "description": "Kick forwards, propelling a wave of air that momentarily stuns targets.",
             "conditions": {
                 "enabling": [
                                         {
@@ -452,29 +815,34 @@
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:not",
+                                            "type": "palladium:and",
                                             "conditions": [
                                                 {
-                                                    "type": "palladium:ability_enabled",
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
                                                     "power": "decay:new/heroes/rabbit",
-                                                    "ability": "fight_toggle"
+                                                    "ability": "luna_crescent_buy"
                                                 }
                                             ]
                                         }
                 ]
             }
         },
-        "luna_crescent": {
+        "l_crescent_projectile": {
             "type": "palladium:projectile",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunacrescent.png",
-            "title": "Luna Crescent",
+            "title": "crescent projectile",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 3,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Kick forwards, propelling a wave of air that momentarily stuns targets.",
+            "description": "desc",
             "entity_type": "palladium:custom_projectile",
             "entity_data": {
                 "Damage": 3,
@@ -501,40 +869,53 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
-                                            "cooldown": 0,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_crescent"
                                         }
-                            ],
+                ],
+                "unlocking": []
+            }
+        },
+        "turn_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/turn.png",
+            "title": "Flip-Turn",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": [0,5],
+            "gui_frame_type": "task",
+            "description": "Kick back from dangerous situations.",
+            "conditions": {
+                "enabling": [],
                 "unlocking": [
                                         {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:new/heroes/rabbit",
-                                            "ability": "fight_toggle"
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
                                         }
                 ]
             }
         },
         "turn": {
-            "type": "gravecore:movement",
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/turn.png",
-            "title": "Turn",
+            "title": "Flip-Turn",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 4,
-            "gui_position": "null",
+            "gui_position": [0,5],
             "gui_frame_type": "task",
             "description": "Kick back from dangerous situations.",
-            "motion_scale": 0.8,
-            "direction": "backward",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -542,44 +923,138 @@
                 ],
                 "unlocking": [
                                         {
-                                            "type": "palladium:not",
+                                            "type": "palladium:and",
                                             "conditions": [
                                                 {
-                                                    "type": "palladium:ability_enabled",
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
                                                     "power": "decay:new/heroes/rabbit",
-                                                    "ability": "fight_toggle"
+                                                    "ability": "turn_buy"
                                                 }
                                             ]
                                         }
                 ]
             }
         },
-        "luna_turn": {
+        "turn_movement": {
             "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/rabbit/turn.png",
+            "title": "turn movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 0.8,
+            "direction": "backward",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "turn",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "luna_turn_buy": {
+            "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunaturn.png",
             "title": "Luna Turn",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": [1,5],
+            "gui_frame_type": "task",
+            "description": "Launch yourself backwards, creating a shockwave where you previously were.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "luna_turn": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaturn.png",
+            "title": "Luna Turn",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": [1,5],
+            "gui_frame_type": "task",
+            "description": "Launch yourself backwards, creating a shockwave where you previously were.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/heroes/rabbit",
+                                                            "ability": "fight_toggle"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/rabbit",
+                                                    "ability": "luna_turn_buy"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "l_turn_movement": {
+            "type": "gravecore:movement",
+            "icon": "decay:textures/icons/gui/powers/rabbit/lunaturn.png",
+            "title": "l turn kickaway",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Kick backwards, getting yourself away from danger.",
+            "description": "desc",
             "motion_scale": 1.4,
             "direction": "backward",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
-                                            "cooldown": 0,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        },
-                                        {
-                                            "type": "palladium:ability_enabled",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "fight_toggle"
+                                            "ability": "luna_turn",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
@@ -604,9 +1079,11 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_first_tick",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "luna_turn"
+                                            "ability": "luna_turn",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
@@ -634,9 +1111,11 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_first_tick",
+                                            "type": "palladium:ability_ticks",
                                             "power": "decay:new/heroes/rabbit",
-                                            "ability": "luna_turn"
+                                            "ability": "luna_turn",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
