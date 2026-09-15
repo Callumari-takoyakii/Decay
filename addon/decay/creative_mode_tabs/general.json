@@ -8,6 +8,7 @@
         "decay:mocha_beaker",
         "decay:nullifier",
         "decay:quirk_dna",
-        "decay:monkeypaw_blue"
+        "decay:monkeypaw_blue",
+        "decay:standard_ammo"
     ]
 }

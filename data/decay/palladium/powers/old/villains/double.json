@@ -2,7 +2,7 @@
     "name": "Double",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/double/mudimitation.png",
+    "icon": "decay:textures/icons/gui/powers/mudimitation.png",
     "gui_display_type": "tree",
     "energy_bars": {
     "parade": {
@@ -11,25 +11,25 @@
       }
     },
     "abilities": {
-        "mud_imitation": {
+        "help_aim": {
             "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/double/mudimitation.png",
-            "title": "Double: Mud Imitation",
+            "icon": "minecraft:blaze_rod",
+            "title": "Help Duplicate",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "gui_position": "null",
+            "gui_position": [0,2],
             "gui_frame_type": "task",
-            "description": "null",
-            "time": 10,
+            "description": "Fling a double away. It will heal you passively when nearby.",
+            "time": 15,
             "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 10,
+                                            "ticks": 15,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -38,10 +38,10 @@
                 "unlocking": []
             }
         },
-        "imitation_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "imitation commands",
+        "help_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "fling help duplicate",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -49,35 +49,6 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/particle block packed_mud ^ ^0 ^ 0.4 0 0.4 1 60",
-                "/particle block packed_mud ^ ^1 ^1 0.1 0 0.1 1 60",
-                "/execute positioned ^ ^ ^1.2 as @s run function decay:double/spawn_tamed_wolf"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_last_tick",
-                                            "power": "decay:new/villains/double",
-                                            "ability": "mud_imitation"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "help_dupe": {
-            "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/double/helpdupe.png",
-            "title": "Double: Help Duplicate",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 1,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "null",
             "entity_type": "palladium:custom_projectile",
             "entity_data": {
                 "Damage": 4,
@@ -96,17 +67,92 @@
                     }
                 ]
             },
-
-            "inaccuracy": 0,
-            "velocity": 1.5,
-            "swinging_arm": "main_arm",
+            "inaccuracy": 0.2,
+            "velocity": 1.2,
+            "swinging_arm": "none",
             "damage_from_player": false,
             "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:action",
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "help_last_tick_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "commands when help aim last tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [
+                "/tag @s add helpsummoner"
+            ],
+            "last_tick_commands": [],
+            "commands": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "help_heal": {
+            "type": "palladium:healing",
+            "icon": "minecraft:apple",
+            "title": "heal self when double is thrown",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "frequency": 0,
+            "amount": 2.5,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "help_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_aim": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Mud Imitation",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": [0,3],
+            "gui_frame_type": "task",
+            "description": "Fling a double away. It will fight for you.",
+            "time": 15,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
                                             "cooldown": 0,
+                                            "ticks": 15,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -115,10 +161,55 @@
                 "unlocking": []
             }
         },
-        "help_dupe_commands": {
+        "imitation_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "fling attack dupe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 5,
+                "DamageType": "decay:doubleimpact",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.03,
+                "Lifetime": 25,
+                "CommandOnBlockHit": "/function decay:double/mudimitation",
+                "CommandOnEntityHit": "/function decay:double/mudimitation",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:twiceprojectile"
+                    }
+                ]
+            },
+            "inaccuracy": 0.2,
+            "velocity": 1.2,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "imitation_aim"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "imitation_last_tick_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "help dupe commands",
+            "title": "commands when imitation aim last tick",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -127,41 +218,39 @@
             "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [
-                "/tag @s add helpsummoner"
+                "/tag @s add imitationsummoner"
             ],
             "last_tick_commands": [],
-            "commands": [
-                "/particle block packed_mud ^ ^1 ^0.5 0.1 0 0.1 1 60"
-            ],
+            "commands": [],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/villains/double",
-                                            "ability": "help_dupe"
+                                            "ability": "imitation_aim"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "sad_mans_parade": {
+        "parade_aim": {
             "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/double/parade.png",
-            "title": "Double: Sad Man's Parade",
+            "icon": "minecraft:blaze_rod",
+            "title": "Sad Man's Parade",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 2,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "null",
-            "time": 12,
+            "description": "Create an army of doubles.",
+            "time": 10,
             "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 0,
+                                            "cooldown": 1200,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
@@ -180,34 +269,28 @@
         "parade_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "parade commands",
+            "title": "summon parade clones",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 2,
-            "gui_position": "null",
+            "gui_position": [1,3],
             "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "/particle block packed_mud ^ ^1 ^1 0.4 0 0.4 1 60",
-                "/execute positioned ^ ^0.5 ^1 as @s run function decay:double/spawn_tamed_wolf",
-                "/energybar value add @s decay:new/villains/double parade 1"
+                "/energybar value add @s decay:new/villains/double parade 1",
+                "/particle block packed_mud ~ ~0 ~ 0.1 0.1 0.1 1 10"
             ],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_ticks",
                                             "power": "decay:new/villains/double",
-                                            "ability": "sad_mans_parade",
+                                            "ability": "parade_aim",
                                             "min": 10,
                                             "max": 1200
-                                        },
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 5
                                         }
                 ],
                 "unlocking": []
@@ -215,19 +298,19 @@
         },
         "crit_tape_measure": {
             "type": "palladium:energy_beam",
-            "icon": "decay:textures/icons/gui/powers/double/crittapemeasure.png",
+            "icon": "minecraft:blaze_rod",
             "title": "Critical Tape Measure",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 3,
-            "gui_position": "null",
+            "gui_position": [0,-2],
             "gui_frame_type": "task",
-            "description": "Shoot out your tape measure, slicing a target on the razor-sharp edge. Hit a target a second time to deal increased damage.",
+            "description": "Extend your tape measure, marking enemies hit with it. Hit the same enemies again to deal increased damage.",
             "energy_beam": "decay:tape_right",
             "damage_type": "null",
-            "damage": 5,
-            "max_distance": 16,
+            "damage": 4,
+            "max_distance": 18,
             "speed": 0.0,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
@@ -239,7 +322,7 @@
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 5,
+                                            "ticks": 2,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -248,9 +331,9 @@
                 "unlocking": []
             }
         },
-        "tape_measure_snap": {
+        "tape_snap": {
             "type": "palladium:energy_beam",
-            "icon": "decay:textures/icons/gui/powers/double/tapesnap.png",
+            "icon": "minecraft:blaze_rod",
             "title": "Tape Measure Snap",
             "bar_color": "light_gray",
             "hidden": false,
@@ -258,11 +341,11 @@
             "list_index": 4,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Extend your tape measure, snapping it back, propelling you forward.",
+            "description": "Use your Tape Measure to snap forward a short distance.",
             "energy_beam": "decay:tape_left",
             "damage_type": "null",
-            "damage": 5,
-            "max_distance": 8,
+            "damage": 2,
+            "max_distance": 6,
             "speed": 0.0,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
@@ -274,10 +357,34 @@
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 5,
+                                            "ticks": 2,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "snap_movement": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "snap movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 4.5,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "tape_snap"
                                         }
                 ],
                 "unlocking": []

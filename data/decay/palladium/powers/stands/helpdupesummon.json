@@ -21,7 +21,7 @@
                 "/tag @e remove helpsummoner"
             ],
             "commands": [
-                "/execute as @e[tag=helpsummoner] at @e[tag=summonhelpdupe] run function decay:spawn_tamed_cat"
+                "/execute as @e[tag=helpsummoner] at @e[tag=summonhelpdupe] run function decay:double/spawn_tamed_cat"
             ],
             "conditions": {
                 "enabling": [

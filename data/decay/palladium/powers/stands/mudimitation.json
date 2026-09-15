@@ -21,7 +21,7 @@
                 "/tag @e remove imitationsummoner"
             ],
             "commands": [
-                "/execute as @e[tag=imitationsummoner] at @e[tag=summonimitation] run function decay:spawn_tamed_wolf"
+                "/execute as @e[tag=imitationsummoner] at @e[tag=summonimitation] run function decay:double/spawn_tamed_wolf"
             ],
             "conditions": {
                 "enabling": [
