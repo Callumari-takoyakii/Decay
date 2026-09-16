@@ -36,7 +36,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "attribute": "minecraft:generic.attack_damage",
-            "amount": 0.2,
+            "amount": 0.02,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-2019-e6ccdc0d99e1",
             "conditions": {
@@ -64,7 +64,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "attribute": "minecraft:generic.attack_damage",
-            "amount": 0.2,
+            "amount": 0.02,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-2018-e6ccdc0d99e1",
             "conditions": {
@@ -92,7 +92,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "attribute": "minecraft:generic.attack_damage",
-            "amount": 0.2,
+            "amount": 0.02,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-2020-e6ccdc0d99e1",
             "conditions": {
@@ -203,7 +203,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 85,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -260,6 +260,36 @@
                 "unlocking": []
             }
         },
+        "strike_normal_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "strike normal particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle explosion ^ ^0 ^ 0.2 0.1 0.2 0.3 2",
+                "/playsound entity.player.attack.knockback player @a[distance=..10] ~ ~ ~ 1 1.2"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "strike_normal",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "luna_strike_buy": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunastrike.png",
@@ -297,7 +327,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 95,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -406,6 +436,66 @@
                 "unlocking": []
             }
         },
+        "strike_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "strike particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle explosion ^ ^0 ^ 0.2 0.1 0.2 0.7 8",
+                "/playsound entity.player.attack.knockback player @a[distance=..14] ~ ~ ~ 1 2",
+                "/particle firework ^ ^0 ^ 0.3 0 0.3 0.8 36"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_strike",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "strike_finish_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "strike finish particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle explosion ^ ^0 ^ 0.2 0.1 0.2 1.2 12",
+                "/playsound entity.player.attack.knockback player @a[distance=..14] ~ ~ ~ 1 2",
+                "/particle firework ^ ^0 ^ 0.3 0 0.3 1.2 36"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_strike_movement"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "spring_buy": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/arc.png",
@@ -416,7 +506,7 @@
             "list_index": 2,
             "gui_position": [0,3],
             "gui_frame_type": "task",
-            "description": "Spring up into the air.",
+            "description": "Spring up into the air. Tip: Use other abilities like Strike before you land, which cancels momentum and allows you to land safely.",
             "conditions": {
                 "enabling": [],
                 "unlocking": [
@@ -443,7 +533,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 145,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -485,8 +575,38 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "motion_scale": 1.4,
+            "motion_scale": 0.6,
             "direction": "up",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "spring",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "spring_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "spring particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle explosion ^ ^0 ^ 0.2 0.1 0.2 0.2 10",
+                "/playsound entity.player.attack.sweep player @a[distance=..10] ~ ~ ~ 1 1.5"
+            ],
             "conditions": {
                 "enabling": [
                                         {
@@ -537,7 +657,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 155,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -670,6 +790,68 @@
                 "unlocking": []
             }
         },
+        "arc_up_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "arc up particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/effect give @e[tag=!lunaarc,distance=..6] takolib:stun 1 0 false",
+                "/tag @s remove lunaarc"
+            ],
+            "commands": [
+                "/particle cloud ^ ^0 ^ 0.3 0 0.3 0.4 36",
+                "/playsound entity.player.attack.sweep player @a[distance=..14] ~ ~ ~ 1 2",
+                "/tag @s add lunaarc"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_arc",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "arc_down_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "arc drop particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle cloud ^ ^0 ^ 0.6 0.1 0.6 0.2 60",
+                "/playsound entity.player.attack.crit player @a[distance=..16] ~ ~ ~ 1 1.8"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "l_arc_drop"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "stomp_buy": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/stomp.png",
@@ -707,7 +889,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 180,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -749,14 +931,44 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "radius": 12,
-            "knockback": 8,
+            "radius": 8,
+            "knockback": 12,
             "invert": false,
             "cone": false,
             "crush": false,
             "is_charged": false,
             "scoreboard": "Score.Board",
             "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "stomp",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "stomp_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "stomp particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle explosion ^ ^0 ^ 0 0.1 0 0.8 4",
+                "/playsound entity.player.attack.knockback player @a[distance=..16] ~ ~ ~ 1 0.4"
+            ],
             "conditions": {
                 "enabling": [
                                         {
@@ -807,7 +1019,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:action",
-                                            "cooldown": 0,
+                                            "cooldown": 65,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
@@ -848,10 +1060,10 @@
                 "Damage": 3,
                 "DamageType": "decay:doubleimpact",
                 "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.0,
+                "Gravity": 0.001,
                 "Lifetime": 15,
-                "CommandOnBlockHit": "",
-                "CommandOnEntityHit": "",
+                "CommandOnBlockHit": "/function decay:projectiles/luna_crescent",
+                "CommandOnEntityHit": "/function decay:projectiles/luna_crescent",
                 "DieOnEntityHit": true,
                 "DieOnBlockHit": true,
                 "Appearances": [
@@ -863,7 +1075,7 @@
             },
             "inaccuracy": 0,
             "velocity": 0.8,
-            "swinging_arm": "none",
+            "swinging_arm": "main_arm",
             "damage_from_player": false,
             "ignore_player_movement": false,
             "conditions": {
@@ -872,6 +1084,36 @@
                                             "type": "palladium:ability_last_tick",
                                             "power": "decay:new/heroes/rabbit",
                                             "ability": "luna_crescent"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "crescent_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "crescent particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle sweep_attack ^ ^1 ^0.5 0.2 0.1 0.2 0.8 2",
+                "/playsound entity.player.attack.knockback player @a[distance=..8] ~ ~ ~ 1 2"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_crescent",
+                                            "min": 1,
+                                            "max": 1
                                         }
                 ],
                 "unlocking": []
@@ -914,7 +1156,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 95,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -971,6 +1213,36 @@
                 "unlocking": []
             }
         },
+        "turn_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "turn particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle crit ^ ^0.8 ^0.8 0 0.1 0 0.6 36",
+                "/playsound entity.player.attack.sweep player @a[distance=..8] ~ ~ ~ 1 1.8"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "turn",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
         "luna_turn_buy": {
             "type": "palladium:dummy",
             "icon": "decay:textures/icons/gui/powers/rabbit/lunaturn.png",
@@ -1008,7 +1280,7 @@
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 120,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -1108,6 +1380,36 @@
             "is_charged": false,
             "scoreboard": "Score.Board",
             "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/rabbit",
+                                            "ability": "luna_turn",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "luna_turn_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "luna turn particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/particle crit ^ ^0.8 ^0.8 0 0.1 0 0.6 36",
+                "/playsound entity.player.attack.sweep player @a[distance=..8] ~ ~ ~ 1 1.8"
+            ],
             "conditions": {
                 "enabling": [
                                         {
