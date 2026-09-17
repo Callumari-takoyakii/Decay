@@ -1,0 +1,1137 @@
+{
+    "name": "Dark Shadow",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/obsidian.png",
+    "icon": "decay:textures/icons/gui/powers/shadow/gui.png",
+    "gui_display_type": "tree",
+    "energy_bars": {
+    "darkness": {
+       "max": 1800,
+       "color": "#10031A"
+      }
+    },
+    "abilities": {
+        "night_vision": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Enhanced Vision",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Your eyes have long since adjusted to the Darkness.",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect give @s minecraft:night_vision 20 0 true"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 1
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "gravecore:has_effect",
+                                                    "effect": "minecraft:darkness"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "entity_sense": {
+            "type": "palladium:entity_glow",
+            "icon": "minecraft:glow_berries",
+            "title": "Depth Sense",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "While you're afflicted with the Darkness effect you are able to sense creatures through walls. Your Darkness meter also comes back at x2 the typical rate, even when under the sun.",
+            "mode": "others",
+            "color": "#7D178F",
+            "distance": 0,
+            "property_key": "null",
+            "property_value": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:darkness"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "effect_meter_restore": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "restore meter when effected by darkness",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value add @s decay:new/heroes/shadow darkness 4",
+                "/effect clear @s minecraft:darkness"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "minecraft:darkness"
+                                        }
+                ]
+            }
+        },
+        "meter_restore": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "meter restore",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value add @s decay:new/heroes/shadow darkness 2"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "gravecore:has_effect",
+                                                            "effect": "minecraft:darkness"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:brightness_at_position",
+                                                    "min_brightness": 0,
+                                                    "max_brightness": 8
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:is_on_fire"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "meter_deplete": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "meter deplete",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 1"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "gravecore:has_effect",
+                                                            "effect": "minecraft:darkness"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:brightness_at_position",
+                                                    "min_brightness": 9,
+                                                    "max_brightness": 26
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:is_on_fire"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "meter_deplete_on_fire": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "meter deplete when on fire",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 4"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "gravecore:has_effect",
+                                                            "effect": "minecraft:darkness"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:is_on_fire"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "glide": {
+            "type": "pantheonsent:moon_knight_gliding",
+            "icon": "decay:textures/icons/gui/powers/shadow/glide.png",
+            "title": "Twin Wings of the Black Arm",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Hold while airborne to glide at the cost of Darkness. Darkness is consumed at an increased rate when gliding under the sun.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:new/heroes/shadow",
+                                            "energy_bar": "darkness",
+                                            "min": 1,
+                                            "max": 1800
+                                        }
+                            ]
+            }
+        },
+        "glide_slowfall": {
+            "type": "palladium:slowfall",
+            "icon": "minecraft:feather",
+            "title": "gliding slowfall",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "pantheonsent:is_moon_knight_gliding"
+                                        }
+                ]
+            }
+        },
+        "glide_deplete_overtime": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "deplete darkness when gliding",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 1"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 20
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "pantheonsent:is_moon_knight_gliding"
+                                        }
+                ]
+            }
+        },
+        "glide_particles": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "glide particles",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "pantheonsent:is_moon_knight_gliding"
+                                        }
+                ]
+            }
+        },
+        "glide_sounds": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "glide sounds",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 30
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "pantheonsent:is_moon_knight_gliding"
+                                        }
+                ]
+            }
+        },
+        "ragnarok_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/ragnarok.png",
+            "title": "Ragnarok",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Shoot out Dark Shadow in the aim direction, applying darkness to targets hit.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "ragnarok": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/ragnarok.png",
+            "title": "Ragnarok",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Shoot out Dark Shadow in the aim direction, applying darkness to targets hit.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/shadow",
+                                                    "ability": "ragnarok_buy"
+                                                },
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:new/heroes/shadow",
+                                            "energy_bar": "darkness",
+                                            "min": 120,
+                                            "max": 1800
+                                        }
+                                    ]
+                            }
+                ]
+            }
+        },
+        "ragnarok_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "raganrok projectile",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Shoot out Dark Shadow in the aim direction, applying darkness to targets hit.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ragnarok",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ragnarok_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "ragnarok commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 120"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ragnarok",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "spiral_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/circle.png",
+            "title": "Spiral Shadow Born of the Gloaming",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Send out Dark Shadow to circle you, damaging and knocking back nearby enemies. Drains Darkness overtime.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "spiral": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/shadow/circle.png",
+            "title": "Spiral Shadow Born of the Gloaming",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Send out Dark Shadow to circle you, damaging and knocking back nearby enemies. Drains Darkness overtime.",
+            "time": 10,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 1200,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/shadow",
+                                                    "ability": "spiral_buy"
+                                                },
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:new/heroes/shadow",
+                                            "energy_bar": "darkness",
+                                            "min": 15,
+                                            "max": 1800
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "spiral_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "spiral knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 12,
+            "knockback": 3,
+            "invert": false,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "spiral",
+                                            "min": 10,
+                                            "max": 1200
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:interval",
+                                                                                    "active_ticks": 0,
+                                                                                    "disabled_ticks": 10
+                                                                                }
+                ],
+                "unlocking": []
+            }
+        },
+        "spiral_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "spiral aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 12,
+            "damage": 2,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "spiral",
+                                            "min": 10,
+                                            "max": 1200
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:interval",
+                                                                                    "active_ticks": 0,
+                                                                                    "disabled_ticks": 10
+                                                                                }
+                ],
+                "unlocking": []
+            }
+        },
+        "spiral_deplete": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "spiral deplete",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 15"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "spiral",
+                                            "min": 10,
+                                            "max": 1200
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "shield_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/shield.png",
+            "title": "Jet-Black Shadow Shield",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Summon Dark Shadow to guard you, draining your Darkness meter overtime.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "shield": {
+            "type": "pantheonsent:moon_knight_blocking",
+            "icon": "decay:textures/icons/gui/powers/shadow/shield.png",
+            "title": "Jet-Black Shadow Shield",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Summon Dark Shadow to guard you, draining your Darkness meter overtime.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/shadow",
+                                                    "ability": "shield_buy"
+                                                },
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:new/heroes/shadow",
+                                            "energy_bar": "darkness",
+                                            "min": 45,
+                                            "max": 1800
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "shield_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "shield first tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/playsound block.amethyst_block.place block @a[distance=..8] ~ ~ ~ 1 0.2",
+                "/particle dust 0 0 0 0.5 ^ ^0.5 ^ 0.2 0.4 0.2 0.2 50"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "shield"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "shield_deplete": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "shield deplete",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 45"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "shield"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/ankh.png",
+            "title": "Black Ankh",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Toggle on to cloak yourself with Dark Shadow, increasing your attributes for a short time at the cost of Darkness.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "ankh": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/shadow/ankh.png",
+            "title": "Black Ankh",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Toggle on to cloak yourself with Dark Shadow, increasing your attributes for a short time at the cost of Darkness.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/shadow",
+                                                    "ability": "ankh_buy"
+                                                },
+                                        {
+                                            "type": "palladium:energy_bar",
+                                            "power": "decay:new/heroes/shadow",
+                                            "energy_bar": "darkness",
+                                            "min": 8,
+                                            "max": 1800
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "ankh_first_tick": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "ankh first tick",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/playsound entity.evoker.cast_spell hostile @a[distance=..5] ~ ~ ~ 1 0.5",
+                "/particle dust 0 0 0 0.5 ^ ^0.5 ^ 0 0 0 0.2 20",
+                "/particle dust 0 0 0 0.5 ^ ^01 ^ 0 0 0 0.2 20",
+                "/particle dust 0 0 0 0.5 ^ ^1.5 ^ 0 0 0 0.2 20"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_deplete": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "ankh deplete",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/energybar value subtract @s decay:new/heroes/shadow darkness 8"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_damage": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ankh damage inc",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.5,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2301-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_speed": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ankh speed inc",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 0.08,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2302-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_health": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ankh health inc",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 10,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2303-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ankh_knockback": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ankh knockback inc",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_knockback",
+            "amount": 1.8,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-2304-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/shadow",
+                                            "ability": "ankh"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "health1": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 2,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2305-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "health2": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 2,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2306-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "health3": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Health III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.max_health",
+            "amount": 6,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-2307-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        }
+
+    }
+}
