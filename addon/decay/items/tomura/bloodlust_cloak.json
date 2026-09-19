@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "helmet",
+    "armor_material": "decay:bloodlust_fabric",
+    "armor_renderer": "decay:tomura/bloodlust_cloak",
+    "openable": false
+}

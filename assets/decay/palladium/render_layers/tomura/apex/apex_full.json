@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "palladium:humanoid#suit",
+            "texture": "decay:textures/models/tomura/apex/apex_full.png",
+			"render_type": "glow"
+        }
+    ]
+}

@@ -18,6 +18,8 @@
         "decay:tape_measure",
         "decay:rabbit/lunar_chestplate",
         "decay:rabbit/lunar_leggings",
-        "decay:rabbit/lunar_boots"
+        "decay:rabbit/lunar_boots",
+        "decay:tomura/bloodlust_cloak",
+        "decay:tomura/bloodlust_pants"
     ]
 }

@@ -2,45 +2,44 @@
     "name": "All For One",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/afo.png",
+    "icon": "minecraft:wither_skeleton_skull",
     "gui_display_type": "tree",
     "abilities": {
-        "air_Walk": {
+        "air_walk": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",
-            "title": "Air Walk",
+            "title": "Quirk: Air Walk",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
-            "description": "Move through the air via the use of a stolen Quirk.",
+            "description": "desc",
             "attribute": "palladium:levitation_speed",
-            "amount": 0.6,
+            "amount": 0.8,
             "operation": 0,
-            "uuid": "498be4fb-af01-42f2-7628-e6ccdc0d99e1",
+            "uuid": "498be4fb-af01-42f2-1091-e6ccdc0d99e1",
             "conditions": {
                 "enabling": [],
                 "unlocking": []
             }
         },
         "hardflame_fan": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/hardflame.png",
-            "title": "Hardflame Fan",
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk: Hardflame Fan",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
             "gui_position": "null",
-            "description": "Create an odd shield of flame to protect you from danger.",
-            "time": 5,
-            "arm": "main_arm",
+            "gui_frame_type": "task",
+            "description": "null",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 1800,
+                                            "cooldown": 0,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
@@ -48,20 +47,21 @@
                 "unlocking": []
             }
         },
-        "hardflame_block": {
+        "flame_shield": {
             "type": "gravecore:forcefield",
             "icon": "minecraft:iron_chestplate",
-            "title": "hardflame block",
+            "title": "hardflame",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
             "sound": "minecraft:item.shield.block",
             "max_health": 200,
             "scoreboard": "null",
-            "regen_rate": 35,
+            "regen_rate": 40,
             "damage_sources": [
                 "decay:hardflame_fan"
             ],
@@ -69,168 +69,595 @@
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "hardflame_fan",
-                                            "min": 5,
-                                            "max": 500
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "hardflame_fan"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "radio_combo_info": {
+        "air_cannon_buy": {
             "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
-            "title": "Radio Waves: Conjuction",
+            "title": "Quirk: Air Cannon",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": true,
             "list_index": 1,
             "gui_position": "null",
-            "description": "Activate Radio Waves while using Hardflame Fan to produce a flaming projectile, cancelling the shield. Use in conjunction with Rivet Stab to damage an area.",
+            "gui_frame_type": "task",
+            "description": "desc",
             "conditions": {
                 "enabling": [],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
             }
         },
-        "radio_waves": {
+        "air_cannon": {
             "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/radiowaves.png",
-            "title": "Radio Waves",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk: Air Cannon",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 1,
             "gui_position": "null",
-            "description": "Send out waves of your palms, deafening nearby enemies and jamming communication devices as well as knocking them back a little.",
-            "time": 25,
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 18,
             "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 25,
+                                            "ticks": 18,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_cannon_buy"
+                                        },
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/villains/afo",
+                                                            "ability": "hardflame_fan"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:ability_enabled",
+                                                            "power": "decay:new/villains/afo",
+                                                            "ability": "heavy_payload"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                ]
             }
         },
-        "radio_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "radio commands",
+        "air_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "air projectile",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 1,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "say Hello World"
-            ],
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "radio_waves",
-                                            "min": 25,
-                                            "max": 25
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_cannon",
+                                            "min": 18,
+                                            "max": 18
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "radio_knockback": {
-            "type": "gravestone:knockback",
-            "icon": "minecraft:stick",
-            "title": "radio knockback",
+        "air_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "air arms",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 1,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
-            "radius": 18,
-            "knockback": 6,
-            "tag_ex": "exclusion_tag",
-            "invert": false,
-            "crush": false,
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "air_cannon"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "air_x_flame"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "air_x_payload"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "air_x_flame": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Multi-Factor: Hardflame Fan x Air Cannon",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 14,
+            "arm": "both",
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "radio_waves",
-                                            "min": 25,
-                                            "max": 25
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 14,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_cannon_buy"
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "hardflame_fan"
+                                        },
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "heavy_payload"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "air_x_flame_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "air x flame",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "both",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_x_flame"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "radio_aoe": {
+        "air_x_payload": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Multi-Factor: Heavy Payload x Air Cannon",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 22,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 42,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_cannon_buy"
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload"
+                                        },
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "hardflame_fan"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "air_x_payload_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "air x payload",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:airxpayload",
+            "damage_type": "null",
+            "damage": 2,
+            "max_distance": 24,
+            "speed": 0.0,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "air_x_payload",
+                                            "min": 22,
+                                            "max": 42
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "heavy_payload_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk: Heavy Payload",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "heavy_payload": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk: Heavy Payload",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 32,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 32,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload_buy"
+                                        }
+                ]
+            }
+        },
+        "payload_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "payload arms",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "payload_aoe": {
             "type": "gravecore:aoe_damage",
             "icon": "minecraft:fire_charge",
-            "title": "radio waves aoe",
+            "title": "payload aoe",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": 1,
+            "list_index": 2,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
             "radius": 18,
-            "damage": 3,
+            "damage": 14,
             "fire_ticks": 0,
             "damage_type": "null",
             "cone": false,
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "radio_waves",
-                                            "min": 25,
-                                            "max": 25
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "rivet_combo_info": {
-            "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
-            "title": "Rivet Stab: Conjuction",
+        "payload_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "payload knockback",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
-            "description": "Use Rivet Stab in conjuction with Radio Waves to damage an area. Using it with Hardflame Fan will knockback and ignite enemies caught in its range.",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 18,
+            "knockback": 8,
+            "invert": false,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
             "conditions": {
-                "enabling": [],
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload"
+                                        }
+                ],
                 "unlocking": []
             }
         },
-        "rivet_stab": {
+        "flame_x_payload": {
             "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/rivetstab.png",
-            "title": "Rivet Stab",
+            "icon": "minecraft:blaze_rod",
+            "title": "Multi-Factor: Hardflame Fan x Heavy Payload",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 2,
             "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 12,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 28,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "heavy_payload_buy"
+                                        },
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "hardflame_fan"
+                                        },
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/afo",
+                                                    "ability": "air_cannon"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "flame_x_payload_eruption": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "flame x payload",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "null",
-            "time": 8,
-            "arm": "main_arm",
+            "energy_beam": "decay:blank",
+            "damage_type": "null",
+            "damage": 8,
+            "max_distance": 38,
+            "speed": 0.2,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "flame_x_payload",
+                                            "min": 22,
+                                            "max": 28
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "search_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Quirk: Search",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "search": {
+            "type": "palladium:entity_glow",
+            "icon": "minecraft:glow_berries",
+            "title": "Quirk: Search",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "mode": "others",
+            "color": "#F9E47A",
+            "distance": 20,
+            "property_key": "null",
+            "property_value": "null",
             "conditions": {
                 "enabling": [
                                         {
@@ -240,166 +667,48 @@
                                             "needs_empty_hand": false
                                         }
                 ],
-                "unlocking": []
-            }
-        },
-        "rivet_aoe": {
-            "type": "gravecore:aoe_damage",
-            "icon": "minecraft:fire_charge",
-            "title": "rivet stab aoe",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 2,
-            "gui_position": "null",
-            "description": "desc",
-            "radius": 6,
-            "damage": 2,
-            "fire_ticks": 0,
-            "damage_type": "null",
-            "cone": true,
-            "conditions": {
-                "enabling": [
+                "unlocking": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "rivet_stab",
-                                            "min": 8,
-                                            "max": 160
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "search_buy"
                                         }
-                ],
-                "unlocking": []
+                ]
             }
         },
-        "punch_combo_info": {
+        "all_for_one_buy": {
             "type": "palladium:dummy",
             "icon": "minecraft:blaze_rod",
-            "title": "Factor Fusion",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "Use \"I'll Punch You\" when using Hardflame Fan, Radio Waves or Rivet Stab to increase power. Hardflame Fan deals fire damage and sets nearby enemies alight, Radio Waves deafens and deals knockback and Rivet Stab embeds shrappnel within the target.",
-            "conditions": {
-                "enabling": [],
-                "unlocking": []
-            }
-        },
-        "ill_punch_you": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/illpunchyou.png",
-            "title": "\"I'll Punch You.\"",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "\"Huh! What's the matter, All Might? Where's that winning smile of yours?\"",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 120,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "punch_aim": {
-            "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
-            "title": "aim arm",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "desc",
-            "time": 10,
-            "arm": "main_arm",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "ill_punch_you",
-                                            "min": 80,
-                                            "max": 120
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "punch_dash": {
-            "type": "gravecore:movement",
-            "icon": "minecraft:fire_charge",
-            "title": "punch dash",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "desc",
-            "motion_scale": 2.5,
-            "direction": "facing",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "ill_punch_you",
-                                            "min": 85,
-                                            "max": 85
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "punch_projectile": {
-            "type": "palladium:projectile",
-            "icon": "minecraft:snowball",
-            "title": "punch projectile",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "desc",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": "null",
-            "inaccuracy": 0,
-            "velocity": 1.5,
-            "swinging_arm": "none",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "ill_punch_you",
-                                            "min": 90,
-                                            "max": 90
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "steal_grab":  {
-            "type": "palladium:command",
-            "icon": "decay:textures/icons/gui/powers/quirksteal.png",
             "title": "All For One",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "all_for_one": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "All For One",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 4,
             "gui_position": "null",
-            "description": "Grab an enemy, forcefully taking their Quirk for a period of time. Use Radio Waves to warp nearby Allies to your location. (Within 256 blocks)",
+            "gui_frame_type": "task",
+            "description": "desc",
             "first_tick_commands": [
                 "execute anchored eyes run function grave.core:pick_entity/start_ray"
             ],
@@ -433,21 +742,28 @@
                                                                                     ]
                                                                                 }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "all_for_one_buy"
+                                        }
+                ]
             }
         },
-        "steal_arms": {
+        "afo_grab": {
             "type": "palladium:aim",
             "icon": "minecraft:blaze_rod",
-            "title": "stealing arms",
+            "title": "afo grab",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
             "time": 5,
-            "arm": "main_arm",
+            "arm": "right_arm",
             "conditions": {
                 "enabling": [
                                         {
@@ -461,10 +777,10 @@
                 "unlocking": []
             }
         },
-        "steal_projectile": {
+        "afo_throw": {
             "type": "palladium:projectile",
             "icon": "minecraft:snowball",
-            "title": "steal projectile",
+            "title": "afo throw",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -490,30 +806,31 @@
                 "enabling": [
                                         {
                                             "type": "palladium:ability_ticks",
-                                            "power": "decay:afo",
-                                            "ability": "steal_grab",
-                                            "min": 35,
-                                            "max": 35
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "all_for_one",
+                                            "min": 12,
+                                            "max": 12
                                         }
                 ],
                 "unlocking": [
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:afo",
-                                            "ability": "steal_grab"
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "all_for_one"
                                         }
                 ]
             }
         },
-        "steal_throw_commands": {
+        "afo_throw_commands": {
             "type": "palladium:command",
             "icon": "minecraft:command_block",
-            "title": "steal throw commands",
+            "title": "afo throw commands",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [
                 "tag @e[type=palladium:custom_projectile,sort=nearest,limit=1] add grave.pick.throw",
@@ -523,13 +840,15 @@
             "last_tick_commands": [
                 "tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked"
             ],
-            "commands": [],
+            "commands": [
+                "say Hello World"
+            ],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:afo",
-                                            "ability": "steal_projectile"
+                                            "power": "decay:new/villains/afo",
+                                            "ability": "afo_throw"
                                         }
                 ],
                 "unlocking": []

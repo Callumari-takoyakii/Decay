@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "leggings",
+    "armor_material": "decay:bloodlust_fabric",
+    "armor_renderer": "decay:tomura/bloodlust_pants",
+    "openable": false
+}

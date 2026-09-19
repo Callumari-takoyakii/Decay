@@ -2,12 +2,12 @@
     "name": "Apex",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/apex/apex.png",
     "gui_display_type": "tree",
     "abilities": {
         "thousand_hand_break": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/apex/handbreak.png",
             "title": "Thousand Hand Break",
             "bar_color": "light_gray",
             "hidden": false,
@@ -15,14 +15,14 @@
             "list_index": 0,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "desc",
+            "description": "Shoot out a bloated mass of fingers ahead of you.",
             "time": 12,
             "arm": "right_arm",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 140,
                                             "ticks": 18,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
@@ -32,7 +32,7 @@
                 "unlocking": []
             }
         },
-        "break_beam": {
+        "handbreak_beam": {
             "type": "palladium:energy_beam",
             "icon": "minecraft:blaze_rod",
             "title": "break beam",
@@ -43,7 +43,7 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "energy_beam": "decay:blank",
+            "energy_beam": "decay:handbreak",
             "damage_type": "null",
             "damage": 12,
             "max_distance": 12,
@@ -66,29 +66,86 @@
                 "unlocking": []
             }
         },
+        "handbreak_hide_arm": {
+            "type": "palladium:hide_body_part",
+            "icon": "minecraft:blaze_rod",
+            "title": "handbreak hide arm",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "body_parts": [
+                "right_arm",
+                "right_arm_overlay"
+            ],
+            "affects_first_person": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "thousand_hand_break",
+                                            "min": 12,
+                                            "max": 18
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "finger_mass_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/apex/impact.png",
+            "title": "Finger-Mass Potency",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Leap forward in the aim direction, damaging and knocking back targets where you land.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
         "finger_mass_potency": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
-            "title": "Finger Mass Potency",
+            "icon": "decay:textures/icons/gui/powers/apex/impact.png",
+            "title": "Finger-Mass Potency",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": false,
             "list_index": 1,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "null",
+            "description": "Leap forward in the aim direction, damaging and knocking back targets where you land.",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 0,
+                                            "cooldown": 180,
                                             "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "finger_mass_buy"
+                                        }
+                ]
             }
         },
         "mass_fling": {
@@ -199,9 +256,31 @@
                 "unlocking": []
             }
         },
+        "decay_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/apex/decay.png",
+            "title": "Decay",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Activate to devastate an area around you, applying the Decay effect to anything on the ground. Use while Thousand-Hand Break is active to instead use it ahead of you.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
         "decay_circular": {
             "type": "palladium:command",
-            "icon": "minecraft:command_block",
+            "icon": "decay:textures/icons/gui/powers/apex/decay.png",
             "title": "Decay",
             "bar_color": "light_gray",
             "hidden": true,
@@ -209,7 +288,7 @@
             "list_index": 2,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "null",
+            "description": "Activate to devastate an area around you, applying the Decay effect to anything on the ground. Use while Thousand-Hand Break is active to instead use it ahead of you.",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
@@ -227,6 +306,9 @@
                 ],
                 "unlocking": [
                                         {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
                                             "type": "palladium:not",
                                             "conditions": [
                                                 {
@@ -235,13 +317,20 @@
                                                     "ability": "thousand_hand_break"
                                                 }
                                             ]
-                                        }
+                                        },
+                                                                                {
+                                                                                    "type": "palladium:ability_unlocked",
+                                                                                    "power": "decay:new/villains/apex",
+                                                                                    "ability": "decay_buy"
+                                                                                }
+                                                                            ]
+                                                                        }
                 ]
             }
         },
         "decay_circular_swing": {
             "type": "gravecore:swing_hand",
-            "icon": "minecraft:iron_chestplate",
+            "icon": "decay:textures/icons/gui/powers/apex/decay.png",
             "title": "decay circular swing",
             "bar_color": "light_gray",
             "hidden": true,
@@ -264,7 +353,7 @@
         },
         "decay_hand_break": {
             "type": "palladium:command",
-            "icon": "minecraft:command_block",
+            "icon": "decay:textures/icons/gui/powers/apex/decay.png",
             "title": "Decay",
             "bar_color": "light_gray",
             "hidden": true,
@@ -272,7 +361,7 @@
             "list_index": 2,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "desc",
+            "description": "Activate to devastate an area around you, applying the Decay effect to anything on the ground. Use while Thousand-Hand Break is active to instead use it ahead of you.",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
@@ -290,16 +379,48 @@
                 ],
                 "unlocking": [
                                         {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/villains/apex",
                                             "ability": "thousand_hand_break"
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "decay_buy"
+                                        }
+                                    ]
+                            }
+                ]
+            }
+        },
+        "search_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/apex/search.png",
+            "title": "Search",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Hold to track others through walls.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
                                         }
                 ]
             }
         },
         "search": {
             "type": "palladium:entity_glow",
-            "icon": "minecraft:glow_berries",
+            "icon": "decay:textures/icons/gui/powers/apex/search.png",
             "title": "Search",
             "bar_color": "light_gray",
             "hidden": true,
@@ -307,7 +428,7 @@
             "list_index": 3,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "null",
+            "description": "Hold to track others through walls.",
             "mode": "others",
             "color": "#F9E47A",
             "distance": 20,
@@ -322,13 +443,19 @@
                                             "needs_empty_hand": false
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "search_buy"
+                                        }
+                ]
             }
         },
-        "glow_self": {
-            "type": "palladium:entity_glow",
-            "icon": "minecraft:glow_berries",
-            "title": "search self glow",
+        "search_render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "search render layer",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -336,11 +463,7 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "mode": "self",
-            "color": "#F9E47A",
-            "distance": 24,
-            "property_key": "null",
-            "property_value": "null",
+            "render_layer": "decay:tomura/apex/search",
             "conditions": {
                 "enabling": [
                                         {
@@ -352,9 +475,31 @@
                 "unlocking": []
             }
         },
+        "apex_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/apex/apex.png",
+            "title": "Apex",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Cover your body in multiple hands, making you larger, stronger and regenerate quicker. Comes at the cost of much slower movement, less jump and Finger-Mass Potency taking you less distance, but having more of an impact.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
         "apex": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/apex/apex.png",
             "title": "Apex",
             "bar_color": "light_gray",
             "hidden": true,
@@ -362,7 +507,7 @@
             "list_index": 4,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "desc",
+            "description": "Cover your body in multiple hands, making you larger, stronger and regenerate quicker. Comes at the cost of much slower movement, less jump and Finger-Mass Potency taking you less distance, but having more of an impact.",
             "conditions": {
                 "enabling": [
                                         {
@@ -371,6 +516,35 @@
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex_buy"
+                                        }
+                ]
+            }
+        },
+        "apex_render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "apex render",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "render_layer": "decay:tomura/apex/apex_full",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
                                         }
                 ],
                 "unlocking": []
@@ -389,9 +563,7 @@
             "description": "desc",
             "slots": [
                 "head",
-                "chest",
-                "legs",
-                "feet"
+                "legs"
             ],
             "conditions": {
                 "enabling": [
@@ -489,7 +661,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "attribute": "minecraft:generic.movement_speed",
-            "amount": -0.2,
+            "amount": -0.4,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-9002-e6ccdc0d99e1",
             "conditions": {
@@ -515,7 +687,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "attribute": "palladium:jump_power",
-            "amount": -0.2,
+            "amount": -0.4,
             "operation": 1,
             "uuid": "498be4fb-af04-42f2-9003-e6ccdc0d99e1",
             "conditions": {

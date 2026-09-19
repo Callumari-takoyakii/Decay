@@ -1,0 +1,11 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:tomura/apex/handbreak",
+            "texture": "decay:textures/models/tomura/apex/handbreak.png",
+			"render_type": "glow"
+        }
+    ]
+}

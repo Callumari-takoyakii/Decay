@@ -1,0 +1,11 @@
+{
+"textures": {
+  "normal": "decay:textures/models/armor/tomura/bloodlust_cloak.png",
+  "slim": "decay:textures/models/armor/tomura/bloodlust_cloak.png"
+},
+"hide_second_layer": true,
+"model_layers": {
+  "normal": "palladium:humanoid#suit",
+  "slim": "palladium:humanoid#suit_slim"
+}
+    }
