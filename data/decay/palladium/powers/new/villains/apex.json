@@ -1,0 +1,534 @@
+{
+    "name": "Apex",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "thousand_hand_break": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Thousand Hand Break",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 12,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 18,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "break_beam": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "break beam",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:blank",
+            "damage_type": "null",
+            "damage": 12,
+            "max_distance": 12,
+            "speed": 0.2,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "thousand_hand_break",
+                                            "min": 12,
+                                            "max": 18
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "finger_mass_potency": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Finger Mass Potency",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "mass_fling": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "mass fling self",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 1.4,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "finger_mass_potency",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "mass_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "mass aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 14,
+            "damage": 8,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "mass_fling"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "mass_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "mass knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 14,
+            "knockback": 8,
+            "invert": false,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "mass_fling"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "mass_shake": {
+            "type": "gravecore:screenshake",
+            "icon": "minecraft:iron_chestplate",
+            "title": "mass shake",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "intensity": 2,
+            "duration": 18,
+            "distance": 22,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "mass_fling"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "decay_circular": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Decay",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say Hello World"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/apex",
+                                                    "ability": "thousand_hand_break"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "decay_circular_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "decay circular swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "decay_circular"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "decay_hand_break": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Decay",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "say ts work"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "thousand_hand_break"
+                                        }
+                ]
+            }
+        },
+        "search": {
+            "type": "palladium:entity_glow",
+            "icon": "minecraft:glow_berries",
+            "title": "Search",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "mode": "others",
+            "color": "#F9E47A",
+            "distance": 20,
+            "property_key": "null",
+            "property_value": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:held",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "glow_self": {
+            "type": "palladium:entity_glow",
+            "icon": "minecraft:glow_berries",
+            "title": "search self glow",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "mode": "self",
+            "color": "#F9E47A",
+            "distance": 24,
+            "property_key": "null",
+            "property_value": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "search"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Apex",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex_armour": {
+            "type": "palladium:restrict_slots",
+            "icon": "minecraft:blaze_rod",
+            "title": "apex no armour",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "slots": [
+                "head",
+                "chest",
+                "legs",
+                "feet"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex_size": {
+            "type": "palladium:size",
+            "icon": "palladium:textures/icon/size.png",
+            "title": "apex size",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "scale": 1.5,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex_stronger": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "apex strength",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.5,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-9001-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex_regen": {
+            "type": "palladium:healing",
+            "icon": "minecraft:apple",
+            "title": "apex regen",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "frequency": 50,
+            "amount": 4,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                            ],
+                "unlocking": []
+            }
+        },
+        "apex_speed": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "apex speed",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": -0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-9002-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "apex_jump": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "apex jump",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "palladium:jump_power",
+            "amount": -0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-9003-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/apex",
+                                            "ability": "apex"
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

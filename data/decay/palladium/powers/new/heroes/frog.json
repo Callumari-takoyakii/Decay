@@ -4,42 +4,358 @@
     "background": "minecraft:textures/block/white_wool.png",
     "icon": "decay:textures/icons/gui/powers/frog/frog.png",
     "gui_display_type": "tree",
-    "energy_bars": {
-    "bubbles": {
-        "max": 100,
-        "color": "#96DDFA"
-    }
-    },
     "abilities": {
-        "frog": {
-            "type": "palladium:dummy",
-            "icon": "decay:textures/icons/gui/powers/frog/frog.png",
-            "title": "Frog",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": [0,0],
-            "description": "Gives you amphibian features, like a longer tongue and faster swim speed!",
-            "conditions": {
-                "enabling": [],
-                "unlocking": []
-            }
-        },
-        "froggy_catch": {
-            "type": "gravestone:telekinesis",
-            "icon": "decay:textures/icons/gui/powers/frog/frog.png",
-            "title": "Froggy Catch",
+        "ribbit": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "Ribbit",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
-            "gui_position": [0,1],
-            "description": "Extend your tongue, allowing you to wrap it around a target and carry them around.",
-            "allowed_blocks": "grave.ht:magnetic",
-            "banned_entities": "grave.ht:magnetic_entities",
-            "distance": 8,
-            "grip_score": "grave.biot.scroll",
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "energy_beam": "decay:frog_tongue",
+            "damage_type": "null",
+            "damage": 4,
+            "max_distance": 12,
+            "speed": 0.2,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 4,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ribbit_movement": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "ribbit movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 2.8,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "ribbit"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ribbit_swing": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Ribbit Swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ribbit_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "ribbit aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 5,
+            "damage": 3,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "ribbit_swing",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ribbit_knock": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "ribbit swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 5,
+            "knockback": 3,
+            "invert": false,
+            "cone": true,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "ribbit_swing",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "bubble_blow": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "Bubble Blow",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 5,
+                "DamageType": "minecraft:freeze",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 24,
+                "CommandOnBlockHit": "/function decay:frog_bubbles",
+                "CommandOnEntityHit": "/function decay:frog_bubbles",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "particles",
+                        "ParticleType": "decay:bubble",
+                        "Spread": 0.2,
+                        "Amount": 1
+                    }
+                ]
+            },
+
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "froppy_hopper": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Froppy Hopper",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 2,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "hop_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "hop aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 14,
+            "damage": 4,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "froppy_hopper",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "hop_stagger": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "hop stagger",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 14,
+            "knockback": 0.4,
+            "invert": false,
+            "cone": false,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "froppy_hopper",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "hop_wave": {
+            "type": "gravecore:particle_aura",
+            "icon": "minecraft:amethyst_shard",
+            "title": "hop wave 1",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "count": 18,
+            "start_hex": "#386F87",
+            "end_hex": "#91BCD9",
+            "property_start_hex": "null",
+            "property_end_hex": "null",
+            "aura_type": "wave",
+            "particle_type": "twinkle",
+            "particle_size": 1.8,
+            "visibility": 0.9,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "froppy_hopper",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "hop": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "hop",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 0.4,
+            "direction": "up",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/frog",
+                                            "ability": "froppy_hopper",
+                                            "min": 2,
+                                            "max": 2
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "camofrog": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Camofrog",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
             "conditions": {
                 "enabling": [
                                         {
@@ -52,132 +368,7 @@
                 ],
                 "unlocking": []
             }
-        },
-        "froggy_catch_tongue": {
-            "type": "palladium:energy_beam",
-            "icon": "minecraft:blaze_rod",
-            "title": "froggy catch tongue",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "energy_beam": "decay:frog_tongue",
-            "damage_type": "null",
-            "damage": 0,
-            "max_distance": 8,
-            "speed": 0.0,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [],
-            "commands_on_entity_hit": [],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:frog",
-                                            "ability": "froggy_catch"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "bubbles": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/frog/bubble.png",
-            "title": "Ribbit Bubbles",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 1,
-            "gui_position": [0,2],
-            "description": "Create bubbles that slow targets!",
-            "time": 10,
-            "arm": "main_arm",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 10,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "bubbles_particle": {
-            "type": "palladium:particles",
-            "icon": "minecraft:blaze_rod",
-            "title": "show particles",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 1,
-            "gui_position": "null",
-            "description": "desc",
-            "emitter": ["decay:shootbubble"],
-            "particle_type": "decay:shootbubble",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:frog",
-                                            "ability": "bubbles",
-                                            "min": 8,
-                                            "max": 10
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "bubbles_projectile": {
-            "type": "palladium:projectile",
-            "icon": "decay:textures/icons/gui/powers/frog/bubble.png",
-            "title": "Ribbit Bubbles",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 1,
-            "gui_position": "null",
-            "description": "Create bubbles that slow targets!",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 8,
-                "DamageType": "minecraft:freeze",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.02,
-                "Lifetime": 65,
-                "CommandOnBlockHit": "/function decay:frog_bubbles",
-                "CommandOnEntityHit": "/function decay:frog_bubbles",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:frog/bubble_projectile"
-                    }
-                ]
-            },
-            "inaccuracy": 0.4,
-            "velocity": 0.7,
-            "swinging_arm": "none",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_last_tick",
-                                            "power": "decay:frog",
-                                            "ability": "bubbles"
-                                        }
-                ],
-                "unlocking": []
-            }
         }
+
     }
 }
