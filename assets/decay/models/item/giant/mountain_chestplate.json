@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "decay:item/giant/mountain_chestplate"
+  }
+}

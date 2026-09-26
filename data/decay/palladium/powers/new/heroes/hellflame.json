@@ -1,0 +1,984 @@
+{
+    "name": "Hellflame",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "decay:textures/icons/gui/powers/hellflame/face.png",
+    "gui_display_type": "tree",
+    "energy_bars": {
+    "overheat": {
+       "max": 60,
+       "color": "#E5360F"
+      }
+    },
+    "abilities": {
+        "flight": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Searing Flight",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "attribute": "palladium:flight_speed",
+            "amount": 0.5,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-0120-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": []
+            }
+        },
+        "flight_render": {
+            "type": "palladium:render_layer",
+            "icon": "minecraft:blaze_rod",
+            "title": "flight thrusters",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "render_layer": "decay:hellflame/flight",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:is_hovering_or_flying"
+                                        }
+                ]
+            }
+        },
+        "chestplate_boost": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Searing Chestplate",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Gain a slight increase in attack damage when wearing the Searing Chestplate.",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-0121-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:hellflame/searing_chestplate"
+                                            },
+                                            "slot": "chest"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "leggings_boost": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Searing Leggings",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Gain a slight increase in attack damage when wearing the Searing Leggings.",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.2,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-0122-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:hellflame/searing_leggings"
+                                            },
+                                            "slot": "legs"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "boots_boost": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Searing Boots",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Gain a slight increase in attack damage when wearing the Searing Boots.",
+            "attribute": "minecraft:generic.attack_damage",
+            "amount": 0.1,
+            "operation": 1,
+            "uuid": "498be4fb-af04-42f2-0122-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:hellflame/searing_boots"
+                                            },
+                                            "slot": "feet"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "flame_mask_restrict": {
+            "type": "palladium:restrict_slots",
+            "icon": "minecraft:blaze_rod",
+            "title": "Searing Mask",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Create a flaming mask when wearing the Searing chestplate, leggings and boots.",
+            "slots": [
+                "head"
+            ],
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_chestplate"
+                                                    },
+                                                    "slot": "chest"
+                                                },
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_leggings"
+                                                    },
+                                                    "slot": "legs"
+                                                },
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_boots"
+                                                    },
+                                                    "slot": "feet"
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:item_in_slot",
+                                                            "item": {
+                                                                "item": "decay:hellflame/searing_mask"
+                                                            },
+                                                            "slot": "head"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:empty_slot",
+                                                            "slot": "head"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "flame_mask_create": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "flame mask create",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/execute as @p run item replace entity @p armor.head with decay:hellflame/searing_mask",
+                "/playsound block.campfire.crackle block @a[distance=..4] ~ ~ ~ 1 2",
+                "/particle flame ^ ^1.6 ^ 0 0.1 0 0.2 4"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 1
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_chestplate"
+                                                    },
+                                                    "slot": "chest"
+                                                },
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_leggings"
+                                                    },
+                                                    "slot": "legs"
+                                                },
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_boots"
+                                                    },
+                                                    "slot": "feet"
+                                                },
+                                                {
+                                                    "type": "palladium:empty_slot",
+                                                    "slot": "head"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "flame_mask_no_remove": {
+            "type": "palladium:lock_armor",
+            "icon": "minecraft:blaze_rod",
+            "title": "flame mask no remove",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:item_in_slot",
+                                            "item": {
+                                                "item": "decay:hellflame/searing_mask"
+                                            },
+                                            "slot": "head"
+                                        }
+                ]
+            }
+        },
+        "flame_mask_remove": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "flame mask remove",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/execute as @p run item replace entity @p armor.head with air",
+                "/playsound block.campfire.crackle block @a[distance=..4] ~ ~ ~ 1 2",
+                "/particle flame ^ ^1.6 ^ 0 0.1 0 0.2 4"
+            ],
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:item_in_slot",
+                                                    "item": {
+                                                        "item": "decay:hellflame/searing_mask"
+                                                    },
+                                                    "slot": "head"
+                                                },
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:item_in_slot",
+                                                            "item": {
+                                                                "item": "decay:hellflame/searing_chestplate"
+                                                            },
+                                                            "slot": "chest"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:item_in_slot",
+                                                            "item": {
+                                                                "item": "decay:hellflame/searing_leggings"
+                                                            },
+                                                            "slot": "legs"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "palladium:not",
+                                                    "conditions": [
+                                                        {
+                                                            "type": "palladium:item_in_slot",
+                                                            "item": {
+                                                                "item": "decay:hellflame/searing_boots"
+                                                            },
+                                                            "slot": "feet"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "vanishing_fist": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/hellflame/fist.png",
+            "title": "Vanishing Fist",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Shoot out a fist of flames.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 4,
+                "DamageType": "minecraft:in_fire",
+                "SetEntityOnFireSeconds": 4,
+                "Gravity": 0.0,
+                "Lifetime": 28,
+                "CommandOnBlockHit": "/particle flame ^ ^0.8 ^ 0.1 0.2 0.1 0.2 6",
+                "CommandOnEntityHit": "/particle flame ^ ^0.8 ^ 0.1 0.2 0.1 0.2 6",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:hellflame/vanishing_fist"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 1.2,
+            "swinging_arm": "right_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/heroes/hellflame",
+                                                    "ability": "flashfire_fist"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "supernova_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/hellflame/supernova.png",
+            "title": "Flashfire Fist: Supernova",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Produce a ball of flames that expands and explodes on impact.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "supernova": {
+            "type": "palladium:projectile",
+            "icon": "decay:textures/icons/gui/powers/hellflame/supernova.png",
+            "title": "Flashfire Fist: Supernova",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Produce a ball of flames that expands and explodes on impact.",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 4,
+                "DamageType": "minecraft:in_fire",
+                "SetEntityOnFireSeconds": 4,
+                "Gravity": 0.0,
+                "Lifetime": 48,
+                "CommandOnBlockHit": "/particle flame ^ ^0.8 ^ 0.1 0.2 0.1 0.6 4",
+                "CommandOnEntityHit": "/particle flame ^ ^0.8 ^ 0.1 0.2 0.1 0.6 4",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "ExplosionRadius": 1.5,
+                "ExplosionCausesFire": true,
+                "ExplosionInteraction": "block",
+                "Appearances": [
+
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:hellflame/supernova"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.3,
+            "swinging_arm": "right_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "flashfire_fist"
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "supernova_buy"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "storm_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/hellflame/storm.png",
+            "title": "Hellfire Storm",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "hellfire_storm": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/hellflame/storm.png",
+            "title": "Hellfire Storm",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "time": 12,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 16,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "storm_buy"
+                                        }
+                ]
+            }
+        },
+        "hell_storm_summon": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "hellstorm summon",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:blank",
+            "damage_type": "minecraft:on_fire",
+            "damage": 8,
+            "max_distance": 26,
+            "speed": 0.2,
+            "set_on_fire_seconds": 8,
+            "cause_fire": true,
+            "smelt_blocks": true,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamestorm\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamestorm\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "hellfire_storm",
+                                            "min": 14,
+                                            "max": 16
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "curtain_buy": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/hellflame/curtain.png",
+            "title": "Hellfire Curtain",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "hellfire_curtain": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/hellflame/curtain.png",
+            "title": "Hellfire Curtain",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "time": 6,
+            "arm": "both",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 12,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "curtain_buy"
+                                        }
+                ]
+            }
+        },
+        "hell_curtain_summon": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "hellcurtain summon",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:blank",
+            "damage_type": "minecraft:on_fire",
+            "damage": 6,
+            "max_distance": 16,
+            "speed": 0.2,
+            "set_on_fire_seconds": 8,
+            "cause_fire": true,
+            "smelt_blocks": true,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamecurtain\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamecurtain\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "hellfire_curtain",
+                                            "min": 10,
+                                            "max": 12
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "infernal_arrow": {
+            "type": "palladium:aim",
+            "icon": "decay:textures/icons/gui/powers/hellflame/arrow.png",
+            "title": "Infernal Arrow",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "time": 6,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 12,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/heroes/hellflame",
+                                                    "ability": "flashfire_fist"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
+        "arrow_fire": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "arrow fire",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:blank",
+            "damage_type": "minecraft:on_fire",
+            "damage": 8,
+            "max_distance": 18,
+            "speed": 0.2,
+            "set_on_fire_seconds": 16,
+            "cause_fire": true,
+            "smelt_blocks": true,
+            "commands_on_block_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamearrow\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "commands_on_entity_hit": [
+                "/summon minecraft:armor_stand ~ ~ ~ {Palladium:{Properties:{superpowers:[\"decay:stands/flames\"]}},Tags:[\"flamearrow\"],Invulnerable:1,Invisible:1,NoGravity:1b}"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "infernal_arrow",
+                                            "min": 10,
+                                            "max": 12
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "prominence_burn": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/hellflame/prominence.png",
+            "title": "Flashfire Fist: Prominence Burn",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 48,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "flashfire_fist"
+                                        }
+                ]
+            }
+        },
+        "prominence": {
+            "type": "palladium:energy_beam",
+            "icon": "minecraft:blaze_rod",
+            "title": "prominence",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "energy_beam": "decay:prominence",
+            "damage_type": "minecraft:on_fire",
+            "damage": 4,
+            "max_distance": 18,
+            "speed": 0.4,
+            "set_on_fire_seconds": 12,
+            "cause_fire": true,
+            "smelt_blocks": true,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "prominence_burn",
+                                            "min": 8,
+                                            "max": 48
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "flashfire_fist": {
+            "type": "palladium:dummy",
+            "icon": "decay:textures/icons/gui/powers/hellflame/face.png",
+            "title": "Flashfire Fist",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "scorching_impact": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Flashfire Fist: Scorching Impact",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "time": 8,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 10,
+                                            "key_type": "right_click",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "flashfire_fist"
+                                        }
+                ]
+            }
+        },
+        "scorch_movement": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "scorch movement",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 2.4,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "scorching_impact",
+                                            "min": 10,
+                                            "max": 10
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "scorch_damage": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "scorch damage",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 3,
+            "damage": 14,
+            "fire_ticks": 40,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "scorch_movement"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "scorch_knockback": {
+            "type": "gravecore:aoe_knockback",
+            "icon": "minecraft:fire_charge",
+            "title": "scorch knockback",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 3,
+            "knockback": 8,
+            "invert": false,
+            "cone": true,
+            "crush": false,
+            "is_charged": false,
+            "scoreboard": "Score.Board",
+            "scoreboard_max": "Score.Board.Max",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/heroes/hellflame",
+                                            "ability": "scorch_movement"
+                                        }
+                ],
+                "unlocking": []
+            }
+        }
+
+    }
+}

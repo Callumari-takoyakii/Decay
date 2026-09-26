@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "leggings",
+    "armor_material": "decay:villains",
+    "armor_renderer": "decay:double/twice_leggings",
+    "openable": false
+}

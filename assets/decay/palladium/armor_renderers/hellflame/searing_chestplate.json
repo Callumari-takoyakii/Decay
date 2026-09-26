@@ -1,0 +1,11 @@
+{
+"textures": {
+  "normal": "decay:textures/models/armor/hellflame/searing_chestplate.png",
+  "slim": "decay:textures/models/armor/hellflame/searing_chestplate_slim.png"
+},
+"hide_second_layer": true,
+"model_layers": {
+  "normal": "palladium:humanoid#suit",
+  "slim": "palladium:humanoid#suit_slim"
+}
+    }

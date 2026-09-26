@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "boots",
+    "armor_material": "decay:pro_hero",
+    "armor_renderer": "decay:hellflame/searing_boots",
+    "openable": false
+}

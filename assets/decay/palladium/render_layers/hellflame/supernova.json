@@ -1,0 +1,10 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:hellflame/supernova",
+            "texture": "decay:textures/models/projectiles/hellflame/supernova.png"
+        }
+    ]
+}

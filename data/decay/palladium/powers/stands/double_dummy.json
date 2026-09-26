@@ -8,14 +8,15 @@
         "render": {
             "type": "palladium:render_layer",
             "icon": "minecraft:blaze_rod",
-            "title": "render",
+            "title": "twicey",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
-            "list_index": -1,
+            "list_index": 0,
             "gui_position": "null",
-            "description": "changes",
-            "render_layer": "decay:cat_double",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "render_layer": "decay:double/twice",
             "conditions": {
                 "enabling": [],
                 "unlocking": []

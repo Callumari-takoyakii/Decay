@@ -4,13 +4,44 @@
     "background": "minecraft:textures/block/white_wool.png",
     "icon": "decay:textures/icons/gui/powers/double/mudimitation.png",
     "gui_display_type": "tree",
-    "energy_bars": {
-    "parade": {
-       "max": 35,
-       "color": "#A57539"
-      }
-    },
     "abilities": {
+        "show_arms": {
+            "type": "palladium:show_both_arms",
+            "icon": "minecraft:blaze_rod",
+            "title": "show arms",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:or",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/double",
+                                                    "ability": "mud_imitation"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/double",
+                                                    "ability": "help_dupe"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_enabled",
+                                                    "power": "decay:new/villains/double",
+                                                    "ability": "tape_measure_snap"
+                                                }
+                                            ]
+                                        }
+                ]
+            }
+        },
         "mud_imitation": {
             "type": "palladium:aim",
             "icon": "decay:textures/icons/gui/powers/double/mudimitation.png",
@@ -54,7 +85,8 @@
             "commands": [
                 "/particle block packed_mud ^ ^0 ^ 0.4 0 0.4 1 60",
                 "/particle block packed_mud ^ ^1 ^1 0.1 0 0.1 1 60",
-                "/execute positioned ^ ^ ^1.2 as @s run function decay:double/spawn_tamed_wolf"
+                "/execute positioned ^ ^ ^1.2 as @s run function decay:double/spawn_tamed_wolf",
+                "/playsound entity.generic.splash neutral @a[distance=..8] ~ ~ ~ 1 2"
             ],
             "conditions": {
                 "enabling": [
@@ -84,7 +116,7 @@
                 "DamageType": "decay:doubleimpact",
                 "SetEntityOnFireSeconds": 0,
                 "Gravity": 0.03,
-                "Lifetime": 25,
+                "Lifetime": 18,
                 "CommandOnBlockHit": "/function decay:double/helpdupe",
                 "CommandOnEntityHit": "/function decay:double/helpdupe",
                 "DieOnEntityHit": true,
@@ -131,7 +163,8 @@
             ],
             "last_tick_commands": [],
             "commands": [
-                "/particle block packed_mud ^ ^1 ^0.5 0.1 0 0.1 1 60"
+                "/particle block packed_mud ^ ^1 ^0.5 0.1 0 0.1 1 60",
+                "/playsound entity.generic.splash neutral @a[distance=..8] ~ ~ ~ 1 2"
             ],
             "conditions": {
                 "enabling": [
@@ -145,7 +178,7 @@
             }
         },
         "sad_mans_parade": {
-            "type": "palladium:aim",
+            "type": "palladium:command",
             "icon": "decay:textures/icons/gui/powers/double/parade.png",
             "title": "Double: Sad Man's Parade",
             "bar_color": "light_gray",
@@ -154,93 +187,51 @@
             "list_index": 2,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "null",
-            "time": 12,
-            "arm": "both",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:held",
-                                            "cooldown": 0,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:energy_bar",
-                                            "power": "decay:new/villains/double",
-                                            "energy_bar": "parade",
-                                            "min": 0,
-                                            "max": 35
-                                        }
-                ]
-            }
-        },
-        "parade_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "parade commands",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 2,
-            "gui_position": "null",
-            "gui_frame_type": "task",
             "description": "desc",
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
                 "/particle block packed_mud ^ ^1 ^1 0.4 0 0.4 1 60",
-                "/execute positioned ^ ^0.5 ^1 as @s run function decay:double/spawn_tamed_wolf",
-                "/energybar value add @s decay:new/villains/double parade 1"
+                "/execute positioned ^0 ^0.5 ^-1 as @s run function decay:double/spawn_tamed_wolf",
+                "/execute positioned ^-1 ^0.5 ^-1 as @s run function decay:double/spawn_tamed_wolf",
+                "/execute positioned ^1 ^0.5 ^-1 as @s run function decay:double/spawn_tamed_wolf",
+                "/execute positioned ^2 ^0.5 ^-1 as @s run function decay:double/spawn_tamed_wolf",
+                "/execute positioned ^-2 ^0.5 ^-1 as @s run function decay:double/spawn_tamed_wolf",
+                "/playsound entity.generic.splash neutral @a[distance=..8] ~ ~ ~ 1 2"
             ],
             "conditions": {
                 "enabling": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:new/villains/double",
-                                            "ability": "sad_mans_parade",
-                                            "min": 10,
-                                            "max": 1200
-                                        },
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 5
+                                            "type": "palladium:action",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
                                         }
                 ],
                 "unlocking": []
             }
         },
         "crit_tape_measure": {
-            "type": "palladium:energy_beam",
+            "type": "palladium:aim",
             "icon": "decay:textures/icons/gui/powers/double/crittapemeasure.png",
             "title": "Critical Tape Measure",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 3,
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "Shoot out your tape measure, slicing a target on the razor-sharp edge. Hit a target a second time to deal increased damage.",
-            "energy_beam": "decay:tape_right",
-            "damage_type": "null",
-            "damage": 5,
-            "max_distance": 16,
-            "speed": 0.0,
-            "set_on_fire_seconds": 0,
-            "cause_fire": false,
-            "smelt_blocks": false,
-            "commands_on_block_hit": [],
-            "commands_on_entity_hit": [],
+            "time": 5,
+            "arm": "right_arm",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 5,
-                                            "key_type": "key_bind",
+                                            "ticks": 8,
+                                            "key_type": "right_click",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
@@ -248,22 +239,22 @@
                 "unlocking": []
             }
         },
-        "tape_measure_snap": {
+        "crit_tape": {
             "type": "palladium:energy_beam",
-            "icon": "decay:textures/icons/gui/powers/double/tapesnap.png",
-            "title": "Tape Measure Snap",
+            "icon": "decay:textures/icons/gui/powers/double/crittapemeasure.png",
+            "title": "crit tape",
             "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
+            "hidden": true,
+            "hidden_in_bar": true,
             "list_index": 4,
             "gui_position": "null",
             "gui_frame_type": "task",
-            "description": "Extend your tape measure, snapping it back, propelling you forward.",
-            "energy_beam": "decay:tape_left",
+            "description": "desc",
+            "energy_beam": "decay:tape_right",
             "damage_type": "null",
-            "damage": 5,
-            "max_distance": 8,
-            "speed": 0.0,
+            "damage": 8,
+            "max_distance": 28,
+            "speed": 0.9,
             "set_on_fire_seconds": 0,
             "cause_fire": false,
             "smelt_blocks": false,
@@ -272,12 +263,142 @@
             "conditions": {
                 "enabling": [
                                         {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "crit_tape_measure",
+                                            "min": 5,
+                                            "max": 8
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "crit_tape_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "tape swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "crit_tape"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "tape_measure_snap": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "Tape Measure Snap",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Extend your tape measure, snapping it back, propelling you forward.",
+            "time": 5,
+            "arm": "left_arm",
+            "conditions": {
+                "enabling": [
+                                        {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 5,
-                                            "key_type": "key_bind",
+                                            "ticks": 8,
+                                            "key_type": "left_click",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "snap_tape": {
+            "type": "palladium:energy_beam",
+            "icon": "decay:textures/icons/gui/powers/double/tapesnap.png",
+            "title": "Tape Measure Snap",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Extend your tape measure, snapping it back, propelling you forward.",
+            "energy_beam": "decay:tape_left",
+            "damage_type": "null",
+            "damage": 6,
+            "max_distance": 12,
+            "speed": 0.9,
+            "set_on_fire_seconds": 0,
+            "cause_fire": false,
+            "smelt_blocks": false,
+            "commands_on_block_hit": [],
+            "commands_on_entity_hit": [],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "tape_measure_snap",
+                                            "min": 5,
+                                            "max": 8
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "tape_snap_move": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "tape snap move",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 3.4,
+            "direction": "facing",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "snap_tape"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "tape_snap_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "tape snap swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "left_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/double",
+                                            "ability": "snap_tape"
                                         }
                 ],
                 "unlocking": []

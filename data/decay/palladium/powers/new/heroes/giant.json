@@ -29,10 +29,10 @@
                 "unlocking": []
             }
         },
-        "giant_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "big",
+        "giant": {
+            "type": "palladium:size",
+            "icon": "palladium:textures/icon/size.png",
+            "title": "giant",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -40,13 +40,7 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [
-                "/scale reset pehkui:base @s"
-            ],
-            "commands": [
-                "/scale set pehkui:base 5 @s"
-            ],
+            "scale": 3.5,
             "conditions": {
                 "enabling": [
                                         {
@@ -56,6 +50,28 @@
                                         }
                 ],
                 "unlocking": []
+            }
+        },
+        "fist_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "fist buy",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
             }
         },
         "small_fist": {
@@ -70,7 +86,25 @@
             "gui_frame_type": "task",
             "description": "Produce a small shockwave from your fist in a direction you aim.",
             "entity_type": "palladium:custom_projectile",
-            "entity_data": "null",
+            "entity_data": {
+                "Damage": 6,
+                "DamageType": "minecraft:sonic_boom",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 24,
+                "CommandOnBlockHit": "/particle firework",
+                "CommandOnEntityHit": "/particle firework",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "particles",
+                        "ParticleType": "minecraft:firework",
+                        "Spread": 0.1,
+                        "Amount": 8
+                    }
+                ]
+            },
             "inaccuracy": 0,
             "velocity": 1.5,
             "swinging_arm": "main_arm",
@@ -88,6 +122,9 @@
                 ],
                 "unlocking": [
                                         {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
                                             "type": "palladium:not",
                                             "conditions": [
                                                 {
@@ -96,7 +133,14 @@
                                                     "ability": "gigantification"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/giant",
+                                            "ability": "fist_buy"
                                         }
+                                    ]
+                                }
                 ]
             }
         },
@@ -112,7 +156,25 @@
             "gui_frame_type": "task",
             "description": "Create large shockwaves from your fists in a direction you aim.",
             "entity_type": "palladium:custom_projectile",
-            "entity_data": "null",
+            "entity_data": {
+                "Damage": 12,
+                "DamageType": "minecraft:sonic_boom",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 75,
+                "CommandOnBlockHit": "/particle firework",
+                "CommandOnEntityHit": "/particle firework",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+                    {
+                        "Type": "particles",
+                        "ParticleType": "minecraft:firework",
+                        "Spread": 0.4,
+                        "Amount": 6
+                    }
+                ]
+            },
             "inaccuracy": 0,
             "velocity": 0.2,
             "swinging_arm": "main_arm",
@@ -130,9 +192,41 @@
                 ],
                 "unlocking": [
                                         {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
                                             "ability": "gigantification"
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/giant",
+                                            "ability": "fist_buy"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "stomp_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Stomp",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Stomp the ground, knocking back targets. You must be on the ground to use this ability.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
                                         }
                 ]
             }
@@ -142,7 +236,7 @@
             "icon": "decay:textures/icons/gui/powers/giant/stompnormal.png",
             "title": "Rapid Stomp",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 2,
             "gui_position": "null",
@@ -177,6 +271,11 @@
                                                             "ability": "gigantification"
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/giant",
+                                                    "ability": "stomp_buy"
                                                 }
                                             ]
                                         }
@@ -195,7 +294,7 @@
             "gui_frame_type": "task",
             "description": "desc",
             "radius": 12,
-            "damage": 1,
+            "damage": 4,
             "fire_ticks": 0,
             "damage_type": "null",
             "cone": false,
@@ -258,7 +357,8 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "say Hello World"
+                "/particle crit ^ ^0.5 ^ 1.4 0.2 1.4 0.4 180",
+                "/playsound entity.player.big_fall player @a[distance=..14] ~ ~ ~ 1 0.6"
             ],
             "conditions": {
                 "enabling": [
@@ -308,6 +408,11 @@
                                                     "type": "palladium:ability_enabled",
                                                     "power": "decay:new/heroes/giant",
                                                     "ability": "gigantification"
+                                                },
+                                                {
+                                                    "type": "palladium:ability_unlocked",
+                                                    "power": "decay:new/heroes/giant",
+                                                    "ability": "stomp_buy"
                                                 }
                                             ]
                                         }
@@ -325,8 +430,8 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "radius": 12,
-            "damage": 1,
+            "radius": 24,
+            "damage": 8,
             "fire_ticks": 0,
             "damage_type": "null",
             "cone": false,
@@ -354,8 +459,8 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "radius": 12,
-            "knockback": 6,
+            "radius": 24,
+            "knockback": 10,
             "invert": false,
             "cone": false,
             "crush": false,
@@ -389,7 +494,8 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "say Hello World"
+                "/particle crit ^ ^0.5 ^ 5 0.3 5 0.4 340",
+                "/playsound entity.player.big_fall player @a[distance=..28] ~ ~ ~ 1 0.2"
             ],
             "conditions": {
                 "enabling": [
@@ -402,6 +508,28 @@
                                         }
                 ],
                 "unlocking": []
+            }
+        },
+        "steam_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Steam",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Produce steam from your body that burns nearby targets.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
             }
         },
         "small_steam": {
@@ -419,12 +547,15 @@
                 "enabling": [
                                         {
                                             "type": "palladium:held",
-                                            "cooldown": 100,
+                                            "cooldown": 80,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false
                                         }
                 ],
                 "unlocking": [
+                                {
+                                    "type": "palladium:and",
+                                    "conditions": [
                                         {
                                             "type": "palladium:not",
                                             "conditions": [
@@ -434,7 +565,14 @@
                                                     "ability": "gigantification"
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/giant",
+                                            "ability": "steam_buy"
                                         }
+                        ]
+                    }
                 ]
             }
         },
@@ -451,11 +589,16 @@
             "description": "desc",
             "radius": 6,
             "damage": 2,
-            "fire_ticks": 5,
+            "fire_ticks": 4,
             "damage_type": "null",
             "cone": false,
             "conditions": {
                 "enabling": [
+                                {
+                                    "type": "palladium:interval",
+                                    "active_ticks": 0,
+                                    "disabled_ticks": 10
+                                },
                                         {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
@@ -479,10 +622,17 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "say Hello World"
+                "/particle cloud ^ ^1.6 ^-0.4 0 0.4 0 0.2 32",
+                "/particle cloud ^ ^2.4 ^-0.5 0 0.4 0 0.4 12",
+                "/playsound entity.evoker.cast_spell hostile @a[distance=..6] ~ ~ ~ 1 1.8"
             ],
             "conditions": {
                 "enabling": [
+                                {
+                                    "type": "palladium:interval",
+                                    "active_ticks": 0,
+                                    "disabled_ticks": 10
+                                },
                                         {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
@@ -513,11 +663,21 @@
                                         }
                 ],
                 "unlocking": [
+                                {
+                                    "type": "palladium:and",
+                                    "conditions": [
                                         {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
                                             "ability": "gigantification"
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/giant",
+                                            "ability": "steam_buy"
                                         }
+                                ]
+                        }
                 ]
             }
         },
@@ -532,13 +692,18 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "radius": 6,
+            "radius": 18,
             "damage": 2,
-            "fire_ticks": 5,
+            "fire_ticks": 4,
             "damage_type": "null",
             "cone": false,
             "conditions": {
                 "enabling": [
+                                {
+                                    "type": "palladium:interval",
+                                    "active_ticks": 0,
+                                    "disabled_ticks": 10
+                                },
                                         {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
@@ -562,10 +727,17 @@
             "first_tick_commands": [],
             "last_tick_commands": [],
             "commands": [
-                "say Hello World"
+                "/particle cloud ^ ^8.6 ^ 0.2 0.4 0.2 0.6 40",
+                "/particle cloud ^ ^9.4 ^ 0.2 0.4 0.2 0.8 28",
+                "/playsound entity.evoker.cast_spell hostile @a[distance=..18] ~ ~ ~ 1 1.4"
             ],
             "conditions": {
                 "enabling": [
+                                {
+                                    "type": "palladium:interval",
+                                    "active_ticks": 0,
+                                    "disabled_ticks": 10
+                                },
                                         {
                                             "type": "palladium:ability_enabled",
                                             "power": "decay:new/heroes/giant",
@@ -573,77 +745,6 @@
                                         }
                 ],
                 "unlocking": []
-            }
-        },
-        "small_titan": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/giant/cannonballnormal.png",
-            "title": "Lumbering Dreadnought",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 4,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "Take a bite out of a nearby target.",
-            "time": 16,
-            "arm": "both",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 16,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:not",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:new/heroes/giant",
-                                                    "ability": "gigantification"
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "large_cannonball": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/giant/cannonball.png",
-            "title": "Lumbering Titan",
-            "bar_color": "light_gray",
-            "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 4,
-            "gui_position": "null",
-            "gui_frame_type": "task",
-            "description": "Take a bite out of a nearby target.",
-            "time": 22,
-            "arm": "both",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 0,
-                                            "ticks": 22,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:new/heroes/giant",
-                                            "ability": "gigantification"
-                                        }
-                ]
             }
         },
         "health1": {

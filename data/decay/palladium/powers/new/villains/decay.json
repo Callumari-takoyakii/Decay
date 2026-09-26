@@ -1,0 +1,952 @@
+{
+    "name": "Decay",
+    "persistent_data": true,
+    "background": "minecraft:textures/block/white_wool.png",
+    "icon": "minecraft:wither_skeleton_skull",
+    "gui_display_type": "tree",
+    "abilities": {
+        "all_5_fingers": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "All 5 Fingers",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": false,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Decay targets you touch with all 5 fingers. Requires an empty hand.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "all_5_fingers_punch": {
+            "type": "gravecore:potion_punch",
+            "icon": "minecraft:iron_chestplate",
+            "title": "5 fingers punch",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "effect": "minecraft:wither",
+            "time": 8,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "all_5_fingers"
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:empty_slot",
+                                            "slot": "mainhand"
+                                        }
+                ]
+            }
+        },
+        "collapse_hand_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Collapse Hand",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spread decay through the ground ahead of you. Use while mid-air to perform a backflip which creates decay if you end on the ground.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "collapse_hand": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Collapse Hand",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spread decay through the ground ahead of you. Use while mid-air to perform a backflip which creates decay if you end on the ground.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:on_ground"
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand_buy"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        }, 
+        "collapse_command": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "collapse grounded",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/fill ^1 ^0 ^0 ^-1 ^4 ^8 air",
+                "/playsound block.gravel.break block @a[distance=..12] ~ ~ ~ 1 0.2",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^0 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^1 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^2 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^3 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^4 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^5 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^6 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^7 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^8 0.2 0.1 0.2 0.2 16"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_damage": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "collapse damage",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 8,
+            "damage": 12,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_hand_midair": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Collapse Hand",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spread decay through the ground ahead of you. Use while mid-air to perform a backflip which creates decay if you end on the ground.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:and",
+                                            "conditions": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:on_ground"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand_buy"
+                                        }
+                                    ]
+                                }
+                ]
+            }
+        },
+        "collapse_flip": {
+            "type": "gravecore:movement",
+            "icon": "minecraft:fire_charge",
+            "title": "collapse flip",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "motion_scale": 0.4,
+            "direction": "backward",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand_midair",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_command_midair": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "collapse midair",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/fill ^1 ^0 ^0 ^-1 ^2 ^8 air",
+                "/playsound block.gravel.break block @a[distance=..12] ~ ~ ~ 1 0.2",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^0 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^1 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^2 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^3 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^4 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^5 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^6 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^7 0.2 0.1 0.2 0.2 16",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^8 0.2 0.1 0.2 0.2 16"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_last_tick",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_flip"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_midair_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "collapse damage",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 8,
+            "damage": 12,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": true,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_flip",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "collape swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "collapse_swing_midair": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "collapse swing midair",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "collapse_hand_midair",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ground_destruction_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Ground Destruction",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spread decay across the ground around you.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "ground_destruction": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Ground Destruction",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Spread decay across the ground around you.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "ground_destruction_buy"
+                                        }
+                ]
+            }
+        },
+        "ground_destruct_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "ground destruct commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/fill ~10 ~-1 ~10 ~-10 ~2 ~-10 air",
+                "/playsound block.gravel.break block @a[distance=..24] ~ ~ ~ 1 0.2",
+                "/particle dust_color_transition 0.5 0.16 0.62 1 0.4 0.08 0.44 ^ ^0.2 ^0 0.2 1.4 0.2 1.4 110"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "ground_destruction",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ground_destruct_aoe": {
+            "type": "gravecore:aoe_damage",
+            "icon": "minecraft:fire_charge",
+            "title": "ground destruct aoe",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "radius": 20,
+            "damage": 8,
+            "fire_ticks": 0,
+            "damage_type": "null",
+            "cone": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "ground_destruction",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ground_destruct_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ground destruct swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "main_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "ground_destruction",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "ground_destruct_shake": {
+            "type": "gravecore:screenshake",
+            "icon": "minecraft:iron_chestplate",
+            "title": "ground destruct shake",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 2,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "intensity": 1,
+            "duration": 18,
+            "distance": 26,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_first_tick",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "ground_destruction"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "infected_rubble_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Infected Rubble",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Throw a chunk of decaying rubble at a target, spreading it to them.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "infected_rubble": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Infected Rubble",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Throw a chunk of decaying rubble at a target, spreading it to them.",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:activation",
+                                            "cooldown": 0,
+                                            "ticks": 1,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "infected_rubble_buy"
+                                        }
+                ]
+            }
+        },
+        "rubble_projectile": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "rubble",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 3,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+                "Damage": 8,
+                "DamageType": "minecraft:in_fire",
+                "SetEntityOnFireSeconds": 0,
+                "Gravity": 0.0,
+                "Lifetime": 48,
+                "CommandOnBlockHit": "",
+                "CommandOnEntityHit": "",
+                "DieOnEntityHit": true,
+                "DieOnBlockHit": true,
+                "Appearances": [
+
+                    {
+                        "Type": "renderLayer",
+                        "RenderLayer": "decay:tomura/rubble"
+                    }
+                ]
+            },
+            "inaccuracy": 0,
+            "velocity": 0.4,
+            "swinging_arm": "main_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "infected_rubble",
+                                            "min": 1,
+                                            "max": 1
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "touch_of_destruction_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Touch of Destruction",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Grab an enemy by the throat and decay them.",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "touch_of_destruction": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "Touch of Destruction",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": false,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Grab an enemy by the throat and decay them.",
+            "first_tick_commands": [
+                "execute anchored eyes run function grave.core:pick_entity/start_ray"
+            ],
+            "last_tick_commands": [
+                "tag @s remove grave.pick.grabbing",
+				"tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked", 
+				"scoreboard players set @s grave.pick.timer 0"
+            ],
+            "commands": [
+                "execute anchored feet rotated ~ 0 if entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run tp @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] ^ ^0.4 ^1.2",
+				"execute if entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run tag @s add grave.pick.grabbing",
+				"execute unless entity @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] run scoreboard players add @s grave.pick.timer 1"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:not",
+                                            "conditions": [
+                                                {
+                                                    "type": "palladium:objective_score",
+                                                    "objective": "grave.pick.timer",
+                                                    "min_score": 1
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "palladium:toggle",
+                                            "cooldown": 0,
+                                            "key_type": "key_bind",
+                                            "needs_empty_hand": false,
+                                            "allow_scrolling_when_crouching": true
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "touch_of_destruction_buy"
+                                        }
+                ]
+            }
+        },
+        "destruction_grab": {
+            "type": "palladium:aim",
+            "icon": "minecraft:blaze_rod",
+            "title": "destruction grab",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "time": 4,
+            "arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:command_result",
+                                            "command": "execute if entity @s[tag=grave.pick.grabbing]",
+                                            "comparison": "==",
+                                            "compare_to": 1,
+                                            "log": false
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "destruction_throw": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "destruction throw",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": {
+			  "Damage": 0,
+			  "Gravity": 0.015,
+			  "Size": 0.5,
+			  "Lifetime": 3000,
+			  "DieOnEntityHit": false,
+			  "DieOnBlockHit": true,
+			  "Appearances": []
+			},
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "none",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_ticks",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "touch_of_destruction",
+                                            "min": 42,
+                                            "max": 42
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "touch_of_destruction"
+                                        }
+                ]
+            }
+        },
+        "destruction_commands": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "destruction commands",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [
+                "tag @e[type=palladium:custom_projectile,sort=nearest,limit=1] add grave.pick.throw",
+		  		"execute as @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] at @s run scoreboard players set @s grave.pick.throw 1",
+                "effect give @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] minecraft:wither 30 0 false"
+            ],
+            "last_tick_commands": [
+                "tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked"
+            ],
+            "commands": [
+                "/playsound block.gravel.break block @a[distance=..8] ~ ~ ~ 1 0.2"
+            ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "destruction_throw"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "destruction_particle": {
+            "type": "palladium:particles",
+            "icon": "minecraft:blaze_rod",
+            "title": "destruction particle",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "emitter": "decay:rightarm",
+            "particle_type": "minecraft:dust",
+            "options": "2.5 0.16 0.62 0.4 0.4 0.08 0.44",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 5
+                                        }
+                ],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "destruction_grab"
+                                        }
+                ]
+            }
+        },
+        "destruction_swing": {
+            "type": "gravecore:swing_hand",
+            "icon": "minecraft:iron_chestplate",
+            "title": "destruction swing",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "swinging_arm": "right_arm",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/villains/decay",
+                                            "ability": "destruction_throw"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "speed1": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Speed I",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Train your body, improving your speed.",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 0.02,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-1001-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 4,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "speed2": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Speed II",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Train your body, improving your speed.",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 0.02,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-1002-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 4,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "speed3": {
+            "type": "palladium:attribute_modifier",
+            "icon": "minecraft:iron_chestplate",
+            "title": "Improve Speed III",
+            "bar_color": "light_gray",
+            "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "Train your body, improving your speed.",
+            "attribute": "minecraft:generic.movement_speed",
+            "amount": 0.02,
+            "operation": 0,
+            "uuid": "498be4fb-af04-42f2-1003-e6ccdc0d99e1",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 4,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        }
+
+    }
+}

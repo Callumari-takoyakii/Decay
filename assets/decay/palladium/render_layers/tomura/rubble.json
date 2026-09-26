@@ -1,0 +1,10 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:tomura/rubble",
+            "texture": "decay:textures/models/tomura/rubble.png"
+        }
+    ]
+}

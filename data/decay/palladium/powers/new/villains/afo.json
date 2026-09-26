@@ -2,12 +2,12 @@
     "name": "All For One",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "minecraft:wither_skeleton_skull",
+    "icon": "decay:textures/icons/gui/powers/afo/search.png",
     "gui_display_type": "tree",
     "abilities": {
         "air_walk": {
             "type": "palladium:attribute_modifier",
-            "icon": "minecraft:iron_chestplate",
+            "icon": "decay:textures/icons/gui/powers/afo/airwalk.png",
             "title": "Quirk: Air Walk",
             "bar_color": "light_gray",
             "hidden": false,
@@ -26,7 +26,7 @@
         },
         "hardflame_fan": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/hardflame.png",
             "title": "Quirk: Hardflame Fan",
             "bar_color": "light_gray",
             "hidden": false,
@@ -79,7 +79,7 @@
         },
         "air_cannon_buy": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/aircannon.png",
             "title": "Quirk: Air Cannon",
             "bar_color": "light_gray",
             "hidden": false,
@@ -101,7 +101,7 @@
         },
         "air_cannon": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/aircannon.png",
             "title": "Quirk: Air Cannon",
             "bar_color": "light_gray",
             "hidden": true,
@@ -401,7 +401,7 @@
         },
         "heavy_payload_buy": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/payload.png",
             "title": "Quirk: Heavy Payload",
             "bar_color": "light_gray",
             "hidden": false,
@@ -423,7 +423,7 @@
         },
         "heavy_payload": {
             "type": "palladium:aim",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/payload.png",
             "title": "Quirk: Heavy Payload",
             "bar_color": "light_gray",
             "hidden": true,
@@ -622,7 +622,7 @@
         },
         "search_buy": {
             "type": "palladium:dummy",
-            "icon": "minecraft:blaze_rod",
+            "icon": "decay:textures/icons/gui/powers/afo/search.png",
             "title": "Quirk: Search",
             "bar_color": "light_gray",
             "hidden": false,
@@ -644,7 +644,7 @@
         },
         "search": {
             "type": "palladium:entity_glow",
-            "icon": "minecraft:glow_berries",
+            "icon": "decay:textures/icons/gui/powers/afo/search.png",
             "title": "Quirk: Search",
             "bar_color": "light_gray",
             "hidden": true,
@@ -840,9 +840,7 @@
             "last_tick_commands": [
                 "tag @e[sort=nearest,limit=1,tag=grave.pick.picked,distance=0..9] remove grave.pick.picked"
             ],
-            "commands": [
-                "say Hello World"
-            ],
+            "commands": [],
             "conditions": {
                 "enabling": [
                                         {

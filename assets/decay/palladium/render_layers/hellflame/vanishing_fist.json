@@ -1,0 +1,10 @@
+{
+    "type": "palladium:compound",
+    "layers": [
+        {
+            "model_type": "palladium:basic",
+            "model_layer": "decay:hellflame/vanishing_fist",
+            "texture": "decay:textures/models/projectiles/hellflame/vanishing_fist.png"
+        }
+    ]
+}

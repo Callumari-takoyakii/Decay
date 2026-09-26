@@ -6,6 +6,34 @@
     "gui_display_type": "tree",
     "hidden": true,
     "abilities": {
+        "crit": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "crit",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [
+                "/tag @s remove crit"
+            ],
+            "commands": [
+                "/tag @s add crit"
+            ],
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "gravecore:has_effect",
+                                            "effect": "takolib:critical"
+                                        }
+                ]
+            }
+        },
         "bubbled_jump": {
             "type": "palladium:attribute_modifier",
             "icon": "minecraft:iron_chestplate",

@@ -1,0 +1,7 @@
+{
+    "type": "palladium:armor",
+    "slot": "boots",
+    "armor_material": "decay:villains",
+    "armor_renderer": "decay:double/twice_boots",
+    "openable": false
+}

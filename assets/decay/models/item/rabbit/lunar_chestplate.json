@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "decay:item/rabbit/lunar_chestplate"
+    "layer0": "decay:item/rabbit/chest_icon"
   }
 }

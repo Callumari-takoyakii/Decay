@@ -527,10 +527,10 @@
                 ]
             }
         },
-        "apex_render": {
-            "type": "palladium:render_layer",
+        "apex_skin": {
+            "type": "palladium:skin_change",
             "icon": "minecraft:blaze_rod",
-            "title": "apex render",
+            "title": "apex skin",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
@@ -538,7 +538,9 @@
             "gui_position": "null",
             "gui_frame_type": "task",
             "description": "desc",
-            "render_layer": "decay:tomura/apex/apex_full",
+            "texture": "decay:textures/models/tomura/apex/apex.png",
+            "model_type": "keep",
+            "priority": 60,
             "conditions": {
                 "enabling": [
                                         {

@@ -2,62 +2,20 @@
     "name": "Invisibility",
     "persistent_data": true,
     "background": "minecraft:textures/block/white_wool.png",
-    "icon": "decay:textures/icons/gui/powers/invis.png",
+    "icon": "minecraft:wither_skeleton_skull",
     "gui_display_type": "tree",
-    "energy_bars": {
-    "invisibility": {
-       "max": 1800,
-       "color": "#CAA1FF"
-      }
-    },
     "abilities": {
-        "increase_meter_overtime": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "inc meter overtime when not using abilities",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value add @s decay:invisibility invisibility 2"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:interval",
-                                            "active_ticks": 0,
-                                            "disabled_ticks": 20
-                                        }
-                ],
-                "unlocking": [
-                                        {
-                                            "type": "palladium:not",
-                                            "conditions": [
-                                                {
-                                                    "type": "palladium:ability_enabled",
-                                                    "power": "decay:invisibility",
-                                                    "ability": "invis_toggle"
-                                                }
-                                            ]
-                                        }
-                ]
-            }
-        },
-        "invis_toggle": {
-            "type": "palladium:invisibility",
-            "icon": "decay:textures/icons/gui/powers/invis.png",
-            "title": "Invisbility",
+        "invisibility": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Invisibility",
             "bar_color": "light_gray",
             "hidden": false,
             "hidden_in_bar": false,
             "list_index": 0,
             "gui_position": "null",
-            "description": "Warp light around you, hiding you from others.",
+            "gui_frame_type": "task",
+            "description": "null",
             "conditions": {
                 "enabling": [
                                         {
@@ -66,139 +24,177 @@
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
-                                        },
-                                                                                {
-                                                                                    "type": "palladium:energy_bar",
-                                                                                    "power": "decay:invisibility",
-                                                                                    "energy_bar": "invisibility",
-                                                                                    "min": 0,
-                                                                                    "max": 1800
-                                                                                }
+                                        }
                 ],
                 "unlocking": []
             }
         },
-        "invis_commands": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "commands during invis",
+        "hide_armour": {
+            "type": "palladium:invisibility",
+            "icon": "palladium:textures/icon/invisibility.png",
+            "title": "hide self",
             "bar_color": "light_gray",
             "hidden": true,
             "hidden_in_bar": true,
             "list_index": 0,
             "gui_position": "null",
+            "gui_frame_type": "task",
             "description": "desc",
-            "first_tick_commands": [
-                "/playsound entity.lightning_bolt.impact player @a[distance=..4] ~ ~ ~ 0.4 2"
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "invisibility"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "cloak_self": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "cloak self",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
+            "last_tick_commands": [],
+            "commands": [
+                "/effect give @s minecraft:invisibility 10 0 true"
             ],
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "invisibility"
+                                        },
+                                        {
+                                            "type": "palladium:interval",
+                                            "active_ticks": 0,
+                                            "disabled_ticks": 2
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "no_trail": {
+            "type": "gravecore:prevent_sprinting_trail",
+            "icon": "minecraft:leather_boots",
+            "title": "no trail",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "invisibility"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "invis_shader": {
+            "type": "palladium:shader_effect",
+            "icon": "minecraft:blaze_rod",
+            "title": "invis shader",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "shader": "minecraft:shaders/post/desaturate.json",
+            "conditions": {
+                "enabling": [
+                                        {
+                                            "type": "palladium:ability_enabled",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "invisibility"
+                                        }
+                ],
+                "unlocking": []
+            }
+        },
+        "begin_end_invis": {
+            "type": "palladium:command",
+            "icon": "minecraft:command_block",
+            "title": "begin / end invis",
+            "bar_color": "light_gray",
+            "hidden": true,
+            "hidden_in_bar": true,
+            "list_index": 0,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "first_tick_commands": [],
             "last_tick_commands": [
-                "/playsound entity.lightning_bolt.impact player @a[distance=..4] ~ ~ ~ 0.4 2"
+                "/effect clear @s minecraft:invisibility"
             ],
             "commands": [],
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:ability_enabled",
-                                            "power": "decay:invisibility",
-                                            "ability": "invis_toggle"
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "invisibility"
                                         }
                 ],
                 "unlocking": []
             }
         },
-        "invis_decrease_meter": {
-            "type": "palladium:command",
-            "icon": "minecraft:command_block",
-            "title": "decrease meter when toggle active",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "first_tick_commands": [],
-            "last_tick_commands": [],
-            "commands": [
-                "/energybar value subtract @s decay:invisibility invisibility 1"
-            ],
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:invisibility",
-                                            "ability": "invis_toggle"
-                                        },
-                                                                                {
-                                                                                    "type": "palladium:interval",
-                                                                                    "active_ticks": 0,
-                                                                                    "disabled_ticks": 20
-                                                                                }
-                ],
-                "unlocking": []
-            }
-        },
-        "hide_particles": {
-            "type": "gravecore:prevent_sprinting_trail",
-            "icon": "minecraft:leather_boots",
-            "title": "hide particle sprint trail",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:invisibility",
-                                            "ability": "invis_toggle"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "light_immune": {
-            "type": "gravecore:forcefield",
-            "icon": "minecraft:iron_chestplate",
-            "title": "light immune",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 0,
-            "gui_position": "null",
-            "description": "desc",
-            "sound": "minecraft:item.shield.block",
-            "max_health": 300,
-            "scoreboard": "null",
-            "regen_rate": 1,
-            "damage_sources": [
-                "decay:light"
-            ],
-            "thorns": false,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_enabled",
-                                            "power": "decay:invisibility",
-                                            "ability": "invis_toggle"
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "shimmer": {
-            "type": "gravecore:movement",
-            "icon": "minecraft:fire_charge",
-            "title": "Shimmer",
+        "twinkle_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Twinkle",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 1,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "twinkle": {
+            "type": "palladium:projectile",
+            "icon": "minecraft:snowball",
+            "title": "Twinkle",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 1,
             "gui_position": "null",
-            "description": "Dash forward by manipulating nearby light particles.",
-            "motion_scale": 1.1,
-            "direction": "forward",
+            "gui_frame_type": "task",
+            "description": "desc",
+            "entity_type": "palladium:custom_projectile",
+            "entity_data": "null",
+            "inaccuracy": 0,
+            "velocity": 1.5,
+            "swinging_arm": "right_arm",
+            "damage_from_player": false,
+            "ignore_player_movement": false,
             "conditions": {
                 "enabling": [
                                         {
@@ -209,194 +205,121 @@
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "twinkle_buy"
+                                        }
+                ]
             }
         },
-        "refraction_aim": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/refraction.png",
-            "title": "Warp Refraction",
+        "shimmer_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Shimmer",
             "bar_color": "light_gray",
             "hidden": false,
-            "hidden_in_bar": false,
-            "list_index": 2,
-            "gui_position": "null",
-            "description": "Warp nearby light, allowing you to aim it elsewhere.",
-            "time": 20,
-            "arm": "both",
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:activation",
-                                            "cooldown": 10,
-                                            "ticks": 25,
-                                            "key_type": "key_bind",
-                                            "needs_empty_hand": false,
-                                            "allow_scrolling_when_crouching": true
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "refraction_projectile": {
-            "type": "palladium:projectile",
-            "icon": "minecraft:snowball",
-            "title": "Warp Refraction",
-            "bar_color": "light_gray",
-            "hidden": true,
             "hidden_in_bar": true,
             "list_index": 2,
             "gui_position": "null",
-            "description": "Warp nearby light, allowing you to aim it elsewhere.",
-            "entity_type": "palladium:custom_projectile",
-            "entity_data": {
-                "Damage": 8,
-                "DamageType": "minecraft:freeze",
-                "SetEntityOnFireSeconds": 0,
-                "Gravity": 0.0,
-                "Lifetime": 80,
-                "CommandOnBlockHit": "/particle decay:aam_frost",
-                "CommandOnEntityHit": "/particle decay:aam_frost",
-                "DieOnEntityHit": true,
-                "DieOnBlockHit": true,
-                "Appearances": [
-                    {
-                        "Type": "renderLayer",
-                        "RenderLayer": "decay:refraction"
-                    }
-                ]
-            },
-            "inaccuracy": 0,
-            "velocity": 1.0,
-            "swinging_arm": "none",
-            "damage_from_player": false,
-            "ignore_player_movement": false,
+            "gui_frame_type": "task",
+            "description": "desc",
             "conditions": {
-                "enabling": [
+                "enabling": [],
+                "unlocking": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:invisibility",
-                                            "ability": "refraction_aim",
-                                            "min": 25,
-                                            "max": 25
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
                                         }
-                ],
-                "unlocking": []
+                ]
             }
         },
-        "shine": {
-            "type": "palladium:aim",
-            "icon": "decay:textures/icons/gui/powers/invis_aoe.png",
-            "title": "Shine",
+        "shimmer": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Shimmer",
             "bar_color": "light_gray",
-            "hidden": false,
+            "hidden": true,
             "hidden_in_bar": false,
-            "list_index": 3,
+            "list_index": 2,
             "gui_position": "null",
-            "description": "Charge and warp nearby light, creating a small blast of bright light that knocks back enemies.",
-            "time": 12,
-            "arm": "both",
+            "gui_frame_type": "task",
+            "description": "null",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
                                             "cooldown": 0,
-                                            "ticks": 18,
+                                            "ticks": 1,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
-            }
-        },
-        "shine_aoe": {
-            "type": "gravecore:aoe_damage",
-            "icon": "minecraft:fire_charge",
-            "title": "shine aoe",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "desc",
-            "radius": 10,
-            "damage": 8,
-            "fire_ticks": 0,
-            "damage_type": "null",
-            "cone": false,
-            "conditions": {
-                "enabling": [
+                "unlocking": [
                                         {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:invisibility",
-                                            "ability": "shine",
-                                            "min": 18,
-                                            "max": 18
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "shimmer_buy"
                                         }
-                ],
-                "unlocking": []
+                ]
             }
         },
-        "shine_knockback": {
-            "type": "gravestone:knockback",
-            "icon": "minecraft:stick",
-            "title": "shine knockback",
-            "bar_color": "light_gray",
-            "hidden": true,
-            "hidden_in_bar": true,
-            "list_index": 3,
-            "gui_position": "null",
-            "description": "desc",
-            "radius": 10,
-            "knockback": 4,
-            "tag_ex": "exclusion_tag",
-            "invert": false,
-            "crush": false,
-            "conditions": {
-                "enabling": [
-                                        {
-                                            "type": "palladium:ability_ticks",
-                                            "power": "decay:invisibility",
-                                            "ability": "shine",
-                                            "min": 18,
-                                            "max": 18
-                                        }
-                ],
-                "unlocking": []
-            }
-        },
-        "kaleidoscope": {
-            "type": "gravecore:forcefield",
-            "icon": "decay:textures/icons/gui/powers/kaleidoscope.png",
+        "kaleidoscope_buy": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
             "title": "Kaleidoscope",
             "bar_color": "light_gray",
             "hidden": false,
+            "hidden_in_bar": true,
+            "list_index": 4,
+            "gui_position": "null",
+            "gui_frame_type": "task",
+            "description": "null",
+            "conditions": {
+                "enabling": [],
+                "unlocking": [
+                                        {
+                                            "type": "palladium:experience_level_buyable",
+                                            "xp_level": 3,
+                                            "flat_levels": true
+                                        }
+                ]
+            }
+        },
+        "kaleidoscope": {
+            "type": "palladium:dummy",
+            "icon": "minecraft:blaze_rod",
+            "title": "Kaleidoscope",
+            "bar_color": "light_gray",
+            "hidden": true,
             "hidden_in_bar": false,
             "list_index": 4,
             "gui_position": "null",
-            "description": "Repell light away from you, creating a bubble around you that reflects light-based damage and projectiles.",
-            "sound": "minecraft:item.shield.block",
-            "max_health": 225,
-            "scoreboard": "null",
-            "regen_rate": 20,
-            "damage_sources": [
-                "minecraft:is_projectile"
-            ],
-            "thorns": false,
+            "gui_frame_type": "task",
+            "description": "null",
             "conditions": {
                 "enabling": [
                                         {
                                             "type": "palladium:activation",
-                                            "cooldown": 10,
-                                            "ticks": 1200,
+                                            "cooldown": 0,
+                                            "ticks": 5,
                                             "key_type": "key_bind",
                                             "needs_empty_hand": false,
                                             "allow_scrolling_when_crouching": true
                                         }
                 ],
-                "unlocking": []
+                "unlocking": [
+                                        {
+                                            "type": "palladium:ability_unlocked",
+                                            "power": "decay:new/heroes/invisibility",
+                                            "ability": "kaleidoscope_buy"
+                                        }
+                ]
             }
         }
+
     }
 }
